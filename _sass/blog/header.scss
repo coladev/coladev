@@ -1,0 +1,13 @@
+.app-header {
+	@include fullbg('/assets/images/oqtafyt5ktw-ilya-pavlov.jpg');
+	@include flex($direction: column, $align: center, $justify: center);
+	min-height: 400px;
+	margin-bottom: 30px;
+
+	.container {
+		height: 100%;
+	}
+	.header {
+		height: 100%;
+	}
+}
