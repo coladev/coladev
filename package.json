@@ -1,0 +1,7 @@
+{
+  "name": "blog",
+  "scripts": {
+    "deploy": "jekyll build && git subtree push --prefix _site origin master"
+  },
+  "private": true
+}
