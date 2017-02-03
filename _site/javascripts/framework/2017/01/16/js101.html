@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Javascripts 101: ปูพื้นฐานแบบแน่นๆ &middot; Coladev.com
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+<script src="http://127.0.0.1:35729/livereload.js"></script></head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <h3>COLADEV.COM</h3>
+    <p>บันทึกและบทความเกี่ยวกับการเขียนโปรแกรมจากโปรแกรมเมอร์น้อยๆผู้ชื่นชอบโค้กเป็นชีวิตจิตใจ</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+    <a class="sidebar-nav-item" href="/tags/javascripts">Javascripts</a>
+    <a class="sidebar-nav-item" href="/tags/devops">Devops</a>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2017. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">COLADEV.COM</a>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">Javascripts 101: ปูพื้นฐานแบบแน่นๆ</h1>
+  <span class="post-date">16 Jan 2017</span>
+  <p>เชื่อว่าหลายๆคนคงเขียน javascripts มากันพอสมควรแล้ว แต่น่าจะมีหลายคนที่อาจจะมองข้ามพื้นฐานเล็กๆน้อยๆไป ซึ่งผมก็เป็นหนึ่งในนั้น แต่หลังจากที่ไปศึกษาพื้นฐานในระดับลึกลงไปแล้ว ผมคิดว่าส่วนนี้สำคัญมากการในทำงาน ซึ่งคาดว่าจะช่วยให้การเขียนโค้ดของเราดีขึ้น เนื่องจากเราจะได้เห็นภาพอะไรบางอย่างที่แตกต่างออกไป ซึ่งเราจะมาเริ่มตั้งแต่การประกาศตัวแปร ไปจนถึงเรื่องใหม่ๆบน ES6 ในระดับละเอียดลงไปอีกระดับ</p>
+
+<h2 id="variable">Variable</h2>
+
+<p>การประกาศตัวแปรใน Javascripts นั้น เป็นการประกาศแบบไม่ระบุ Type ของตัวแปร โดยใช้คำสั่งง่ายๆคือ <code class="highlighter-rouge">var</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = 69;
+var b = "hello world";
+</code></pre>
+</div>
+
+<p>หลายๆคนคงคุ้นชินอยู่แล้ว แต่จริงๆแล้วตัวแปรบนจาวาสคริปนั้นมี Type ของมันเองซึ่งแบ่งเป็น 2 ประเภทหลัก คือ</p>
+
+<h4 id="primitive-types">Primitive Types</h4>
+
+<p>หรือตัวแปรดั้งเดิม (แปลกูเกิลมา 55) เป็นตัวแปรประเภทค่าเดียว เช่น <code class="highlighter-rouge">String</code> <code class="highlighter-rouge">Number</code> <code class="highlighter-rouge">Boolean</code> <code class="highlighter-rouge">null</code> <code class="highlighter-rouge">undefined</code>
+ซึ่งจะเป็นคุณสมบัติคร่าวๆดังนี้</p>
+
+<ul>
+  <li>Pass by Value</li>
+</ul>
+
+<p>ตัวแปร Javasctipy จำพวก Primitive Types พวกนี้เป็น passby value โดยการสร้างตัวแปรใหม่ จะ copy value เดิมแล้วชี้ไปที่ memory ที่ใหม่ เช่น</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = 10;
+var b = a;
+b += 5;
+
+a \\ 10
+b \\ 15
+</code></pre>
+</div>
+
+<ul>
+  <li>Immutable</li>
+</ul>
+
+<p>หรือไม่สามารถเปลี่ยนแปลงค่าได้ ทำแบบนี้ไม่ได้นะ ถึงจะไม่ error อะไรก็เถอะ</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = "test"
+a[1] = "4"
+
+a \\ "test"
+</code></pre>
+</div>
+
+<h3 id="object-types">Object Types</h3>
+
+<p>หรือตัวแปรที่มีค่าซับซ้อน เช่น <code class="highlighter-rouge">Object</code> <code class="highlighter-rouge">Array</code> มีคุณสมบัติดังนี้</p>
+
+<ul>
+  <li>Shared Value</li>
+</ul>
+
+<p>หรือจะเป็นว่าเป็น pass by copy of references ก็ได้ โดยจริงๆแล้วค่าที่เก็บไว้นั้นเป็นค่าเดียวกัน แต่ references ที่ point ไปที่ค่านั้นเป็นคนละตัวกัน (แต่ชี้ที่เดียวกันนั้นแหละ) ดังนั้นเมื่อเราเปลี่ยนค่าในตัวแปรหนึ่ง แต่อีกค่าก็จะเปลี่ยนตาม ( แต่ไม่ใช่ pass by references นะ คนละแบบกัน เดี๋ยวอธิบายตอนหลัง)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = [0, 1, 2];
+var b = a;
+b.push(3)
+
+a \\ [0, 1, 2, 3]
+b \\ [0, 1, 2, 3]
+</code></pre>
+</div>
+
+<h3 id="es6">ES6</h3>
+
+<p>การประกาศตัวแปรบน ES6 นั้น มีฟังก์ชันที่เพิ่มขึ้นมา โดยมีตัวเลือกให้สองแบบคือ <code class="highlighter-rouge">let</code> <code class="highlighter-rouge">const</code></p>
+
+<h4 id="let">Let</h4>
+
+<p><code class="highlighter-rouge">let</code> คือสิ่งที่มาแทน <code class="highlighter-rouge">var</code> นั่นเอง โดยจะมีคุณสมบัติพิเศษเรื่อง scope ซึ่งจะอธิบายในบทถัดไปนะ</p>
+
+<h4 id="const">Const</h4>
+
+<p>หรือคือตัวแปรที่ไม่สามารถเปลี่ยนแปลงค่าได้ ซึ่งเมื่อทำการ assign ค่าให้แล้ว จะไม่สามารถแก้ไข หรือ assign ค่าใหม่ได้ 
+(พูดแบบละเอียดคือ ไม่สามารถเปลี่ยน pointer references ได้แล้ว) ซึ่งหากเราพยายามทำการเปลี่ยนค่า จะเกิด Error แสดงทันที</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>const a = 10;
+a = 2		\\ TypeError
+</code></pre>
+</div>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/javascripts/framework/2017/01/16/jsframework101">
+            ลองสร้าง Frontend เฟรมเวิร์คแบบง่ายๆ
+            <small>16 Jan 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/devops/docker/2017/01/16/docker101">
+            Docker 101: Basic & Overview
+            <small>16 Jan 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>

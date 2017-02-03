@@ -1,6 +1,8 @@
 {
   "name": "blog",
   "scripts": {
+    "start": "jekyll serve --draft --livereload",
+    "prod": "jekyll serve",
     "deploy": "jekyll build && git subtree push --prefix _site origin master"
   },
   "private": true
