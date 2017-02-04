@@ -77,15 +77,15 @@
 
 <p>แล้วมันจะมีประโยชน์อะไรกับการดีพลอยแอพลิเคชันของเราละ มาดูกัน</p>
 
-<h4 id="why-docker">Why Docker</h4>
+<h3 id="why-docker">Why Docker</h3>
 
 <p>เคยเจอปัญหาดีพลอยแอพลิเคชันขึ้นบนเซิฟเวอร์แล้วเจอปัญหาในการรันหรือเปล่า เช่น version php ไม่ตรงกับที่ต้องการ , ไม่สามารถอัพเดตได้ เพราะมีแอพอื่นรันอยู่ หรือเทสบนเครื่องเสร็จแล้วใช้งานได้ปกติ แต่พอดีพลอยจริงแล้วเกิดปัญหาสารพัด</p>
 
 <p>ปัญหานี้จะหมดไปเพียงแค่เราใช้ docker เนื่องจากเราสามารถ</p>
 
-<h3 id="get-stated">Get Stated</h3>
+<h2 id="get-stated">Get Stated</h2>
 
-<h4 id="install-docker-engine">Install Docker Engine</h4>
+<h3 id="install-docker-engine">Install Docker Engine</h3>
 
 <p>วิธีลงก็แสนง่ายดาย เดี๋ยวเราจะมาลองลงเล่นในเครื่องเราก่อนแล้วกันนะครับ
 ผมใช้ osx อยู่ วิธีการลงก็มีวิธีง่ายๆแค่ไปโหลดมาซะ</p>
@@ -102,7 +102,7 @@
 
 <p>เท่านี้ก็มี docker ในเครื่องแล้วครับ ต่อไปจะไปลองเล่นกัน</p>
 
-<h4 id="docker-images">Docker Images</h4>
+<h3 id="docker-images">Docker Images</h3>
 
 <p>เราเห็นกันไปในหัวข้อก่อนแล้วว่าเราจะทำการ pack ทุกอย่างที่จำเป็นในการรันแอพลิเคชันของเราด้วย docker ซึ่งพอเราแพคเสร็จ มันก็จะออกมาเป็น Docker Images เนี่ยละ แล้วก็สามารถเอา Images ตัวเนี่ย ไปรันที่ไหนก็ได้ที่มี docker อยู่</p>
 
@@ -110,7 +110,7 @@
 
 <p>เราสามารถเข้าดึง public docker images มาเล่นได้ หรือจะสมัคร account แล้วใช้เก็บ docker images ที่เราสร้างขึ้นมาก็ได้เช่นกัน</p>
 
-<h4 id="pull-images">Pull Images</h4>
+<h3 id="pull-images">Pull Images</h3>
 
 <p>เราจะมาลองดึง Docker Images ที่มีอยู่บน Docker Hub มาเล่นง่ายๆกันก่อนนะครับ
 ในตัวอย่างผมจะลองไปดึง <code class="highlighter-rouge">ubuntu</code> images มาแล้วรัน hello world ง่ายๆ</p>
@@ -129,7 +129,7 @@
 
 <p>ก็จะเห็นรายชื่อ images ทั้งหมดที่มีอยู่บนเครื่องเรานะครับ นั่นไง ubuntu มาแล้ว</p>
 
-<h4 id="run-images">Run Images</h4>
+<h3 id="run-images">Run Images</h3>
 
 <p>เมื่อทำการ pull images มาแล้ว ก็สั่งรันได้เลย ด้วยคำสั่ง <code class="highlighter-rouge">docker run [image] [cmd ....]</code></p>
 
@@ -150,7 +150,7 @@
 <p>จะเห็นได้ว่า เรารัน image ubuntu ด้วย command “echo ‘hello world’”
 เราจะเห็น column STATUS ที่แสดงสถานะว่าแอพเรายังรันอยู่ดีหรือเปล่านะครับ</p>
 
-<h5 id="run-with-options">Run with Options</h5>
+<h4 id="run-with-options">Run with Options</h4>
 
 <p>เรามาดู Options ที่เราต้องใช้บ่อยๆในการรัน Docker Images กันก่อน</p>
 
@@ -163,15 +163,15 @@
 
 <p>ที่ต้องใช้กันบ่อยๆในช่วงเริ่มต้นก็ประมานนี้ครับ</p>
 
-<h5 id="network-mode">Network Mode</h5>
+<h4 id="network-mode">Network Mode</h4>
 
-<h5 id="volume">Volume</h5>
+<h4 id="volume">Volume</h4>
 
-<h4 id="build-images">Build Images</h4>
+<h3 id="build-images">Build Images</h3>
 
 <p>เราสามารถ build images ของเราขึ้นมาเองได้ เช่น เราจะสร้าง images hello world ไว้ใช้งาน</p>
 
-<h4 id="docker-hub">Docker Hub</h4>
+<h3 id="docker-hub">Docker Hub</h3>
 
 <p>Docker Hub เป็น Docker Repository สำหรับเก็บ Docker Images ไว้บนคลาวได้ คล้ายกับ Github หรือ Bitbucket ที่เราใช้เก็บ Sourcecode</p>
 
@@ -198,7 +198,7 @@ CMD</p>
 
 <p>เราจะมาลอง build nodejs app ง่ายๆด้วย forever &amp; docker กันครับ</p>
 
-<h4 id="build-images-1">Build Images</h4>
+<h3 id="build-images-1">Build Images</h3>
 
 <p>คำสั่งในการรัน build docker images จาก dockerfile เราสามารถรันได้ด้วย</p>
 
@@ -206,16 +206,16 @@ CMD</p>
 </code></pre>
 </div>
 
-<h4 id="nodejs-app-example">Nodejs App Example</h4>
+<h3 id="nodejs-app-example">Node.JS App Example</h3>
 
-<h3 id="docker-compose">Docker Compose</h3>
+<h2 id="docker-compose">Docker Compose</h2>
 
 <p>docker compose ใช้สำหรับเก็บ command และ config ที่เราจะรันตัว docker images หากเราทำการรันแล้วครั้งครึ่ง เราจะไม่สามารถแก้คำสั่งรันได้ ทำได้แค่ start stop restart เท่านั้น แต่ docker compose เราสามารถแก้ไขไฟล์ config ตัวนั้นได้</p>
 
 <p>เราสามารถเขียนไฟล์ docker-compose ในรูปแบบของ yml ได้
 โดยมีตัวอย่างเบื้องต้นง่ายๆดังนี้</p>
 
-<h4 id="configuration">Configuration</h4>
+<h3 id="configuration">Configuration</h3>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>version: '2'
 services:
@@ -227,9 +227,28 @@ services:
 <p>เราสามารถ config ได้ตามคำสั่ง option ของการ run ปกติ เช่น volume ใช้ -v / port ใช้ -p
 สามารถดู config อื่นๆได้ตามนี้</p>
 
-<h4 id="runup-docker-compose">Runup Docker Compose</h4>
-<p>asdjsadjs</p>
+<h3 id="runup-docker-compose">Runup Docker Compose</h3>
 
+<hr />
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>Docker Overview <a href="https://docs.docker.com/engine/understanding-docker/">https://docs.docker.com/engine/understanding-docker/</a></li>
+</ul>
+
+</div>
+
+<div class="author">
+	<h4>Author</h4>
+	<div class="profile">
+		<div class="img"></div>
+		<div class="info">
+			<h4>Anonymous</h4>
+			<p>Web Developer</p>
+			<p>Nextzy Technology Co,. LTD.</p>
+		</div>
+	</div>
 </div>
 
 <div class="related">
@@ -240,7 +259,7 @@ services:
 		<div class="post">
 			<img src="/assets/images/thumbnail/js101.png">
 			<h2 class="post-title">
-					Javascripts 101: พื้นฐานแบบเน้นๆ
+					JS Basic: EP1. ปูพื้นฐานแบบเน้นๆ
 			</h2>
 
 			<span class="post-date">ปูพื้นฐาน javascripts กันใหม่กันเถอะ</span>
@@ -251,21 +270,21 @@ services:
 		<div class="post">
 			<img src="/assets/images/thumbnail/js101.png">
 			<h2 class="post-title">
-					Javascripts 101: Scope
+					JS Basic: EP2. Scope
 			</h2>
 
-			<span class="post-date">ปูพื้นฐาน javascripts กันใหม่กันเถอะ</span>
+			<span class="post-date">Lexical & Block Scope มองแว่บเดียวก็ดูออก</span>
 		</div>
 	</a>
 	
-		<a href="/javascripts/framework/2017/01/16/jsframework101">
+		<a href="/javascripts/framework/2017/01/16/js101-object-and-class">
 		<div class="post">
 			<img src="/assets/images/thumbnail/js101.png">
 			<h2 class="post-title">
-					ลองสร้าง Frontend เฟรมเวิร์คแบบง่ายๆ
+					JS Basic: EP3. Object & Class
 			</h2>
 
-			<span class="post-date">เรียนรู้พื้นฐานของเว็บเฟรมเวิร์คในยุคนี้และมาลองเขียนเฟรมเวิร์คแบบง่ายๆกัน</span>
+			<span class="post-date">object และ class แบบเจาะลึก</span>
 		</div>
 	</a>
 	
