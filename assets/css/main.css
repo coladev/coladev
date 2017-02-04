@@ -86,3 +86,57 @@ h1, h2, h3 {
   padding-bottom: 0.7em;
   text-align: center;
   border-bottom: 1px solid #DDD; }
+
+.related h2 {
+  margin-top: 1em; }
+.related .ralated-posts {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; }
+  .related .ralated-posts a {
+    width: 49.5%; }
+    @media (max-width: 480px) {
+      .related .ralated-posts a {
+        width: 100%; } }
+    .related .ralated-posts a .post {
+      background-color: #FFF;
+      border-radius: 0px;
+      text-align: center;
+      overflow: hidden;
+      margin-bottom: 0.5em;
+      box-shadow: 0px 1px 2px #DDD;
+      border-radius: 3px;
+      -webkit-transition: background-color 300ms ease;
+      -ms-transition: background-color 300ms ease;
+      transition: background-color 300ms ease; }
+      .related .ralated-posts a .post img {
+        border-radius: 0;
+        margin-bottom: 0.5em; }
+      .related .ralated-posts a .post h2 {
+        font-size: 0.9em;
+        margin-top: 0;
+        margin-bottom: 0.5em;
+        padding: 0 0.5em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; }
+      .related .ralated-posts a .post .post-date {
+        font-size: 0.7em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 0 1em;
+        margin-bottom: 0.5em; }
+    .related .ralated-posts a:hover {
+      text-decoration: none; }
+      .related .ralated-posts a:hover .post {
+        background-color: #262626; }
+        .related .ralated-posts a:hover .post .post-title {
+          color: #FFF; }
+
+footer.footer {
+  background-color: #FFF;
+  margin-top: 1em;
+  box-shadow: 0 -1px 2px #EEE;
+  padding: 1em 0;
+  font-size: 14px; }
