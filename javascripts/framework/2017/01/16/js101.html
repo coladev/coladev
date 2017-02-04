@@ -17,8 +17,8 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="/public/css/poole.css">
-  <link rel="stylesheet" href="/public/css/syntax.css">
   <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="/public/js/hightlightjs/styles/androidstudio.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
 
   <!-- Icons -->
@@ -74,6 +74,31 @@
   <span class="post-date">16 Jan 2017</span>
   <p>เชื่อว่าหลายๆคนคงเขียน javascripts มากันพอสมควรแล้ว แต่น่าจะมีหลายคนที่อาจจะมองข้ามพื้นฐานเล็กๆน้อยๆไป ซึ่งผมก็เป็นหนึ่งในนั้น แต่หลังจากที่ไปศึกษาพื้นฐานในระดับลึกลงไปแล้ว ผมคิดว่าส่วนนี้สำคัญมากการในทำงาน ซึ่งคาดว่าจะช่วยให้การเขียนโค้ดของเราดีขึ้น เนื่องจากเราจะได้เห็นภาพอะไรบางอย่างที่แตกต่างออกไป ซึ่งเราจะมาเริ่มตั้งแต่การประกาศตัวแปร ไปจนถึงเรื่องใหม่ๆบน ES6 ในระดับละเอียดลงไปอีกระดับ</p>
 
+<p>ก่อนอื่นมารู้คำศัพท์กันก่อน จะได้เข้าใจตรงกันนะฮะ</p>
+
+<h3 id="section">คำศัพท์</h3>
+
+<ul>
+  <li>EcmaScript (ES)</li>
+</ul>
+
+<p>Ecmascript เป็นมาตรฐานของภาษาจาวาสคริปโดยมีการพัฒนาพื้นฐานมาเรื่อยๆจนถึงปัจจุบัน โดยในปัจจุบันที่รองรับในบราวเซอร์ทั่วไป คือ <code class="highlighter-rouge">ES5</code></p>
+
+<p>และเมื่อปีที่แล้วได่ทำการประกาศมาตรฐานรุ่นใหม่ขึ้นมาชื่อ <code class="highlighter-rouge">ES6</code> หรือ <code class="highlighter-rouge">ES2015</code> ซึ่งมีการปรับปรุงและเพิ่มเติมฟีเจอร์หลายๆอย่างซึ่งช่วยให้เราสามารถเขียน javascript ได้ง่ายขึ้น</p>
+
+<p>และยังมีที่มาตรฐานในยุคถัดๆที่ยังร่างกันอยู่ เช่น <code class="highlighter-rouge">ES7</code> <code class="highlighter-rouge">ES8</code></p>
+
+<p>Browser และ Node.js เวอร์ชันใหม่ได้เริ่มทำการรองรับ ES6 กันแล้ว แต่เราไม่สามารถใช้กับบราวเซอร์เก่าๆที่ยังใช้กันส่วนมากได้ แต่มีวิธีแก้ครับ</p>
+
+<ul>
+  <li>
+    <p>Transplier</p>
+  </li>
+  <li>
+    <p>Polyfill</p>
+  </li>
+</ul>
+
 <h2 id="variable">Variable</h2>
 
 <p>การประกาศตัวแปรใน Javascripts นั้น เป็นการประกาศแบบไม่ระบุ Type ของตัวแปร โดยใช้คำสั่งง่ายๆคือ <code class="highlighter-rouge">var</code></p>
@@ -88,7 +113,17 @@ var b = "hello world";
 <h4 id="primitive-types">Primitive Types</h4>
 
 <p>หรือตัวแปรดั้งเดิม (แปลกูเกิลมา 55) เป็นตัวแปรประเภทค่าเดียว เช่น <code class="highlighter-rouge">String</code> <code class="highlighter-rouge">Number</code> <code class="highlighter-rouge">Boolean</code> <code class="highlighter-rouge">null</code> <code class="highlighter-rouge">undefined</code>
-ซึ่งจะเป็นคุณสมบัติคร่าวๆดังนี้</p>
+โดยสามารถประกาศตัวแปรได้ง่ายๆ</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = "hello";
+var b = 2;
+var c = true;
+var d = null;
+var f = undefined;
+</code></pre>
+</div>
+
+<p>ซึ่งจะเป็นคุณสมบัติคร่าวๆดังนี้</p>
 
 <ul>
   <li>Pass by Value</li>
@@ -120,7 +155,20 @@ a \\ "test"
 
 <h3 id="object-types">Object Types</h3>
 
-<p>หรือตัวแปรที่มีค่าซับซ้อน เช่น <code class="highlighter-rouge">Object</code> <code class="highlighter-rouge">Array</code> มีคุณสมบัติดังนี้</p>
+<p>หรือตัวแปรที่มีค่าซับซ้อน เช่น <code class="highlighter-rouge">Object</code> <code class="highlighter-rouge">Array</code> สามารถประกาศตัวแปรได้ดังนี้</p>
+
+<p><code class="highlighter-rouge">Object</code> ใช้ <code class="highlighter-rouge"><span class="p">{}</span></code></p>
+
+<p><code class="highlighter-rouge">Array</code> ใข้ <code class="highlighter-rouge">[]</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = [1,2,3];
+var b = {
+	x: 2
+};
+</code></pre>
+</div>
+
+<p>ตัวแปรประเภทนี้มีคุณสมบัติดังนี้</p>
 
 <ul>
   <li>Shared Value</li>
@@ -136,6 +184,12 @@ a \\ [0, 1, 2, 3]
 b \\ [0, 1, 2, 3]
 </code></pre>
 </div>
+
+<h4 id="array">Array</h4>
+
+<h4 id="object">Object</h4>
+
+<h3 id="object-wrapper">Object Wrapper</h3>
 
 <h3 id="es6">ES6</h3>
 
@@ -154,6 +208,66 @@ b \\ [0, 1, 2, 3]
 a = 2		\\ TypeError
 </code></pre>
 </div>
+
+<p><em>ข้อควรระวัง</em> หากใช้ const กับ Object Type เรายังสามารถเปลี่ยนแปลงค่าได้อยู่ แต่ไม่สามารถชี้ไปที่ค่าใหม่ได้</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>const b = [1,2,3];
+b.push(4);
+
+b \\ [1,2,3,4]
+
+b = [4,5,6];  \\ TypeError
+</code></pre>
+</div>
+
+<h3 id="function">Function</h3>
+
+<p>ฟังก์ชัน ในจาวาสคริปสามารถประกาศได้ง่ายๆโดยใช้คำสั่ง <code class="highlighter-rouge">function</code> โดยสามารถประกาศได้หลายแบบ</p>
+
+<ul>
+  <li>Named Function</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+function add(x,y) {
+	return x + y;
+}
+
+var a = add(10,20); // 30
+
+</code></pre>
+</div>
+
+<ul>
+  <li>Anonymous Function</li>
+</ul>
+
+<p>หรือฟังก์ชันที่ไม่มีชี่อ เราสามารถใช้ตัวแปรชี้ไปที่ฟังก์ชันนั้น และสามารถนำไปเรียกใช้ได้</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var add = function(x,y) {
+	return x + y;
+}
+
+var a = add(10,20); // 30
+
+</code></pre>
+</div>
+
+<ul>
+  <li>IIFE Function (Immediately Invoked Function Expressions)</li>
+</ul>
+
+<p>หรือการประกาศฟังก์ชันที่รันทันที</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>(function echo() {
+	console.log("Hello")
+})();
+
+// Hello
+</code></pre>
+</div>
+
+<h3 id="lexical-scope">Lexical Scope</h3>
 
 </div>
 
@@ -187,22 +301,8 @@ a = 2		\\ TypeError
 
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
 
-    <script>
-      (function(document) {
-        var toggle = document.querySelector('.sidebar-toggle');
-        var sidebar = document.querySelector('#sidebar');
-        var checkbox = document.querySelector('#sidebar-checkbox');
-
-        document.addEventListener('click', function(e) {
-          var target = e.target;
-
-          if(!checkbox.checked ||
-             sidebar.contains(target) ||
-             (target === checkbox || target === toggle)) return;
-
-          checkbox.checked = false;
-        }, false);
-      })(document);
-    </script>
+    <script src="/assets/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/assets/js/highlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/assets/js/app.js" type="text/javascript" charset="utf-8"></script>
   </body>
 </html>
