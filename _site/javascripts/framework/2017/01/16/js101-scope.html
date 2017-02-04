@@ -73,12 +73,6 @@
 	<span class="post-date">16 Jan 2017</span>
 	<p>ต่อจากบล็อกที่แล้ว มาต่อกันที่เรื่องของ Scope นะครับ จริงๆเรื่อง scope เป็นเรื่องพื้นฐานบน js แต่ก่อนหน้า เรามาทำความเข้าใจเรื่องการวิธีการทำงานของตัวจาวาสคริปกันก่อนนะครับ</p>
 
-<h2 id="section">คำศัพท์</h2>
-
-<ul>
-  <li>LHS , RHS</li>
-</ul>
-
 <h2 id="javascript-engine--friends">Javascript Engine &amp; Friends</h2>
 
 <p>เมื่อเราทำการรันตัวไฟล์ js บนระบบจะมี 3 ส่วนที่ทำหน้าที่เพื่อรันโค้ดด้วยกัน คือ</p>
@@ -95,17 +89,167 @@
   </li>
 </ul>
 
-<h2 id="lookup">Lookup</h2>
+<h3 id="lhs--rhs">LHS &amp;&amp; RHS</h3>
 
-<h3 id="lhs">LHS</h3>
+<p>Left Hand Side คือค่าที่อยู่ฝั่งซ้ายมือของ <code class="highlighter-rouge">=</code> ซึ่งจะเป็นแค่การหา Reference ของตัวแปรนั้นๆ<br />
+Right Hand Side คือค่าที่อยู่ฝั่งขวามือของ <code class="highlighter-rouge">=</code> ซึ่งจะเป็นการหา Value และรันคำสั่งต่างๆ</p>
 
-<h3 id="rhs">RHS</h3>
+<p>ยกตัวอย่างเช่น</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = 10;
+var b = a + 2;
+</code></pre>
+</div>
+
+<p>LHS คือ <code class="highlighter-rouge">var a</code> และ <code class="highlighter-rouge">var b</code> คือการทำประกาศค่า<br />
+RHS คือ <code class="highlighter-rouge">10</code> และ <code class="highlighter-rouge">a + 2</code> ซึ่งจะไปทำการดึงค่าและรันคำสั่ง เพื่อทำการจัดเก็บไปที่ LHS</p>
 
 <h2 id="lexical-scope">Lexical Scope</h2>
 
-<h2 id="nested-scope">Nested Scope</h2>
+<p>Scope เป็นพื้นที่ในการใช้ตัวแปร ซึ่งเราจะแบ่ง Scope ในจาวาสคริปด้วยเครื่องหมายปีกกา <code class="highlighter-rouge"><span class="p">{}</span></code> โดยพื้นที่นอกสุด เป็น Global Scope</p>
 
-<h3 id="lookup-1">Lookup</h3>
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = 10;
+
+if(a == 10) {		 // Block Scope
+	var c = 20;
+}
+
+function foo() {	 // Function Scope
+	var b = 10;
+}
+</code></pre>
+</div>
+
+<h3 id="block-scope">Block Scope</h3>
+
+<p>สามารถพบเห็นได้ทั่วไปทั้งการใช้คำสั่ง <code class="highlighter-rouge">if..else</code> <code class="highlighter-rouge">for</code> <code class="highlighter-rouge">while</code> และอื่นๆ โดย Block Scope เป็น Block สำหรับการรันคำสั่งๆในแต่ละ Block แต่จะไม่ครอบคลุมถึงการ Declare ตัวแปร ซึ่งจะถูก Declare นอก Block Scope เช่น</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>if(true) {
+	var a = 10;
+} else {
+	var b = 10;
+}
+
+a 	// 10
+b 	// undefined
+</code></pre>
+</div>
+
+<p>เราจะสังเกตุได้ว่า b ไม่ใช่ <code class="highlighter-rouge">ReferenceError</code> ทั้งๆที่โปรแกรมไม่ได้เข้าไปทำงานใน <code class="highlighter-rouge">else</code> เนื่องจากเวลารันจริงตัว declare จะถูกประกาศด้านนอก block scope แบบนี้</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a, b;
+if(true) {
+	a = 10
+} else {
+	b = 10;
+}
+</code></pre>
+</div>
+
+<p>เช่นเดียวกันกับ <code class="highlighter-rouge">for</code> loop</p>
+
+<h3 id="function-scope">Function Scope</h3>
+
+<p>มาดู Scope ที่เกิดขึ้นจากฟังก์ชันกันบ้าง</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = 10;
+function foo() {
+	var b = 10;
+	b 	// 10
+}
+
+foo();
+b 	// ReferenceError
+</code></pre>
+</div>
+
+<p>ข้อแตกต่างที่แตกต่างจาก Block Scope นั้นคือ ตัว Function Scope นั้นจะ Declare Variable ในฟังก์ชัน ดังนั้น เราไม่สามารถเรียกใช้ตัวแปรที่อยู่นอก Scope นั้นได้ เหมือนกับ Block Scope</p>
+
+<h3 id="nested-scope">Nested Scope</h3>
+
+<p>เมื่อเราทำการประกาศฟังก์ชันแยกย่อยลงไป Scope ก็จะแยกย่อยลงไปด้วย</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = 1;
+
+function foo(x) {
+	var b = 2;
+
+	function bar(y) {
+		var c = 3;
+	}
+
+}
+</code></pre>
+</div>
+
+<p>หากจะมองเป็นภาพง่ายๆก็จะเป็นประมานนี้</p>
+
+<h3 id="variable-lookup">Variable Lookup</h3>
+
+<p>ทีนี้มาดูกันว่าในแต่ละ Scope เมื่อเราทำการรันโปรแกรมจะมีวิธีการหาค่าของตัวแปรกันอย่างไร</p>
+
+<p>การหาค่าของตัวแปรนั้น จะเป็นการหาค่าแบบ <code class="highlighter-rouge">Down&gt;&gt;Top</code> คือ หาใน Scope ตัวเองเสร็จ หาไม่เจอ ก็จะค่อยๆหาขึ้นไปใน Parent Scope ขึ้นไปเรื่อยๆจนถึง Global Scope โดย Scope ที่หานั้น จะดูจาก Scope ที่ฟังก์ชันนั้นรันอยู่</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = 1;
+
+function foo() {
+	var b = 2;
+
+	function bar() {
+		var c = a + b;
+	}
+
+	bar();
+}
+
+foo();
+</code></pre>
+</div>
+
+<p>เมื่อการเรียกใช้ตัวแปรในฝั่ง RHS ในที่นี้คือ <code class="highlighter-rouge">a</code> และ <code class="highlighter-rouge">b</code> ตัว Engine ต้องการจะรันคำสั่ง ก็จะคุยกับ Scope เพื่อหาค่าของตัวแปร</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Engine: 	เฮ้ อยากได้ค่า a อะ มันอยู่ที่ไหน
+Scope: 		แปปนะ หาก่อน เอ... ไม่เจอในชั้น `bar` แฮะ เดี๋ยวขอขึ้นไปดูชั้นบนก่อนนะ
+Scope: 		ชั้น `foo` ก็ไม่มีแฮะ เดี๋ยวขึ้นไปดูชั้นบนสุด
+Scope: 		อะ เจอแล้ว อยู่ชั้นบนสุด ไปดึงค่ามาจากที่นี่นะ
+Engine: 	Thxกิ้ว
+</code></pre>
+</div>
+
+<h3 id="dynamic-scope">Dynamic Scope</h3>
+
+<p>จากข้อที่แล้ว เราจะเห็นว่า Scope ที่ตัว Lookup จะหานั้นจะมาจาก Scope นั้นรัน ไม่ใช่ส่วนที่ function นั้นอยู่</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = 1;
+
+function bar() {
+	a
+}
+function foo() {
+	var a = 2;
+	bar();		// a = 2
+}
+
+foo();
+bar(); 			// a = 1
+</code></pre>
+</div>
+
+<p>จะเห็นว่า <code class="highlighter-rouge">bar</code> ตัวแรกนั้นรันภายใต้ <code class="highlighter-rouge">foo</code> ดังนั้น scope ของ bar ที่รันอยู่นั้น จะอยู่ภายใต้ foo ดังนั้น a จึงมีค่าเป็น <code class="highlighter-rouge">2</code> ในขณะที่ <code class="highlighter-rouge">bar</code> ที่รันอยู่ global scope นั้นก็จะใช้ a ของ global scope จึงได้ค่าออกมาเป็น <code class="highlighter-rouge">1</code> นั่นเอง</p>
+
+<h2 id="es6">ES6</h2>
+
+<p>ใน ES6 นั้น เราใช้ <code class="highlighter-rouge">let</code> ในการประกาศตัวแปรแทน <code class="highlighter-rouge">var</code> ซึ่ง <code class="highlighter-rouge">let</code> มันมี behavior ของ scope ที่แตกต่างกันกับ <code class="highlighter-rouge">var</code>มาดูว่าแตกต่างกันยังไงบ้างนะครับ</p>
+
+<h3 id="let-scope">Let Scope</h3>
+
+<h2 id="mini-quiz">Mini Quiz</h2>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>Function vs Block Scope <a href="https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch3.md">https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch3.md</a></li>
+</ul>
 
 </div>
 
@@ -125,36 +269,36 @@
 	<h2>Related</h2>
 	<div class="ralated-posts">
 	
-		<a href="/javascripts/framework/2017/01/16/js101">
+		<a href="/javascripts/framework/2017/01/16/robot-framework">
 		<div class="post">
 			<img src="/assets/images/thumbnail/js101.png">
 			<h2 class="post-title">
-					JS Basic: EP1. ปูพื้นฐานแบบเน้นๆ
+					VirtualDOM
 			</h2>
 
-			<span class="post-date">ปูพื้นฐาน javascripts กันใหม่กันเถอะ</span>
+			<span class="post-date">มารู้จัก VirtualDOM ใน HTML5 กัน</span>
 		</div>
 	</a>
 	
-		<a href="/javascripts/framework/2017/01/16/js101-object-and-class">
+		<a href="/javascripts/framework/2017/01/16/regression-test">
 		<div class="post">
 			<img src="/assets/images/thumbnail/js101.png">
 			<h2 class="post-title">
-					JS Basic: EP3. Object & Class
+					VirtualDOM
 			</h2>
 
-			<span class="post-date">object และ class แบบเจาะลึก</span>
+			<span class="post-date">มารู้จัก VirtualDOM ใน HTML5 กัน</span>
 		</div>
 	</a>
 	
-		<a href="/javascripts/framework/2017/01/16/jsframework101">
+		<a href="/javascripts/framework/2017/01/16/virtualdom">
 		<div class="post">
 			<img src="/assets/images/thumbnail/js101.png">
 			<h2 class="post-title">
-					ลองสร้าง Frontend เฟรมเวิร์คแบบง่ายๆ
+					VirtualDOM
 			</h2>
 
-			<span class="post-date">เรียนรู้พื้นฐานของเว็บเฟรมเวิร์คในยุคนี้และมาลองเขียนเฟรมเวิร์คแบบง่ายๆกัน</span>
+			<span class="post-date">มารู้จัก VirtualDOM ใน HTML5 กัน</span>
 		</div>
 	</a>
 	

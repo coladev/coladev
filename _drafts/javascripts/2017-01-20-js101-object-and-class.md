@@ -7,7 +7,7 @@ categories: javascripts framework
 image: /assets/images/thumbnail/js101.png
 ---
 
-Javascript นั้นเป็นการประกอบกันไปด้วย Object และ Function
+Javascript
 
 ## Object
 
