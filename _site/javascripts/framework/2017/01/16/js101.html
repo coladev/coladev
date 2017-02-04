@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 
-  <head>
+	<head>
   <link href="http://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -31,9 +31,9 @@
 <script src="http://127.0.0.1:35729/livereload.js"></script></head>
 
 
-  <body>
+	<body>
 
-    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+		<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
      styles, `#sidebar-checkbox` for behavior. -->
 <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
 
@@ -50,35 +50,28 @@
     <a class="sidebar-nav-item" href="/tags/javascripts">Javascripts</a>
     <a class="sidebar-nav-item" href="/tags/devops">Devops</a>
   </nav>
-
-  <div class="sidebar-item">
-    <p>
-      &copy; 2017. All rights reserved.
-    </p>
-  </div>
 </div>
 
 
-    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
-         content to avoid any CSS collisions with our real content. -->
-    <div class="wrap">
-      <div class="masthead">
-        <div class="container">
-          <div class="masthead-title">
-            <a href="/" title="Coladev.com">
-              <img src="/assets/images/logo.png">
-            </a>
-          </div>
-        </div>
-      </div>
+		<!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+				 content to avoid any CSS collisions with our real content. -->
+		<div class="wrap">
+			<div class="masthead">
+				<div class="container">
+					<div class="masthead-title">
+						<a href="/" title="Coladev.com">
+							<img src="/assets/images/logo.png">
+						</a>
+					</div>
+				</div>
+			</div>
 
-      <div class="container content">
-        <div class="post">
-
-  <img src="/assets/images/thumbnail/js101.png">
-  <h1 class="post-title">Javascripts 101: พื้นฐานแบบเน้นๆ</h1>
-  <span class="post-date">16 Jan 2017</span>
-  <p>เชื่อว่าหลายๆคนคงเขียน javascripts มากันพอสมควรแล้ว แต่น่าจะมีหลายคนที่อาจจะมองข้ามพื้นฐานเล็กๆน้อยๆไป ซึ่งผมก็เป็นหนึ่งในนั้น แต่หลังจากที่ไปศึกษาพื้นฐานในระดับลึกลงไปแล้ว ผมคิดว่าส่วนนี้สำคัญมากการในทำงาน ซึ่งคาดว่าจะช่วยให้การเขียนโค้ดของเราดีขึ้น เนื่องจากเราจะได้เห็นภาพอะไรบางอย่างที่แตกต่างออกไป ซึ่งเราจะมาเริ่มตั้งแต่การประกาศตัวแปร ไปจนถึงเรื่องใหม่ๆบน ES6 ในระดับละเอียดลงไปอีกระดับ</p>
+			<div class="container content">
+				<div class="post">
+	<img src="/assets/images/thumbnail/js101.png">
+	<h1 class="post-title">Javascripts 101: พื้นฐานแบบเน้นๆ</h1>
+	<span class="post-date">16 Jan 2017</span>
+	<p>เชื่อว่าหลายๆคนคงเขียน javascripts มากันพอสมควรแล้ว แต่น่าจะมีหลายคนที่อาจจะมองข้ามพื้นฐานเล็กๆน้อยๆไป ซึ่งผมก็เป็นหนึ่งในนั้น แต่หลังจากที่ไปศึกษาพื้นฐานในระดับลึกลงไปแล้ว ผมคิดว่าส่วนนี้สำคัญมากการในทำงาน ซึ่งคาดว่าจะช่วยให้การเขียนโค้ดของเราดีขึ้น เนื่องจากเราจะได้เห็นภาพอะไรบางอย่างที่แตกต่างออกไป ซึ่งเราจะมาเริ่มตั้งแต่การประกาศตัวแปร ไปจนถึงเรื่องใหม่ๆบน ES6 ในระดับละเอียดลงไปอีกระดับ</p>
 
 <p>ก่อนอื่นมารู้คำศัพท์กันก่อน จะได้เข้าใจตรงกันนะฮะ</p>
 
@@ -181,14 +174,14 @@ var d = {		// ออปเจ็คแบบมีค่าตั้งต้น
   <li>Shared Value</li>
 </ul>
 
-<p>หรือจะเป็นว่าเป็น pass by copy of references ก็ได้ โดยจริงๆแล้วค่าที่เก็บไว้นั้นเป็นค่าเดียวกัน แต่ references ที่ point ไปที่ค่านั้นเป็นคนละตัวกัน (แต่ชี้ที่เดียวกันนั้นแหละ) ดังนั้นเมื่อเราเปลี่ยนค่าในตัวแปรหนึ่ง แต่อีกค่าก็จะเปลี่ยนตาม ( แต่ไม่ใช่ pass by references นะ คนละแบบกัน เดี๋ยวอธิบายตอนหลัง)</p>
+<p>หรือจะบอกว่าเป็น pass by copy of references ก็ได้ โดยจริงๆแล้วค่าที่เก็บไว้นั้นเป็นค่าเดียวกัน แต่ references ที่ point ไปที่ค่านั้นเป็นคนละตัวกัน (แต่ชี้ที่เดียวกันนั้นแหละ) ดังนั้นเมื่อเราเปลี่ยนค่าในตัวแปรหนึ่ง แต่อีกค่าก็จะเปลี่ยนตาม ( แต่ไม่ใช่ pass by references นะ คนละแบบกัน เดี๋ยวอธิบายตอนหลัง)</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>var a = [0, 1, 2];
 var b = a;
 b.push(3)
 
-a \\ [0, 1, 2, 3]
-b \\ [0, 1, 2, 3]
+a // [0, 1, 2, 3]
+b // [0, 1, 2, 3]
 </code></pre>
 </div>
 
@@ -210,7 +203,7 @@ b \\ [0, 1, 2, 3]
 (พูดแบบละเอียดคือ ไม่สามารถเปลี่ยน pointer references ได้แล้ว) ซึ่งหากเราพยายามทำการเปลี่ยนค่า จะเกิด Error แสดงทันที</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>const a = 10;
-a = 2		\\ TypeError
+a = 2		// TypeError
 </code></pre>
 </div>
 
@@ -219,15 +212,73 @@ a = 2		\\ TypeError
 <div class="highlighter-rouge"><pre class="highlight"><code>const b = [1,2,3];
 b.push(4);
 
-b \\ [1,2,3,4]
+b // [1,2,3,4]
 
-b = [4,5,6];  \\ TypeError
+b = [4,5,6];  // TypeError
 </code></pre>
 </div>
+
+<h3 id="type-casting">Type Casting</h3>
+
+<p>การเปลี่ยน type ของค่าในจาวาคริปนั้นมี 2 รูปแบบ</p>
+
+<ul>
+  <li>Explicit Cast</li>
+</ul>
+
+<p>หรือการเปลี่ยนแปลงค่าจากคำสั่งโปรแกรม เช่น แปลงค่าจาก String เป็น Number โดยใช้คำสั่ง <code class="highlighter-rouge">parseInt</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = parseInt("2");		// 2 (Number)
+a.toString();			// "2" (String)
+</code></pre>
+</div>
+
+<ul>
+  <li>Implicit Cast</li>
+</ul>
+
+<p>เป็นการเปลี่ยนแปลงค่าที่เกิดจาก</p>
+
+<p>ซึ่งทั้ง 2 แบบนี้มีวิธีและผลลัพธ์ที่เหมือนกัน</p>
 
 <h3 id="object-wrapper">Object Wrapper</h3>
 
 <h3 id="operator">Operator</h3>
+
+<h4 id="abstract-equal">Abstract Equal</h4>
+
+<p>ใช้เครื่องหมาย <code class="highlighter-rouge">==</code> และ <code class="highlighter-rouge">!=</code> เป็นการเปรียบเทียบค่าว่าเท่ากันหรือไม่เท่ากันหรือไม่</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>2 == 2		// true
+3 != 2		// true
+8 == 2		// false
+</code></pre>
+</div>
+
+<p>โดยการเปรียบเทียบแบบี้ จาวาสคริป Engine จะทำการเปรียบเทียบค่าทั้งสองฝั่ง
+และหาก Type ทั้งสองฝั่งไม่เหมือนกัน ตัว engine จะทำการ cast ค่า หรือเปลี่ยนแปลงค่าให้เหมือนกันและทำการเปรียบเทียบ
+ดังนั้นเราจะเห็นได้ว่าบางครั้ง คนละ Type กัน แต่ผลลัพธ์สามารถออกเป็น <code class="highlighter-rouge">true</code> ได้ เช่น</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>2 == "2"	// true
+</code></pre>
+</div>
+
+<p>เมื่อทำการรัน JS Engine เมื่อเห็นว่า type ของทั้งสองฝั่งไม่เหมือนกัน ฝั่งนึงเป็น <code class="highlighter-rouge">Number</code> และอีกฝงั่เป็น <code class="highlighter-rouge">String</code> ก็จะทำการ cast ฝั่ง RHS (Right Hand-Side) หรือฝั่งขวา ให้เป็น type เดียวกันกับฝั่งซ้าย ซึ่งก็จะกลายเป็น <code class="highlighter-rouge">2 == 2</code> ผลลัพธ์จึงออกมาเป็น <code class="highlighter-rouge">true</code> นั้นเอง</p>
+
+<h4 id="strict-equal">Strict Equal</h4>
+
+<p>ใช้เครื่องหมาย <code class="highlighter-rouge">===</code> และ <code class="highlighter-rouge">!==</code> ในการเปรียบเทียบ ซึ่งในกรณีนี้ ตัว JS Engine จะไม่ทำการ Cast Type แล้ว หากคนละ Type ก็จะไม่เท่ากันไปเลย</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>2 === "2"		// false
+2 === 2			// true
+</code></pre>
+</div>
+
+<blockquote>
+  <p>จะเห็นได้ว่าเราควรใช้การเปรียบเทียบแบบ Strict Equal มากกว่า เพื่อป้องกันความผิดพลาดของโปรแกรมที่เกิดจากการแปลงค่าของตัว JS Engine แต่ในบางกรณีการเปรียบเทียบแบบ Abstract ก็ช่วยให้เราเขียนโค้ดได้สวยงามกว่า ดังนั้นต้องเลือกใช้ให้ดีๆ</p>
+</blockquote>
+
+<h4 id="other">Other</h4>
 
 <h3 id="function">Function</h3>
 
@@ -273,42 +324,89 @@ var a = add(10,20); // 30
 </code></pre>
 </div>
 
-<h3 id="lexical-scope">Lexical Scope</h3>
-
 </div>
 
 <div class="related">
-  <h2>Related Posts</h2>
-  <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/javascripts/framework/2017/01/16/jsframework101">
-            ลองสร้าง Frontend เฟรมเวิร์คแบบง่ายๆ
-            <small>16 Jan 2017</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/devops/docker/2017/01/16/docker101">
-            Docker 101: Basic & Overview
-            <small>16 Jan 2017</small>
-          </a>
-        </h3>
-      </li>
-    
-  </ul>
+	<h2>Related</h2>
+	<div class="ralated-posts">
+	
+		<a href="/javascripts/framework/2017/01/16/js101-scope">
+		<div class="post">
+			<img src="/assets/images/thumbnail/js101.png">
+			<h2 class="post-title">
+					Javascripts 101: Scope
+			</h2>
+
+			<span class="post-date">ปูพื้นฐาน javascripts กันใหม่กันเถอะ</span>
+		</div>
+	</a>
+	
+		<a href="/javascripts/framework/2017/01/16/jsframework101">
+		<div class="post">
+			<img src="/assets/images/thumbnail/js101.png">
+			<h2 class="post-title">
+					ลองสร้าง Frontend เฟรมเวิร์คแบบง่ายๆ
+			</h2>
+
+			<span class="post-date">เรียนรู้พื้นฐานของเว็บเฟรมเวิร์คในยุคนี้และมาลองเขียนเฟรมเวิร์คแบบง่ายๆกัน</span>
+		</div>
+	</a>
+	
+		<a href="/devops/docker/2017/01/16/docker101">
+		<div class="post">
+			<img src="/assets/images/thumbnail/js101.png">
+			<h2 class="post-title">
+					Docker 101: Basic & Overview
+			</h2>
+
+			<span class="post-date">ลองใช้แบบง่ายๆ docker ทั้ง dockerfile / docker-compose / docker-swarm</span>
+		</div>
+	</a>
+	
+	</div>
 </div>
 
-      </div>
-    </div>
+<div class="comments">
+	<div id="disqus_thread"></div>
+	<script>
+	
+	var disqus_developer = 1;
+	var disqus_config = function () {
+		this.page.identifier = "/javascripts/framework/2017/01/16/js101";
+	};
+	
+	(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		s.src = '//coladev.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
+	})();
+	</script>
+</div>
+			</div>
+			<footer class="footer">
+	<div class="container">
+		&copy; Coladev.com 2017. All rights reserved.
+	</div>
+</footer>
+		</div>
+		
 
-    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+		<label for="sidebar-checkbox" class="sidebar-toggle"></label>
 
-    <script src="/assets/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/assets/js/highlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/assets/js/app.js" type="text/javascript" charset="utf-8"></script>
-  </body>
+		<script src="/assets/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/assets/js/highlight.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/assets/js/app.js" type="text/javascript" charset="utf-8"></script>
+
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-35966443-7', 'auto');
+			ga('send', 'pageview');
+
+		</script>
+	</body>
 </html>
