@@ -11,7 +11,7 @@
 
   <title>
     
-      ลองสร้าง Frontend เฟรมเวิร์คแบบง่ายๆ &middot; Coladev.com
+      JS Basic: EP3. Object & Class &middot; Coladev.com
     
   </title>
 
@@ -69,43 +69,36 @@
 			<div class="container content">
 				<div class="post">
 	<img src="/assets/images/thumbnail/js101.png">
-	<h1 class="post-title">ลองสร้าง Frontend เฟรมเวิร์คแบบง่ายๆ</h1>
+	<h1 class="post-title">JS Basic: EP3. Object & Class</h1>
 	<span class="post-date">16 Jan 2017</span>
-	<p>บทความนี้เราจะมาปูพื้นฐานความเข้าใจใน js framework สำหรับยุคนี้กันครับ ทุกวันนี้ทุกคนก็คงใช้ js framework ในการทำ webapp กันอยู่แล้ว แต่หากเราจะต้องสร้างมันขึ้นมาเองละ!! จำเป็นต้องรู้อะไรบ้าง แนวทางการสร้างสำหรับยุคนี้คืออะไร เดี๋ยวมาดูกันครับ</p>
+	<p>Javascript นั้นเป็นการประกอบกันไปด้วย Object และ Function</p>
 
-<blockquote>
-  <p>บทความนี้แค่ต้องการแชร์ความรู้จากการลองผิดลองถูกของทางผู้เขียนเท่านั้น ทางผู้เขียนไม่ได้มีความชำนาญหรือเคยเข้าร่วมเขียน framework ใดๆมาก่อน หากมีข้อผิดพลาดอะไรสามารถชี้แนะได้เลยนะครับ จะขอบพระคุณเป็นอย่างสูงครับ :)</p>
-</blockquote>
+<h2 id="object">Object</h2>
 
-<h3 id="basic-concept">Basic concept</h3>
+<h3 id="this">this</h3>
 
-<h3 id="implementation-a-simple-way">Implementation a simple way</h3>
+<h2 id="class">Class</h2>
 
-<h4 id="syntax">Syntax</h4>
+<p>จริงๆแล้ว javascript นั้น ไม่มีสิ่งที่เรียกว่า class จริงๆเหมือนพวกภาษาจาวา มีแต่สิ่งที่เราเรียกว่า Class-like หรือสิ่งที่คล้ายๆกันเท่านั้น เราจะเห็นได้ว่าเราจะใช้ function แทนการใช้ class เช่น</p>
 
-<h5 id="js">JS</h5>
+<div class="highlighter-rouge"><pre class="highlight"><code>var Building = function(name) {
+	this.name = name;
+}
 
-<h5 id="template">Template</h5>
+var House = new Building("House");
+var Tower = new Building("Tower");
 
-<h4 id="template-1">Template</h4>
+House.name 	// House
+Tower.name 	// Tower
+</code></pre>
+</div>
 
-<h5 id="parsing-html-dom">Parsing HTML DOM</h5>
+<h3 id="constructor">Constructor</h3>
 
-<h5 id="binding-data">Binding data</h5>
+<h3 id="prototype">Prototype</h3>
 
-<h5 id="binding-model">Binding model</h5>
+<h3 id="es6-class">ES6 Class</h3>
 
-<h5 id="binding-event">Binding event</h5>
-
-<h4 id="runup">Runup</h4>
-
-<h3 id="virtual-dom">Virtual DOM</h3>
-
-<h4 id="concept">Concept</h4>
-
-<h4 id="implementation">Implementation</h4>
-
-<h3 id="example">Example</h3>
 
 </div>
 
@@ -147,14 +140,14 @@
 		</div>
 	</a>
 	
-		<a href="/javascripts/framework/2017/01/16/js101-object-and-class">
+		<a href="/javascripts/framework/2017/01/16/jsframework101">
 		<div class="post">
 			<img src="/assets/images/thumbnail/js101.png">
 			<h2 class="post-title">
-					JS Basic: EP3. Object & Class
+					ลองสร้าง Frontend เฟรมเวิร์คแบบง่ายๆ
 			</h2>
 
-			<span class="post-date">object และ class แบบเจาะลึก</span>
+			<span class="post-date">เรียนรู้พื้นฐานของเว็บเฟรมเวิร์คในยุคนี้และมาลองเขียนเฟรมเวิร์คแบบง่ายๆกัน</span>
 		</div>
 	</a>
 	
@@ -167,7 +160,7 @@
 	
 	var disqus_developer = 1;
 	var disqus_config = function () {
-		this.page.identifier = "/javascripts/framework/2017/01/16/jsframework101";
+		this.page.identifier = "/javascripts/framework/2017/01/16/js101-object-and-class";
 	};
 	
 	(function() { // DON'T EDIT BELOW THIS LINE
