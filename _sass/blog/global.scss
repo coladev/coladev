@@ -1,0 +1,40 @@
+body {
+	background-color: $grey;
+}
+
+@media (min-width: 56em) {
+	.container {
+		max-width: 40rem;
+	}
+}
+
+.highlight {
+	font-size: 0.8em;
+
+	.hljs {
+		background-color: $white;
+		padding: 0.8rem;
+		border-radius: 2px;
+		overflow: hidden;
+	}
+}
+
+code.highlighter-rouge {
+	background-color: $white;
+	border-radius: 2px;
+	font-size: 0.75em;
+	padding: 0.15rem;
+	color: $orange;
+}
+
+ul {
+	padding-left: 20px;
+	li {
+
+	}
+}
+
+h1, h2, h3 {
+	margin-top: 2em;
+	margin-bottom: 1em;
+}

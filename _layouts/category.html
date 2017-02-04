@@ -3,18 +3,19 @@ layout: default
 ---
 
 <div class="posts">
+  <h2 class="catalog-title">{{page.category}}</h2>
   {% for post in paginator.posts %}
     {% if post.categories contains page.category %}
+      <a href="{{ site.baseurl }}{{ post.url }}">
       <div class="post">
+        <img src="{{post.image}}">
         <h1 class="post-title">
-        {{ site.baseurl }}
-          <a href="{{ site.baseurl }}{{ post.url }}">
             {{ post.title }}
-          </a>
         </h1>
 
-        <span class="post-date">{{ post.date | date_to_string }}</span>
+    <span class="post-date">{{ post.subtitle }}</span>
       </div>
+      </a>
     {% endif %}
   {% endfor %}
 </div>

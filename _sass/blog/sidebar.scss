@@ -1,0 +1,14 @@
+.sidebar {
+	.sidebar-item {
+		text-align: center;
+		img {
+			max-width: 100px;
+			height: auto;
+			margin: 0 auto;
+		}
+		h3 {
+			color: $white;
+			margin-top: 1em;
+		}
+	}
+}

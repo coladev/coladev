@@ -1,0 +1,53 @@
+
+.post {
+	.post-title {
+		margin-top: 1em;
+	}
+}
+
+.posts {
+	.post {
+		background-color: $white;
+		box-shadow: 0px 1px 2px #DDD;
+		border-radius: 3px;
+		text-align: center;
+		overflow: hidden;
+		margin-bottom: 2em;
+		-webkit-transition: background-color 300ms ease;
+    -ms-transition: background-color 300ms ease;
+    transition: background-color 300ms ease;
+
+		img {
+			border-radius: 0;
+		}
+		.post-title {
+			margin-top: 0.5em;
+		}
+		.post-date {
+			font-size: 0.9em;
+		}
+		h1 {
+			margin-bottom: 0.5em;
+			font-size: 1.6em;
+		}
+	}
+	a {
+		&:hover {
+			text-decoration: none;
+			.post {
+				background-color: #262626;
+
+				.post-title { 
+					color: $white;
+				}
+			}
+		}
+	}
+}
+
+.catalog-title {
+	text-transform: capitalize;
+	padding-bottom: 0.7em;
+	text-align: center;
+	border-bottom: 1px solid #DDD;
+}
