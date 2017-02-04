@@ -128,7 +128,7 @@ var b = "hello world";
 
 <h2 id="primitive-types">Primitive Types</h2>
 
-<p>หรือตัวแปรดั้งเดิม (แปลกูเกิลมา 55) เป็นตัวแปรประเภทค่าเดียว เช่น <code class="highlighter-rouge">String</code> <code class="highlighter-rouge">Number</code> <code class="highlighter-rouge">Boolean</code> <code class="highlighter-rouge">null</code> <code class="highlighter-rouge">undefined</code>
+<p>หรือตัวแปรดั้งเดิม เป็นตัวแปรประเภทค่าเดียว เช่น <code class="highlighter-rouge">String</code> <code class="highlighter-rouge">Number</code> <code class="highlighter-rouge">Boolean</code> <code class="highlighter-rouge">null</code> <code class="highlighter-rouge">undefined</code>
 โดยสามารถประกาศตัวแปรได้ง่ายๆ</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>var a = "hello";
@@ -204,9 +204,60 @@ b // [0, 1, 2, 3]
 </code></pre>
 </div>
 
+<h3 id="object">Object</h3>
+
+<p>Object บน Javascript นั้นอยู่ในรูปแบบ key:value โดยสามารถเรียกใช้งานได้ทั้งแบบ key <code class="highlighter-rouge">a['key']</code> และแบบ property <code class="highlighter-rouge">a.key</code> โดยข้อดีของแบบ key คือเราสามารถใส่ String แปลกๆได้</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = {
+	['b']: 2,
+	c: 3
+	'd': 4
+}
+
+a['c'] 	// 3
+a.b 	// 2
+
+a['test-2'] = 4;
+a.f = 5
+</code></pre>
+</div>
+
+<p>และรูปแบบ key ยังสามารถใช้ operator ได้ด้วย</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var prefix = "test"
+var a = {
+	[prefix + "1"]: "a"
+}
+</code></pre>
+</div>
+
 <h3 id="array">Array</h3>
 
-<h3 id="object">Object</h3>
+<p>อาเรย์หรือการเก็บข้อมูลแบบชุด ไม่จำกัดว่าจะเป็น Type อะไร</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = [1,2,3,"4",true];
+
+a[0] 	// 1
+a[3] 	// "4"
+a[4] 	// true
+</code></pre>
+</div>
+
+<h4 id="build-in-method">ตัวอย่าง Build-In Method</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = [1,2,3,4,5];
+
+a.length 		// 5
+a.length = 10 		// [1,2,3,4,5,,,,,]
+a.push(6) 		// [1,2,3,4,5,6]
+a.pop() 		// [1,2,3,4]
+a.shift() 		// [2,3,4,5]
+</code></pre>
+</div>
+
+<h3 id="other">Other</h3>
+
+<p>และยังมี Type อื่นๆ เช่น <code class="highlighter-rouge">Function</code> <code class="highlighter-rouge">Date</code> <code class="highlighter-rouge">Error</code> <code class="highlighter-rouge">RegExp</code></p>
 
 <h2 id="es6">ES6</h2>
 
@@ -337,7 +388,7 @@ b 	// 2
   <p>จะเห็นได้ว่าเราควรใช้การเปรียบเทียบแบบ Strict Equal มากกว่า เพื่อป้องกันความผิดพลาดของโปรแกรมที่เกิดจากการแปลงค่าของตัว JS Engine แต่ในบางกรณีการเปรียบเทียบแบบ Abstract ก็ช่วยให้เราเขียนโค้ดได้สวยงามกว่า ดังนั้นต้องเลือกใช้ให้ดีๆ</p>
 </blockquote>
 
-<h3 id="other">Other</h3>
+<h3 id="other-1">Other</h3>
 
 <p>ในส่วนของการเปรียบเทียบและกระทำการกับค่าและตัวแปรอื่นๆนั้น จะเป็นแบบ Abtract เท่านั้น ดังนั้นเมื่อใช้งานให้ระวังการเกิด Implicit Type Cast กันด้วยนะครับ</p>
 
@@ -409,36 +460,36 @@ var a = add(10,20); // 30
 	<h2>Related</h2>
 	<div class="ralated-posts">
 	
-		<a href="/javascripts/framework/2017/01/16/js101-scope">
+		<a href="/javascripts/framework/2017/01/16/robot-framework">
 		<div class="post">
 			<img src="/assets/images/thumbnail/js101.png">
 			<h2 class="post-title">
-					JS Basic: EP2. Scope
+					VirtualDOM
 			</h2>
 
-			<span class="post-date">Lexical & Block Scope มองแว่บเดียวก็ดูออก</span>
+			<span class="post-date">มารู้จัก VirtualDOM ใน HTML5 กัน</span>
 		</div>
 	</a>
 	
-		<a href="/javascripts/framework/2017/01/16/js101-object-and-class">
+		<a href="/javascripts/framework/2017/01/16/regression-test">
 		<div class="post">
 			<img src="/assets/images/thumbnail/js101.png">
 			<h2 class="post-title">
-					JS Basic: EP3. Object & Class
+					VirtualDOM
 			</h2>
 
-			<span class="post-date">object และ class แบบเจาะลึก</span>
+			<span class="post-date">มารู้จัก VirtualDOM ใน HTML5 กัน</span>
 		</div>
 	</a>
 	
-		<a href="/javascripts/framework/2017/01/16/jsframework101">
+		<a href="/javascripts/framework/2017/01/16/virtualdom">
 		<div class="post">
 			<img src="/assets/images/thumbnail/js101.png">
 			<h2 class="post-title">
-					ลองสร้าง Frontend เฟรมเวิร์คแบบง่ายๆ
+					VirtualDOM
 			</h2>
 
-			<span class="post-date">เรียนรู้พื้นฐานของเว็บเฟรมเวิร์คในยุคนี้และมาลองเขียนเฟรมเวิร์คแบบง่ายๆกัน</span>
+			<span class="post-date">มารู้จัก VirtualDOM ใน HTML5 กัน</span>
 		</div>
 	</a>
 	
