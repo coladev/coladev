@@ -7,11 +7,7 @@ categories: javascripts framework
 image: /assets/images/thumbnail/js101.png
 ---
 
-Javascript
-
 ## Object
-
-### this
 
 ## Class
 
