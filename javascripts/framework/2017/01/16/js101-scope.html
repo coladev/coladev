@@ -104,6 +104,8 @@ var b = a + 2;
 <p>LHS คือ <code class="highlighter-rouge">var a</code> และ <code class="highlighter-rouge">var b</code> คือการทำประกาศค่า<br />
 RHS คือ <code class="highlighter-rouge">10</code> และ <code class="highlighter-rouge">a + 2</code> ซึ่งจะไปทำการดึงค่าและรันคำสั่ง เพื่อทำการจัดเก็บไปที่ LHS</p>
 
+<h3 id="conversation">Conversation</h3>
+
 <h2 id="lexical-scope">Lexical Scope</h2>
 
 <p>Scope เป็นพื้นที่ในการใช้ตัวแปร ซึ่งเราจะแบ่ง Scope ในจาวาสคริปด้วยเครื่องหมายปีกกา <code class="highlighter-rouge"><span class="p">{}</span></code> โดยพื้นที่นอกสุด เป็น Global Scope</p>
@@ -148,6 +150,14 @@ if(true) {
 
 <p>เช่นเดียวกันกับ <code class="highlighter-rouge">for</code> loop</p>
 
+<div class="highlighter-rouge"><pre class="highlight"><code>for(var i = 0; i &lt; 10; i++) {
+	i 	// 0..9	
+}
+
+i // 9
+</code></pre>
+</div>
+
 <h3 id="function-scope">Function Scope</h3>
 
 <p>มาดู Scope ที่เกิดขึ้นจากฟังก์ชันกันบ้าง</p>
@@ -165,7 +175,7 @@ b 	// ReferenceError
 
 <p>ข้อแตกต่างที่แตกต่างจาก Block Scope นั้นคือ ตัว Function Scope นั้นจะ Declare Variable ในฟังก์ชัน ดังนั้น เราไม่สามารถเรียกใช้ตัวแปรที่อยู่นอก Scope นั้นได้ เหมือนกับ Block Scope</p>
 
-<h3 id="nested-scope">Nested Scope</h3>
+<h3 id="nested-function-scope">Nested Function Scope</h3>
 
 <p>เมื่อเราทำการประกาศฟังก์ชันแยกย่อยลงไป Scope ก็จะแยกย่อยลงไปด้วย</p>
 
@@ -237,13 +247,19 @@ bar(); 			// a = 1
 
 <p>จะเห็นว่า <code class="highlighter-rouge">bar</code> ตัวแรกนั้นรันภายใต้ <code class="highlighter-rouge">foo</code> ดังนั้น scope ของ bar ที่รันอยู่นั้น จะอยู่ภายใต้ foo ดังนั้น a จึงมีค่าเป็น <code class="highlighter-rouge">2</code> ในขณะที่ <code class="highlighter-rouge">bar</code> ที่รันอยู่ global scope นั้นก็จะใช้ a ของ global scope จึงได้ค่าออกมาเป็น <code class="highlighter-rouge">1</code> นั่นเอง</p>
 
+<h3 id="new-scope">New Scope</h3>
+
+<h2 id="scope-variable">Scope Variable</h2>
+
+<h3 id="this">this</h3>
+
+<h3 id="bind">bind</h3>
+
 <h2 id="es6">ES6</h2>
 
 <p>ใน ES6 นั้น เราใช้ <code class="highlighter-rouge">let</code> ในการประกาศตัวแปรแทน <code class="highlighter-rouge">var</code> ซึ่ง <code class="highlighter-rouge">let</code> มันมี behavior ของ scope ที่แตกต่างกันกับ <code class="highlighter-rouge">var</code>มาดูว่าแตกต่างกันยังไงบ้างนะครับ</p>
 
 <h3 id="let-scope">Let Scope</h3>
-
-<h2 id="mini-quiz">Mini Quiz</h2>
 
 <h2 id="references">References</h2>
 
@@ -284,10 +300,10 @@ bar(); 			// a = 1
 		<div class="post">
 			<img src="/assets/images/thumbnail/js101.png">
 			<h2 class="post-title">
-					VirtualDOM
+					CSS Automate Test: Regression
 			</h2>
 
-			<span class="post-date">มารู้จัก VirtualDOM ใน HTML5 กัน</span>
+			<span class="post-date">เทส CSS แบบ Automate บน PhantomJS</span>
 		</div>
 	</a>
 	
