@@ -11,7 +11,7 @@
 
   <title>
     
-      JS Basic: EP1. ปูพื้นฐานแบบเน้นๆ &middot; Coladev.com
+      JS Basic: EP1. พื้นฐานแบบเน้นๆ &middot; Coladev.com
     
   </title>
 
@@ -69,8 +69,8 @@
 			<div class="container content">
 				<div class="post">
 	<img src="/assets/images/thumbnail/js101.png">
-	<h1 class="post-title">JS Basic: EP1. ปูพื้นฐานแบบเน้นๆ</h1>
-	<span class="post-date">16 Jan 2017</span>
+	<h1 class="post-title">JS Basic: EP1. พื้นฐานแบบเน้นๆ</h1>
+	<span class="post-date">09 Feb 2017</span>
 	<p>เชื่อว่าหลายๆคนคงเขียน javascripts มากันพอสมควรแล้ว แต่น่าจะมีหลายคนที่อาจจะมองข้ามพื้นฐานเล็กๆน้อยๆไป ซึ่งผมก็เป็นหนึ่งในนั้น แต่หลังจากที่ไปศึกษาพื้นฐานในระดับลึกลงไปแล้ว ผมคิดว่าส่วนนี้สำคัญมากการในทำงาน ซึ่งคาดว่าจะช่วยให้การเขียนโค้ดของเราดีขึ้น เนื่องจากเราจะได้เห็นภาพอะไรบางอย่างที่แตกต่างออกไป ซึ่งเราจะมาเริ่มตั้งแต่การประกาศตัวแปร ไปจนถึงเรื่องใหม่ๆบน ES6 ในระดับละเอียดลงไปอีกระดับ</p>
 
 <p>ก่อนอื่นมารู้คำศัพท์กันก่อน จะได้เข้าใจตรงกันนะฮะ</p>
@@ -243,7 +243,7 @@ a[4] 	// true
 </code></pre>
 </div>
 
-<p>แตจริงแล้วก็สามารถใช้อาเรย์ในรูปแบบของ key:value เหมือนกับ object ได้ เพราะจริงๆแล้วอาเรย์นั้นมีพื้นฐานคล้ายๆกับ object โดยเปรียบเสมือน objecy ที่มี key เป็น index นั้นเอง</p>
+<p>แต่จริงแล้วก็สามารถใช้อาเรย์ในรูปแบบของ key:value เหมือนกับ object ได้ เพราะจริงๆแล้วอาเรย์นั้นมีพื้นฐานคล้ายๆกับ object โดยเปรียบเสมือน objecy ที่มี key เป็น index นั้นเอง</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>var a = ["a", "b", "c"];
 var b = { 0: "a", 1: "b", 2: "c" };
@@ -257,7 +257,7 @@ a // [0: 0, 1: 1, 2: 2, a: 3, length: 3]
 </code></pre>
 </div>
 
-<p>**</p>
+<p>ซึ่งจริงๆควรหลีกเลี่ยงหรือห้ามใช้งานแบบนี้เด็ดขาด เนื่องจาก array ได้ถูก optimize มาสำหรับใช้เก็บค่าแบบ index อยู่แล้ว อาจจะทำให้การทำงานผิดพลาดได้</p>
 
 <h4 id="build-in-method">ตัวอย่าง Build-In Method</h4>
 
@@ -277,7 +277,7 @@ a.shift() 		// [2,3,4,5]
 
 <h2 id="es6">ES6</h2>
 
-<p>การประกาศตัวแปรบน ES6 นั้น มีฟังก์ชันที่เพิ่มขึ้นมา โดยมีตัวเลือกให้สองแบบคือ <code class="highlighter-rouge">let</code> <code class="highlighter-rouge">const</code></p>
+<p>การประกาศตัวแปรบน ES6 นั้น มีฟังก์ชันที่เพิ่มขึ้นมา โดยมีตัวเลือกให้สองแบบคือ <code class="highlighter-rouge">let</code> และ <code class="highlighter-rouge">const</code></p>
 
 <h3 id="let">Let</h3>
 
@@ -285,15 +285,15 @@ a.shift() 		// [2,3,4,5]
 
 <h3 id="const">Const</h3>
 
-<p>หรือคือตัวแปรที่ไม่สามารถเปลี่ยนแปลงค่าได้ ซึ่งเมื่อทำการ assign ค่าให้แล้ว จะไม่สามารถแก้ไข หรือ assign ค่าใหม่ได้ 
-(พูดแบบละเอียดคือ ไม่สามารถเปลี่ยน pointer references ได้แล้ว) ซึ่งหากเราพยายามทำการเปลี่ยนค่า จะเกิด Error แสดงทันที</p>
+<p>คือตัวแปรที่ไม่สามารถเปลี่ยนแปลงค่าได้ ซึ่งเมื่อทำการ assign ค่าให้แล้ว จะไม่สามารถ assign ค่าใหม่ได้อีก 
+(พูดแบบละเอียดคือไม่สามารถเปลี่ยน reference pointer ได้แล้ว) ซึ่งหากเราพยายามทำการเปลี่ยนค่า จะเกิด Error แสดงทันที</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>const a = 10;
 a = 2		// TypeError
 </code></pre>
 </div>
 
-<p><em>ข้อควรระวัง</em> หากใช้ const กับ Object Type เรายังสามารถเปลี่ยนแปลงค่าได้อยู่ แต่ไม่สามารถชี้ไปที่ค่าใหม่ได้</p>
+<p><strong>ข้อควรระวัง</strong> หากใช้ const กับ <code class="highlighter-rouge">Object</code> และ <code class="highlighter-rouge">Array</code> เรายังสามารถเปลี่ยนแปลงค่าได้ แต่ไม่สามารถชี้ไปที่ค่าใหม่ได้</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>const b = [1,2,3];
 b.push(4);
@@ -365,7 +365,9 @@ b 	// 2
 </code></pre>
 </div>
 
-<p>ซึ่งทั้ง 2 แบบนี้มีวิธีและผลลัพธ์ที่เหมือนกัน</p>
+<p>ซึ่งทั้ง 2 แบบนี้มีวิธีและผลลัพธ์ที่เหมือนกัน โดยเราสามารถดูได้จากเว็บนี้ว่า ค่าใน type หนึ่งนั้น หาก cast ไป type อื่นจะสามารถเป็นอะไรได้บ้าง หรือเมื่อเปรียบเทียบแล้วจะเท่ากันหรือไม่ <a href="https://dorey.github.io/JavaScript-Equality-Table/">JavaScript Equality Table</a></p>
+
+<p><img src="/assets/images/posts/js101/js-equal-table.png" alt="JavaScript Equality Table" /></p>
 
 <h2 id="object-wrapper">Object Wrapper</h2>
 
@@ -483,7 +485,7 @@ var a = add(10,20); // 30
 
 <h3 id="new-operator">New Operator</h3>
 
-<p>คำสั่ง <code class="highlighter-rouge">new</code> ใน javascript ให้สำหรับสร้าง instance ใหม่กับ function นั้นโดยตัวแปรที่สร้างจาก new จะทำการ inheriting function เดิม คือสามารถเรียกใช้ method ของฟังก์ชันเดิมได้ แต่เป็น scope คนละตัวกัน ซึ่งจะอธิบายต่อในบทถัดไปนะครับ</p>
+<p>คำสั่ง <code class="highlighter-rouge">new</code> ใน javascript ให้สำหรับสร้าง object ใหม่ซึ่ง reference กับตัว function นั้นโดยตัวแปรที่สร้างจาก new จะทำการ inheriting function เดิม คือสามารถเรียกใช้ method, property ของฟังก์ชันเดิมได้ แต่เป็น scope คนละตัวกัน ซึ่งจะอธิบายต่อในบทถัดไปนะครับ</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>var Person = function(name) {
 	this.name = name
@@ -532,6 +534,14 @@ a = 2		// ReferenceError
   <li>Strict Mode ช่วยให้โค้ดบางส่วนรันได้เร็วขึ้น</li>
 </ul>
 
+<p>เนื่องจาก Engine หลายๆตัวได้ทำการ Optimize การรัน JS บน Strict Mode ไว้แล้ว ช่วยให้สามารถรันโค้ดบางอย่างได้เร็วกว่าโหมดธรรมดา</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/up%20%26%20going/ch2.md">You Don’t Know JS: Up &amp; Going &gt; Chapter 2: Into JavaScript</a></li>
+  <li><a href="https://dorey.github.io/JavaScript-Equality-Table/">JavaScript Equality Table</a></li>
+</ul>
 
 </div>
 
@@ -593,7 +603,7 @@ a = 2		// ReferenceError
 	
 	var disqus_developer = 1;
 	var disqus_config = function () {
-		this.page.identifier = "/javascripts/framework/2017/01/16/js101";
+		this.page.identifier = "/javascripts/framework/2017/02/09/js101";
 	};
 	
 	(function() { // DON'T EDIT BELOW THIS LINE
