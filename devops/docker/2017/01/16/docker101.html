@@ -73,7 +73,11 @@
 	<span class="post-date">16 Jan 2017</span>
 	<p>Docker เป็น container ที่เราสามารถใช้สำหรับการเก็บทุกอย่างที่เราต้องใช้ในการรันแอพลิเคชันตั้งแต่ OS, Library, App โดยมีลักษณะคล้ายๆ VM แต่เบากว่า เนื่องจากมี layer น้อยกว่า VM เพื่อลงไปรันโค้ดที่ระดับ kernal</p>
 
-<p>ภาพเปรียบเทียบระหว่าง VM กับ Container</p>
+<p><img src="/assets/images/posts/docker101/docker-vs-vm.png" alt="Docker vs VM" /></p>
+
+<p>ภาพเปรียบเทียบระหว่าง VM กับ Container จาก <a href="https://www.docker.com/what-docker">What is Docker?</a></p>
+
+<p>จากภาพจะเห็นได้ว่า VM นั้นจะรัน Guest OS บน Host OS จริงๆ ซึ่งกินทรัพยากรค่อยข้างเยอะ ในขณะที่ docker ออกแบบมาให้เบากว่า โดยจะรัน App และ Library บน Docker Engine โดยไม่มี Guest OS รันอยู่จริงๆ ทำให้สามารถรันได้เร็วกว่าและกินทรัพยากรน้อยกว่ามาก</p>
 
 <p>แล้วมันจะมีประโยชน์อะไรกับการดีพลอยแอพลิเคชันของเราละ มาดูกัน</p>
 
@@ -83,12 +87,32 @@
 
 <p>ปัญหานี้จะหมดไปเพียงแค่เราใช้ docker เนื่องจากเราสามารถ</p>
 
+<ul>
+  <li>แยก Environment ของ App ได้</li>
+  <li>รันที่ไหนก็เหมือนกัน</li>
+  <li>Scale ได้ง่ายขึ้นมาก</li>
+</ul>
+
 <h2 id="get-stated">Get Stated</h2>
+
+<h3 id="docker">Docker</h3>
+
+<p>ก่อนอื่นมาดูกันก่อนว่า Docker นั่นประกอบไปด้วยอะไรบ้างนะครับ หลังจากนี้จะได้ไม่งง</p>
+
+<p>จากภาพข้างบนเราก็จะเห็นว่า docker นั่นหลักๆก็ประกอบไปด้วย</p>
+
+<ul>
+  <li>Docker Engine</li>
+  <li>Docker Images</li>
+  <li>Docker Repository</li>
+</ul>
+
+<p>จากนี้ก็โหลดตัว docker engine มาลงในเครื่องเราก่อนนะครับ จะได้ลองเล่นไปพร้อมกับอธิบายไปทีละส่วน</p>
 
 <h3 id="install-docker-engine">Install Docker Engine</h3>
 
 <p>วิธีลงก็แสนง่ายดาย เดี๋ยวเราจะมาลองลงเล่นในเครื่องเราก่อนแล้วกันนะครับ
-ผมใช้ osx อยู่ วิธีการลงก็มีวิธีง่ายๆแค่ไปโหลดมาซะ</p>
+ผมใช้ osx อยู่ วิธีการลงก็มีวิธีง่ายๆแค่ไปโหลดมา</p>
 
 <p><a href="Download Docker OSX Installer">https://www.docker.com/products/docker#/mac</a></p>
 
@@ -100,22 +124,24 @@
 
 <p><code class="highlighter-rouge">docker --version</code></p>
 
-<p>เท่านี้ก็มี docker ในเครื่องแล้วครับ ต่อไปจะไปลองเล่นกัน</p>
+<p>เท่านี้ก็มี docker ในเครื่องแล้วครับ ต่อไปก็จะไปลองเล่นกัน</p>
 
 <h3 id="docker-images">Docker Images</h3>
 
 <p>เราเห็นกันไปในหัวข้อก่อนแล้วว่าเราจะทำการ pack ทุกอย่างที่จำเป็นในการรันแอพลิเคชันของเราด้วย docker ซึ่งพอเราแพคเสร็จ มันก็จะออกมาเป็น Docker Images เนี่ยละ แล้วก็สามารถเอา Images ตัวเนี่ย ไปรันที่ไหนก็ได้ที่มี docker อยู่</p>
 
-<p>ซึ่งตัว Docker Images เนี่ยก็มีตัวสำเร็จรูปที่คนอื่นทำไว้แล้วให้เราสามารถโหลดมาใช้และเล่นได้เลยเหมือน ซึ่งจะถูกเก็บไว้บน Docker Hub ซึ่งเป็น Repository สำหรับการเก็บ Docker Images ส่วนกลางๆ คล้ายๆเราใช้ git แล้วเราเก็บโค้ดไว้บน github หรือ bitbucket เลย</p>
+<p>ซึ่งตัว Docker Images เนี่ยก็มีตัวสำเร็จรูปที่คนอื่นทำไว้แล้วให้เราสามารถโหลดมาใช้และเล่นได้เลยเหมือน ซึ่งจะถูกเก็บไว้บน <a href="https://hub.docker.com">Docker Hub</a> ซึ่งเป็น Repository สำหรับการเก็บ Docker Images ส่วนกลางๆ คล้ายๆเราใช้ git แล้วเราเก็บโค้ดไว้บน github หรือ bitbucket เลย</p>
 
 <p>เราสามารถเข้าดึง public docker images มาเล่นได้ หรือจะสมัคร account แล้วใช้เก็บ docker images ที่เราสร้างขึ้นมาก็ได้เช่นกัน</p>
 
+<p><img src="/assets/images/posts/docker101/docker-hub.png" alt="Docker Hub - hub.docker.com" /></p>
+
 <h3 id="pull-images">Pull Images</h3>
 
-<p>เราจะมาลองดึง Docker Images ที่มีอยู่บน Docker Hub มาเล่นง่ายๆกันก่อนนะครับ
-ในตัวอย่างผมจะลองไปดึง <code class="highlighter-rouge">ubuntu</code> images มาแล้วรัน hello world ง่ายๆ</p>
+<p>เราจะมาลองดึง Docker Images ที่มีอยู่บน Docker Hub มาเล่นกันก่อนนะครับ
+ในตัวอย่างผมจะลองไปดึง <code class="highlighter-rouge">ubuntu</code> images มาแล้วรัน hello world บน bash</p>
 
-<p>ก่อนอื่นเริ่มจาก pull ลงมาก่อน ด้วยคำสั่ง <code class="highlighter-rouge">docker pull [image]</code></p>
+<p>ก่อนอื่นเริ่มจาก pull ลงมาก่อน ด้วยคำสั่ง <code class="highlighter-rouge">docker pull [ชื่อ image]</code></p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>docker pull ubuntu
 </code></pre>
@@ -128,6 +154,8 @@
 </div>
 
 <p>ก็จะเห็นรายชื่อ images ทั้งหมดที่มีอยู่บนเครื่องเรานะครับ นั่นไง ubuntu มาแล้ว</p>
+
+<p><img src="/assets/images/posts/docker101/ubuntu-image.png" alt="Ubuntu Image" /></p>
 
 <h3 id="run-images">Run Images</h3>
 

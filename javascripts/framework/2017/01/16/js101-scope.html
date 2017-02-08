@@ -89,7 +89,7 @@
   </li>
 </ul>
 
-<h3 id="lhs--rhs">LHS &amp;&amp; RHS</h3>
+<h3 id="lhs--rhs">LHS &amp; RHS</h3>
 
 <p>Left Hand Side คือค่าที่อยู่ฝั่งซ้ายมือของ <code class="highlighter-rouge">=</code> ซึ่งจะเป็นแค่การหา Reference ของตัวแปรนั้นๆ<br />
 Right Hand Side คือค่าที่อยู่ฝั่งขวามือของ <code class="highlighter-rouge">=</code> ซึ่งจะเป็นการหา Value และรันคำสั่งต่างๆ</p>
@@ -103,8 +103,6 @@ var b = a + 2;
 
 <p>LHS คือ <code class="highlighter-rouge">var a</code> และ <code class="highlighter-rouge">var b</code> คือการทำประกาศค่า<br />
 RHS คือ <code class="highlighter-rouge">10</code> และ <code class="highlighter-rouge">a + 2</code> ซึ่งจะไปทำการดึงค่าและรันคำสั่ง เพื่อทำการจัดเก็บไปที่ LHS</p>
-
-<h3 id="conversation">Conversation</h3>
 
 <h2 id="lexical-scope">Lexical Scope</h2>
 
@@ -173,7 +171,7 @@ b 	// ReferenceError
 </code></pre>
 </div>
 
-<p>ข้อแตกต่างที่แตกต่างจาก Block Scope นั้นคือ ตัว Function Scope นั้นจะ Declare Variable ในฟังก์ชัน ดังนั้น เราไม่สามารถเรียกใช้ตัวแปรที่อยู่นอก Scope นั้นได้ เหมือนกับ Block Scope</p>
+<p>ข้อแตกต่างที่แตกต่างจาก Block Scope นั้นคือ ตัว Function Scope นั้นจะ Declare Variable ในฟังก์ชัน ดังนั้น เราไม่สามารถเรียกใช้ตัวแปรที่ไม่ได้อยู่ใน scope นั้นและไม่ได้อยู่ที่ parent ของ scope นั้นๆได้</p>
 
 <h3 id="nested-function-scope">Nested Function Scope</h3>
 
@@ -192,11 +190,15 @@ function foo(x) {
 </code></pre>
 </div>
 
-<p>หากจะมองเป็นภาพง่ายๆก็จะเป็นประมานนี้</p>
+<p>หากจะมอง scope เป็นภาพง่ายๆก็จะเป็นประมานนี้</p>
+
+<p><img src="/assets/images/posts/js101/scope.png" alt="/assets/images/posts/js101/scope.png" /></p>
+
+<p>แต่จริงๆแล้ว scope ของแต่ละฟังก์ชันที่เกิดขึ้นตอนรันโปรแกรมนั้น จะขึ้นอยู่กับ call-site หรือจุดเท่าเราเรียกใช้ฟังก์ชัน ซึ่งจะอธิบายในหัวข้อถัดไปนะครับ</p>
 
 <h3 id="variable-lookup">Variable Lookup</h3>
 
-<p>ทีนี้มาดูกันว่าในแต่ละ Scope เมื่อเราทำการรันโปรแกรมจะมีวิธีการหาค่าของตัวแปรกันอย่างไร</p>
+<p>ทีนี้มาดูกันก่อนว่าในแต่ละ Scope เมื่อเราทำการรันโปรแกรมจะมีวิธีการหาค่าของตัวแปรกันอย่างไร</p>
 
 <p>การหาค่าของตัวแปรนั้น จะเป็นการหาค่าแบบ <code class="highlighter-rouge">Down&gt;&gt;Top</code> คือ หาใน Scope ตัวเองเสร็จ หาไม่เจอ ก็จะค่อยๆหาขึ้นไปใน Parent Scope ขึ้นไปเรื่อยๆจนถึง Global Scope โดย Scope ที่หานั้น จะดูจาก Scope ที่ฟังก์ชันนั้นรันอยู่</p>
 
@@ -228,7 +230,7 @@ Engine: 	Thxกิ้ว
 
 <h3 id="dynamic-scope">Dynamic Scope</h3>
 
-<p>จากข้อที่แล้ว เราจะเห็นว่า Scope ที่ตัว Lookup จะหานั้นจะมาจาก Scope นั้นรัน ไม่ใช่ส่วนที่ function นั้นอยู่</p>
+<p>จากข้อที่แล้ว เราจะเห็นว่า Scope ที่ตัว Engine นั้นมองเห็น และใช้หา Variable Lookup จะไม่ใช่การที่ฟังก์ชันอยู่ที่ไหน แต่เป็นการที่ฟังก์ชันนั้นถูกเรียกใช้ที่ไหน โดยเราเรียกจุดที่เรียกใช้ฟังก์ชันว่า call-site และ scope นั้นจะอ้างอิงอยู่กับ call-site ยกตัวอย่างง่ายๆ เช่น</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>var a = 1;
 
@@ -247,16 +249,12 @@ bar(); 			// a = 1
 
 <p>จะเห็นว่า <code class="highlighter-rouge">bar</code> ตัวแรกนั้นรันภายใต้ <code class="highlighter-rouge">foo</code> ดังนั้น scope ของ bar ที่รันอยู่นั้น จะอยู่ภายใต้ foo ดังนั้น a จึงมีค่าเป็น <code class="highlighter-rouge">2</code> ในขณะที่ <code class="highlighter-rouge">bar</code> ที่รันอยู่ global scope นั้นก็จะใช้ a ของ global scope จึงได้ค่าออกมาเป็น <code class="highlighter-rouge">1</code> นั่นเอง</p>
 
-<h3 id="new-instance">New Instance</h3>
+<h3 id="new-object">New Object</h3>
 
-<p>จากบทที่แล้วเราจะเห็น operator ตัวหนึ่งที่ใช้สำหรับสร้าง instance ใหม่นั่นคือ <code class="highlighter-rouge">new</code> operator โดยตัว instance ที่เราสร้างขึ้นมาใหม่นั้นจะมี scope เป็นของตัวเอง</p>
+<p>จากบทที่แล้วเราจะเห็น operator ตัวหนึ่งที่ใช้สำหรับสร้าง object ใหม่นั่นคือ <code class="highlighter-rouge">new</code> operator โดยตัว object ที่เราสร้างขึ้นมาใหม่นั้นจะมี scope เป็นของตัวเอง โดย</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>var Person = function(name) {
 	this.name = name
-
-	this.getName = function() {
-		return this.name;
-	}
 }
 
 var john = new Person("john");		// new object
@@ -264,9 +262,24 @@ var sara = new Person("sara");		// new object
 </code></pre>
 </div>
 
-<h2 id="binding">Binding</h2>
+<p>โดยใน object ที่เราสร้างขึ้นมานั้นจะมีตัวแปรๆนึงที่สามารถใช้ได้ภายใน object นั้น คือ <code class="highlighter-rouge">this</code> โดยจากตัวอย่างข้างต้นเราจะเห็นได้ว่า มีความเหมือนกัน class บนภาษาอื่นๆเลยทีเดียว แล้วมี private variable อ้างอิงอยู่กับ this นั่นเอง</p>
+
+<p>นอกจากการใช้คำสั่ง new แล้ว การประกาศ object ใหม่ก็เป็นการสร้าง scope ขึ้นมาใหม่เช่นกัน และสามารถเรียกใช้ this ใน scope นั้นได้เช่นกัน</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var Person = {
+	name: "john",
+	getName: function() {
+		return this.name;
+	}
+}
+
+Person.getName() 	// john
+</code></pre>
+</div>
 
 <h3 id="this">this</h3>
+
+<p>this เป็นตัวแปรที่อ้างอิงอยู่กับ scope นั้นตามที่อธืบายไปในห้วข้อก่อน และการทำ Variable Loop ก็มีหลักการเช่นเดียวกันกับตัวแปรทั่วไป คือหาแบบ <code class="highlighter-rouge">Down &gt;&gt; Top</code> จนถึง global scope เหมือนกัน</p>
 
 <h3 id="bind">bind</h3>
 
