@@ -31,5 +31,6 @@ exclude:
   - Gemfile.lock
 sass:
   sass_dir: _sass
+future: true
 
 permalink: /:categories/:year/:month/:day/:title

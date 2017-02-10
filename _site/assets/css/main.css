@@ -1,9 +1,13 @@
 body {
-  background-color: #F9F9F9; }
+  background-color: #F9F9F9;
+  font-weight: 200;
+  font-size: 22px;
+  color: #353535;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif; }
 
 @media (min-width: 56em) {
   .container {
-    max-width: 40rem; } }
+    max-width: 46rem; } }
 .highlight {
   font-size: 0.8em; }
   .highlight .hljs {
@@ -13,11 +17,10 @@ body {
     overflow: hidden; }
 
 code.highlighter-rouge {
-  background-color: #FFF;
   border-radius: 2px;
-  font-size: 0.75em;
   padding: 0.15rem;
-  color: #FD5200; }
+  color: #FD5200;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif; }
 
 ul {
   padding-left: 20px; }
@@ -25,6 +28,26 @@ ul {
 h1, h2, h3 {
   margin-top: 2em;
   margin-bottom: 1em; }
+
+h1 {
+  font-size: 2.2em; }
+
+h2 {
+  font-size: 1.9em; }
+
+h3 {
+  font-weight: 500;
+  font-size: 1.6em; }
+
+h4 {
+  font-weight: 500;
+  font-size: 1.2em; }
+
+blockquote {
+  background-color: #FFF; }
+
+p {
+  line-height: 1.8em; }
 
 .masthead {
   background-color: #FFF;
@@ -70,10 +93,10 @@ h1, h2, h3 {
   .posts .post .post-title {
     margin-top: 0.5em; }
   .posts .post .post-date {
-    font-size: 0.9em; }
+    font-size: 0.75em; }
   .posts .post h1 {
     margin-bottom: 0.5em;
-    font-size: 1.6em; }
+    font-size: 1.2em; }
 .posts a:hover {
   text-decoration: none; }
   .posts a:hover .post {
