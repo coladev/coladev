@@ -11,7 +11,18 @@ image: /assets/images/thumbnail/js101.png
 
 ## DOM
 
-ก่อนอื่นต้องมารู้จัก DOM กันก่อน
+ก่อนจะไปรู้จักการ VirtualDOM หรือดอมเสมือนเนี่ย เราก็ต้องมารู้จัก DOM ตัวจริงกันก่อน
 
 ```
+<html>
+	<body>
+		<div class="container">
+			<h3>Hello World</h3>
+			<div class="content">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+			</div>
+		</div>
+	</body>
+</html>
 ```
+
