@@ -28,7 +28,7 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-<script src="http://127.0.0.1:35729/livereload.js"></script></head>
+</head>
 
 
 	<body>
@@ -70,7 +70,7 @@
 				<div class="post">
 	<img src="/assets/images/thumbnail/js101.png">
 	<h1 class="post-title">JS Basic: EP1. พื้นฐานแบบเน้นๆ</h1>
-	<span class="post-date">09 Feb 2017</span>
+	<span class="post-date">13 Feb 2017</span>
 	<p>เชื่อว่าหลายๆคนคงเขียน javascripts มากันพอสมควรแล้ว แต่น่าจะมีหลายคนที่อาจจะมองข้ามพื้นฐานเล็กๆน้อยๆไป ซึ่งผมก็เป็นหนึ่งในนั้น แต่หลังจากที่ไปศึกษาพื้นฐานในระดับลึกลงไปแล้ว ผมคิดว่าส่วนนี้สำคัญมากการในทำงาน ซึ่งคาดว่าจะช่วยให้การเขียนโค้ดของเราดีขึ้น เนื่องจากเราจะได้เห็นภาพอะไรบางอย่างที่แตกต่างออกไป ซึ่งเราจะมาเริ่มตั้งแต่การประกาศตัวแปร ไปจนถึงเรื่องใหม่ๆบน ES6 ในระดับละเอียดลงไปอีกระดับ</p>
 
 <p>ก่อนอื่นมารู้คำศัพท์กันก่อน จะได้เข้าใจตรงกันนะฮะ</p>
@@ -369,6 +369,24 @@ b 	// 2
 
 <p><img src="/assets/images/posts/js101/js-equal-table.png" alt="JavaScript Equality Table" /></p>
 
+<p>ส่วน Prioity ในการ Cast Type ใน operation ต่างๆนั้น ในแต่ละ Type จะมี Priority ต่างกัน และไล่คำนวนไปทีละ operator ตามวงเล็บครับ</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>String
+Number
+Boolean
+null
+undefined
+</code></pre>
+</div>
+
+<h4 id="mini-quiz">Mini Quiz</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>true + 2 + ("2" + ( true + null + 1 ) + false) = ?
+</code></pre>
+</div>
+
+<p>เท่าไหร่กันนะ …… คำตอบคือ “322false”</p>
+
 <h2 id="object-wrapper">Object Wrapper</h2>
 
 <p>ในการประกาศตัวแปรในจาวาสคริปนั้น เราอาจจะเห็นว่าเราสามารถ assign ค่าที่เป็น type อะไรก็ได้เข้าไปในตัวแปรนั้นได้เลย แต่จริงๆแล้วยังมีวิธีการประกาศตัวแปรอีกแบบนึงคือ การสร้าง object ของ type นั้นขึ้นมาใหม่ โดยใช้คำสั่ง <code class="highlighter-rouge">new object</code> เช่น</p>
@@ -416,7 +434,7 @@ a.toUpperCase() 		// "HELLO WORLD"
 </code></pre>
 </div>
 
-<p>เมื่อทำการรัน JS Engine เมื่อเห็นว่า type ของทั้งสองฝั่งไม่เหมือนกัน ฝั่งนึงเป็น <code class="highlighter-rouge">Number</code> และอีกฝงั่เป็น <code class="highlighter-rouge">String</code> ก็จะทำการ cast ฝั่ง RHS (Right Hand-Side) หรือฝั่งขวา ให้เป็น type เดียวกันกับฝั่งซ้าย ซึ่งก็จะกลายเป็น <code class="highlighter-rouge">2 == 2</code> ผลลัพธ์จึงออกมาเป็น <code class="highlighter-rouge">true</code> นั้นเอง</p>
+<p>เมื่อทำการรัน JS Engine เมื่อเห็นว่า type ของทั้งสองฝั่งไม่เหมือนกัน ฝั่งนึงเป็น <code class="highlighter-rouge">Number</code> และอีกฝงั่เป็น <code class="highlighter-rouge">String</code> ก็จะทำการ cast ตาม prioity โดย cast 2 เป็น “2” การรันจึงเปลี่ยนเป็น <code class="highlighter-rouge">"2" == "2"</code> จึงได้ผลลัพธ์เป็น true นั่นเอง</p>
 
 <h3 id="strict-equal">Strict Equal</h3>
 
@@ -541,6 +559,7 @@ a = 2		// ReferenceError
 <ul>
   <li><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/up%20%26%20going/ch2.md">You Don’t Know JS: Up &amp; Going &gt; Chapter 2: Into JavaScript</a></li>
   <li><a href="https://dorey.github.io/JavaScript-Equality-Table/">JavaScript Equality Table</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode">MDN: Strict Mode</a></li>
 </ul>
 
 </div>
@@ -561,39 +580,6 @@ a = 2		// ReferenceError
 	<h2>Related</h2>
 	<div class="ralated-posts">
 	
-		<a href="/javascripts/framework/2017/01/16/robot-framework">
-		<div class="post">
-			<img src="/assets/images/thumbnail/js101.png">
-			<h2 class="post-title">
-					VirtualDOM
-			</h2>
-
-			<span class="post-date">มารู้จัก VirtualDOM ใน HTML5 กัน</span>
-		</div>
-	</a>
-	
-		<a href="/javascripts/framework/2017/01/16/regression-test">
-		<div class="post">
-			<img src="/assets/images/thumbnail/js101.png">
-			<h2 class="post-title">
-					CSS Automate Test: Regression
-			</h2>
-
-			<span class="post-date">เทส CSS แบบ Automate บน PhantomJS</span>
-		</div>
-	</a>
-	
-		<a href="/javascripts/framework/2017/01/16/virtualdom">
-		<div class="post">
-			<img src="/assets/images/thumbnail/js101.png">
-			<h2 class="post-title">
-					VirtualDOM
-			</h2>
-
-			<span class="post-date">มารู้จัก VirtualDOM ใน HTML5 กัน</span>
-		</div>
-	</a>
-	
 	</div>
 </div>
 
@@ -603,7 +589,7 @@ a = 2		// ReferenceError
 	
 	var disqus_developer = 1;
 	var disqus_config = function () {
-		this.page.identifier = "/javascripts/framework/2017/02/09/js101";
+		this.page.identifier = "/javascripts/framework/2017/02/13/js101";
 	};
 	
 	(function() { // DON'T EDIT BELOW THIS LINE
