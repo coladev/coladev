@@ -9,6 +9,17 @@ layout: default
 	{{ content }}
 </div>
 
+<div class="share-page">
+	<!-- Load Facebook SDK for JavaScript -->
+  <div id="fb-root"></div>
+  <!-- Your share button code -->
+  <div class="fb-share-button" 
+    data-href="{{ site.baseurl }}{{ page.url }}" 
+    data-layout="button_count"
+    data-size="large">
+  </div>
+</div>
+
 <div class="author">
 	<h4>Author</h4>
 	<div class="profile">
@@ -41,7 +52,9 @@ layout: default
 
 <div class="comments">
 	<div id="disqus_thread"></div>
-	<script>
+</div>
+
+<script>
 	
 	var disqus_developer = 1;
 	var disqus_config = function () {
@@ -54,5 +67,12 @@ layout: default
 		s.setAttribute('data-timestamp', +new Date());
 		(d.head || d.body).appendChild(s);
 	})();
+
+	(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8"
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
 	</script>
-</div>
