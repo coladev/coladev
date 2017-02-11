@@ -49,6 +49,10 @@ blockquote {
 p {
   line-height: 1.8em; }
 
+.share-page {
+  text-align: center;
+  margin-bottom: 30px; }
+
 .masthead {
   background-color: #FFF;
   border-bottom: 0;

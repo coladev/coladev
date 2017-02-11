@@ -23,12 +23,17 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
 
   <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
-  <link rel="shortcut icon" href="/public/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
 
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-</head>
+  
+    <meta property="og:title" content="JS Basic: EP1. พื้นฐานแบบเน้นๆ" />
+    <meta property="og:description" content="ปูพื้นฐาน javascripts ใหม่กันเถอะ" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/assets/images/thumbnail/js101.png" />
+  
+
+<script src="http://127.0.0.1:35729/livereload.js"></script></head>
 
 
 	<body>
@@ -564,6 +569,17 @@ a = 2		// ReferenceError
 
 </div>
 
+<div class="share-page">
+	<!-- Load Facebook SDK for JavaScript -->
+  <div id="fb-root"></div>
+  <!-- Your share button code -->
+  <div class="fb-share-button" 
+    data-href="/javascripts/framework/2017/02/13/js101" 
+    data-layout="button_count"
+    data-size="large">
+  </div>
+</div>
+
 <div class="author">
 	<h4>Author</h4>
 	<div class="profile">
@@ -580,12 +596,47 @@ a = 2		// ReferenceError
 	<h2>Related</h2>
 	<div class="ralated-posts">
 	
+		<a href="/javascripts/framework/2017/02/13/js101">
+		<div class="post">
+			<img src="/assets/images/thumbnail/js101.png">
+			<h2 class="post-title">
+					JS Basic: EP1. พื้นฐานแบบเน้นๆ
+			</h2>
+
+			<span class="post-date">ปูพื้นฐาน javascripts ใหม่กันเถอะ</span>
+		</div>
+	</a>
+	
+		<a href="/javascripts/framework/2017/01/16/robot-framework">
+		<div class="post">
+			<img src="/assets/images/thumbnail/js101.png">
+			<h2 class="post-title">
+					VirtualDOM
+			</h2>
+
+			<span class="post-date">มารู้จัก VirtualDOM ใน HTML5 กัน</span>
+		</div>
+	</a>
+	
+		<a href="/javascripts/framework/2017/01/16/regression-test">
+		<div class="post">
+			<img src="/assets/images/thumbnail/js101.png">
+			<h2 class="post-title">
+					CSS Automate Test: Regression
+			</h2>
+
+			<span class="post-date">เทส CSS แบบ Automate บน PhantomJS</span>
+		</div>
+	</a>
+	
 	</div>
 </div>
 
 <div class="comments">
 	<div id="disqus_thread"></div>
-	<script>
+</div>
+
+<script>
 	
 	var disqus_developer = 1;
 	var disqus_config = function () {
@@ -598,8 +649,15 @@ a = 2		// ReferenceError
 		s.setAttribute('data-timestamp', +new Date());
 		(d.head || d.body).appendChild(s);
 	})();
+
+	(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8"
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
 	</script>
-</div>
 			</div>
 			<footer class="footer">
 	<div class="container">
