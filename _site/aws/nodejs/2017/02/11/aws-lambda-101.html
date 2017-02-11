@@ -76,25 +76,25 @@
 	<img src="/assets/images/thumbnail/lambda.png">
 	<h1 class="post-title">มาลองสร้าง Serverless Application บน AWS Lambda กัน</h1>
 	<span class="post-date">11 Feb 2017</span>
-	<p>    Serverless เป็นเทรนใหม่ในการทำ Backend Application ในยุคปัจจุบันที่สามารถสร้างและขยายปริมาณการรองรับการใช้งานได้อย่างง่ายดาย และบน AWS Lambda นั่น สามารถช่วยให้เราทำ Serverless Application ในการจัดการข้อมูล รวมไปถึง API สำหรับแอพลิเคชันหน้าบ้านได้โดยแทบไม่ต้องใช้ความรู้ในการ setup และ deploy แอพในรูปแบบของเซิฟเวอร์แบบเดิมเลยทีเดียว เพียงแค่เขียนโปรแกรมให้ได้ตามที่ต้องการก็เพียงพอแล้ว</p>
+	<p>    Serverless เป็นรูปแบบใหม่ของการทำ Backend Application ในยุคปัจจุบันที่สามารถสร้างและขยายปริมาณการรองรับการใช้งานได้อย่างง่ายดาย และบน AWS Lambda นั่น สามารถช่วยให้เราทำ Serverless Application ในการจัดการข้อมูล รวมไปถึง API สำหรับแอพลิเคชันหน้าบ้านได้โดยแทบไม่ต้องใช้ความรู้ในการ setup และ deploy แอพในรูปแบบของเซิฟเวอร์แบบเดิมเลยทีเดียว เพียงแค่เขียนโปรแกรมให้ได้ตามที่ต้องการก็เพียงพอแล้ว</p>
 
 <hr />
 
-<p>    ในยุคปัจจุบันนั้นการ การดีพลอยเว็บใช้วิธีการรันไว้บนเซิฟเวอร์ทั่วไป ซึ่งจำเป็นต้องรันไว้ตลอดเวลาเพื่อให้สามารถเข้าถึงได้ตลอดเวลานั่นเอง เมื่อต้องรันไว้ตลอดเวลา ก็ต้องมีเซิฟเวอร์รันค้างไว้ ถึงแม้จะไม่มีการเข้าใช้งานก็ตาม แต่ก็ยังใช้ทรัพยากรนั่นไปเรื่อยๆอยู่ดี</p>
+<p>    ในยุคปัจจุบันนั้นการ การดีพลอยเว็บใช้วิธีการรันไว้บนเซิฟเวอร์ ซึ่งจำเป็นต้องรันไว้ตลอดเวลาเพื่อให้สามารถเข้าใช้งานได้ ถึงแม้จะไม่มีการเข้าใช้งานก็ตาม แต่ก็ยังใช้ทรัพยากรนั่นไปเรื่อยๆอยู่ดี</p>
 
-<p>แต่วันนี้เรามีแนวทางการทำเว็บใหม่มานำเสนอ นั่นก็คือ</p>
+<p>แต่วันนี้เรามีแนวทางใหม่มานำเสนอ นั่นก็คือ</p>
 
 <h2 id="serverless-application">Serverless Application</h2>
 
-<p>    ชื่อก็บอกอยู่แล้วนะครับ <code class="highlighter-rouge">Serverless</code> ก็คือ ไม่จำเป็นต้องมีเซิฟเวอร์รันอยู่ตลอดเวลา โดยแอพที่เรารันนั้นจะรันเฉพาะเมื่อมี event ในการเรียกใช้งานเข้ามาเท่านั้น เช่น มีการเรียก HTTP Request เข้ามา หรือ มีค่าอัพเดตทาง DB แล้ว trigger เข้ามารันใช้งานแอพ ซึ่งแน่นอนว่าวิธีการเขียน การออกแบบ และการดีพลอยแอพ ก็จะแตกต่างออกไปจากเดิมค่อนข้างมากเลยทีเดียว ซึ่งทาง AWS ก็มีเครื่องมือ ตัวนึงที่จะมาใช้ให้เราสามารถสร้าง serverless application ได้ง่ายๆ บน aws เอง โดยมีชื่อว่า</p>
+<p>    ชื่อก็บอกอยู่แล้วนะครับ <code class="highlighter-rouge">Serverless</code> ก็คือ ไม่จำเป็นต้องมีเซิฟเวอร์รันอยู่ตลอดเวลา โดยแอพที่เรารันนั้นจะรันเฉพาะเมื่อมี <code class="highlighter-rouge">Event</code> ในการเรียกใช้งานเข้ามาเท่านั้น เช่น มีการเรียก HTTP Request เข้ามา หรือ มีค่าอัพเดตทาง DB แล้ว trigger เข้ามารันใช้งานแอพ ซึ่งแน่นอนว่าวิธีการเขียน การออกแบบ และการดีพลอยแอพ ก็จะแตกต่างออกไปจากเดิมค่อนข้างมากเลยทีเดียว ซึ่งทาง AWS ก็มีเครื่องมือ ตัวนึงที่จะมาใช้ให้เราสามารถสร้าง Serverless Application ได้ง่ายๆ บนตัวของ aws เอง โดยมีชื่อว่า</p>
 
 <h2 id="aws-lambda">AWS Lambda</h2>
 
-<p>    AWS Lambda เป็นเครื่องมือที่ไว้ใช้สำหรับสร้างและรัน <code class="highlighter-rouge">Serverless Application</code> บน AWS ครับ โดยเจ้า Lambda เองเป็นเครื่องกลางในการผนวก service อื่นๆของอเมซอนเข้ามาใช้ในการรันแอพลิเคชัน มาดูกันก่อนว่าจริงๆแล้ว ตัว AWS Lambda เอง มันประกอบไปด้วยอะไรบ้าง และสามารถเชื่อมต่อกับ service อื่นๆตัวไหนของ aws ได้อีกบ้าง</p>
+<p>    AWS Lambda เป็นเครื่องมือที่ไว้ใช้สำหรับสร้างและรัน <code class="highlighter-rouge">Serverless Application</code> บน AWS ครับ โดยเจ้า Lambda เองเป็นเครื่องมือกลางในการผนวก service อื่นๆของอเมซอนเข้ามาใช้ในการรันแอพลิเคชัน มาดูกันก่อนว่าจริงๆแล้ว ตัว AWS Lambda เอง มันประกอบไปด้วยอะไรบ้าง และสามารถเชื่อมต่อกับ service อื่นๆตัวไหนของ aws ได้อีกบ้าง</p>
 
 <h3 id="architecture">Architecture</h3>
 
-<p>    การรันโปรแกรมบน AWS Lambda นั้น ตัว Lambda จะแปลงโค้ดที่เราจะต้องการรัน หรือเรียกสั่งๆว่าเป็น <code class="highlighter-rouge">Lambda Function</code> เป็น Container เมื่อมีการรันโปรแกรมผ่านช่องทางที่เราผูก <code class="highlighter-rouge">event</code> ไว้ ตัว lambda เองก็จะรันตัวโปรแกรมนั้นให้เราจบๆไปเป็น event และเมื่อไม่มีการเรียกใช้งานก็จะอยู่ในสถานะ freeze ตัวเอง หรือไม่ได้รันเซิฟเวอร์อยู่นั่นเอง</p>
+<p>    การรันโปรแกรมบน AWS Lambda นั้น ตัว Lambda จะแปลงโค้ดที่เราจะต้องการรัน หรือเรียกสั้นๆว่าเป็น <code class="highlighter-rouge">Lambda Function</code> เป็น Container เมื่อมีการรันโปรแกรมผ่านช่องทางที่เราผูก <code class="highlighter-rouge">Event</code> ไว้ ตัว lambda เองก็จะรันตัวโปรแกรมนั้นให้เราจบๆไปเป็น event และเมื่อไม่มีการเรียกใช้งานก็จะอยู่ในสถานะ freeze ตัวเองไป ไม่มีการรันและใช้งานทรัพยากรใดๆของตัวประมวลผล</p>
 
 <p><img src="/assets/images/posts/lambda/lambda-architect.png" alt="AWS Lambda Architecture for Web Application" /></p>
 
@@ -102,7 +102,7 @@
 
 <h3 id="lambda-function">Lambda Function</h3>
 
-<p>การเขียนโปรแกรมบน AWS Lambda นั้นจะเป็น Functional Programming โดยเขียนเฉพาะฟังก์ชันเที่เราต้องการจะรันในการเกิด Event แต่ละครั้ง โดยเราสามารถเขียนบนภาษาที่ Lambda รองรับได้ คือ <code class="highlighter-rouge">Node.js</code> <code class="highlighter-rouge">C#</code> <code class="highlighter-rouge">Java</code> <code class="highlighter-rouge">Python</code></p>
+<p>การเขียนโปรแกรมบน AWS Lambda นั้นเราสามารถเขียนเป็นฟังก์ชันเที่เราต้องการจะรันในการเกิด Event แต่ละครั้ง โดยเราสามารถเขียนบนภาษาที่ Lambda รองรับได้ คือ <code class="highlighter-rouge">Node.js</code> <code class="highlighter-rouge">C#</code> <code class="highlighter-rouge">Java</code> <code class="highlighter-rouge">Python</code> โดยเมื่อมี event เกิดขึ้น ตัว lambda จะเข้ามารันฟังก์ชันที่ได้ผูกไว้กับตัว event นั้น</p>
 
 <h3 id="event-driven">Event Driven</h3>
 
@@ -123,7 +123,7 @@
   <li>Non-Streaming Event</li>
 </ul>
 
-<p>เป็นอีเวนท์ปกติที่สามารถ trigger ขึ้นมาด้วย action บางอย่าง เช่น การเรียก HTTP Request / IoT Event เป็นต้น โดยสามารถเชื่อมต่อกับ AWS Services ได้ดังนี้</p>
+<p>เป็นอีเวนท์ปกติที่สามารถ trigger ขึ้นมาด้วยการกระทำบางอย่าง เช่น การเรียก HTTP Request / IoT Event เป็นต้น โดยสามารถเชื่อมต่อกับ AWS Services ได้ดังนี้</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>- API Gateway 	สำหรับสร้าง API ให้สามารถเรียกได้ผ่าน HTTP Request
 - AWS IoT
@@ -136,11 +136,11 @@
 
 <p><img src="/assets/images/posts/lambda/lambda-photo.png" alt="AWS Lambda S3" /></p>
 
-<p>ยกตัวอย่างการใช้งานรวมกับ S3 เมื่อมีรูปถูกอัพโหลดขึ้นมาที่ S3 ก็จะมี Event ตัวนึงไป trigger เพื่อรัน lambda function ไปทำการ resize รูป</p>
+<p>ยกตัวอย่างการใช้งานร่วมกับ S3 เมื่อมีรูปถูกอัพโหลดขึ้นมาที่ S3 ก็จะมี <code class="highlighter-rouge">Event</code> ตัวนึงไป trigger เพื่อรัน lambda function ไปทำการ resize รูป</p>
 
 <h2 id="hello-world-api-with-nodejs">Hello World API with Node.js</h2>
 
-<p>สำหรับท่านที่ยังไม่มีสมัคร account aws กันก่อนนะครับ จากนั้นไปที่ Console &gt; AWS Lambda แล้วเราก็จะมาเริ่มทำการสร้าง Lambda Function กันก่อนนะครับ</p>
+<p>มาลองเล่นกันเลยดีกว่าครับ สำหรับท่านที่ยังไม่มีสมัคร account aws กันก่อนนะครับ จากนั้นไปที่ Console &gt; AWS Lambda จากนั้นเราก็จะมาเริ่มจากการสร้าง Lambda Function กันก่อนนะครับ</p>
 
 <p><img src="/assets/images/posts/lambda/lambda-blueprint.png" alt="AWS Lambda S3" /></p>
 
@@ -160,7 +160,7 @@
 </code></pre>
 </div>
 
-<p>โดย Security จะมีให้เลือกอยู่ 3 option ตั้งเชื่อ API name และ deployment stage ได้ตามสะดวก</p>
+<p>ตั้งชื่อ API name และ deployment stage ได้ตามสะดวก และเลือก Security</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>- AWS IAM
 - Open
@@ -172,7 +172,7 @@
 
 <p><img src="/assets/images/posts/lambda/lambda-function-detail.png" alt="AWS Lambda Function Detail" /></p>
 
-<p>    จากนั้นเราก็จะมา config และเขียนโค้ด lambda function กันนะครับ ก็ตั้งชื่อและเลือก Runtime เลย โดยในที่นี้ผมจะใช้ Node.js ในการรัน ซึ่งเวอร์ชันที่ Lambda ใช้จะเป็น Node 4.3 และในการเขียนโค้ดก็มีวิธีการใช้ดึงมาโค้ดมาใช้ได้หลายแบบ เช่น เขียนบนเว็บ อัพโหลดไฟล์ หรือดึงมาจาก S3 แน่นอนว่าตัวอย่างนี้แนะนำวิธีที่ง่ายที่สุดคือ เขียนบน <code class="highlighter-rouge">AWS Console</code> เลย โดยผมเลือก option เป็น default ทั้งหมดเลย โดยมี option ดังนี้</p>
+<p>    จากนั้นเราก็จะมา config และเขียนโค้ด lambda function กันนะครับ ตั้งชื่อและเลือก Runtime ได้เลย โดยในบทความนี้ผมจะเขียน Node.js ที่ผมถนัด ซึ่งเวอร์ชันที่ Lambda ใช้จะเป็น Node 4.3 และในการดีพลอยโค้ดก็มีได้หลายแบบ เช่น เขียนบนเว็บ , อัพโหลดไฟล์ หรือดึงมาจาก S3 แน่นอนว่าตัวอย่างนี้แนะนำวิธีที่ง่ายที่สุดคือ เขียนบน <code class="highlighter-rouge">AWS Console</code> เลย โดยผมเลือก option เป็น default ทั้งหมดเลย โดยมี option ดังนี้</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>- Environment variables
 - Hanlder
@@ -185,13 +185,13 @@
 </code></pre>
 </div>
 
-<p>โดยตัวหลักๆที่เราจะมาตั้งแค่กันก่อนในคราวนี้คือ</p>
+<p>โดยตัวหลักๆที่เราจะมาตั้งค่ากันก่อนในคราวนี้คือ</p>
 
 <ul>
   <li>Hanlder</li>
 </ul>
 
-<p>เป็นตั้งค่าไฟล์และฟังก์ชันที่จะรันเป็นฟังก์ชันหลักของตัว Lambda Function ตัวนี้ โดย default จะเป็น index.hanlder คือฟังก์ชัน <code class="highlighter-rouge">hanlder</code> ในไฟล์ index.js นั่นเอง</p>
+<p>เป็นตั้งค่าไฟล์และฟังก์ชันที่จะรันเป็นฟังก์ชันหลักของตัว Lambda Function ตัวนี้ โดย default จะเป็น index.hanlder คือฟังก์ชัน <code class="highlighter-rouge">hanlder</code> ในไฟล์หลักนั่นเอง</p>
 
 <ul>
   <li>Role</li>
@@ -232,7 +232,15 @@ exports.handler = (event, context, callback) =&gt; {
 </code></pre>
 </div>
 
-<p>    Lambda Function บน Node.js นั้นเราจะมีฟังก์ชันหลักโดยจะมี parameter อยู่ 3 ตัว ส่ง response กลับไปด้วยฟังก์ชัน callback และหากเราจะส่ง response ผ่านทาง <code class="highlighter-rouge">API Gateway</code> เราก็ต้องมาดูกันก่อนว่า API Gateway นั้นรับพารามิเตอร์อะไรบ้าง เพื่อให้เราสามารถเขียน response ของ lambda function ให้ถูกฟอร์แมตของตัว API Gateway กันนะครับ ไม่อย่างนั้นจะไม่สามารถส่ง response กลับไปที่บราวเซอร์ได้ถูกต้องนะครับ</p>
+<p>    Lambda Function บน Node.js นั้นเราจะมีฟังก์ชันหลัก ที่รับ parameters มา 3 ตัว</p>
+
+<ul>
+  <li>event รับค่ารายละเอียด event ที่เกิดขึ้นจากตัว trigger</li>
+  <li>context รับค่ารายละเอียดของตัว trigger</li>
+  <li>callback ฟังก์ชันสำหรับส่งค่ากลับ</li>
+</ul>
+
+<p>ในบทความนี้เราจะส่ง response ผ่านทาง <code class="highlighter-rouge">API Gateway</code> ซึ่งทำตัวเป็น Proxy เราก็ต้องมาดูกันก่อนว่า API Gateway ในรูปแบบของ Proxy นั้น ต้องรับพารามิเตอร์อะไรบ้าง เพื่อให้เราสามารถเขียน response ของ lambda function ให้ถูกฟอร์แมตของตัว API Gateway กันนะครับ ไม่อย่างนั้นจะไม่สามารถส่ง response กลับไปที่บราวเซอร์ได้ถูกต้องนะครับ เนื่องจากตัว Proxy ไม่สามารถอ่านค่าได้ถูกต้อง</p>
 
 <p>ฟอร์แมต Response ไปที่ตัว <code class="highlighter-rouge">API Gateway</code> ต้องเป็นประมานนี้</p>
 
@@ -301,7 +309,7 @@ exports.handler = (event, context, callback) =&gt; {
 </code></pre>
 </div>
 
-<p>เมื่อยิงผ่าน POST Method พร้อมส่ง Payload ไปด้วยก็ได้จะ Response ตามที่ต้องการ</p>
+<p>เมื่อยิงผ่าน POST Method พร้อมส่ง Payload ไปด้วยก็ได้จะ Response ตามนั้น</p>
 
 <p><img src="/assets/images/posts/lambda/lambda-json-response.png" alt="AWS Lambda Logs" /></p>
 
