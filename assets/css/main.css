@@ -49,6 +49,14 @@ blockquote {
 p {
   line-height: 1.8em; }
 
+table {
+  table-layout: fixed; }
+  table th {
+    text-align: left;
+    font-weight: 300; }
+  table td {
+    background-color: #FFF !important; }
+
 .share-page {
   text-align: center;
   margin-bottom: 30px; }
