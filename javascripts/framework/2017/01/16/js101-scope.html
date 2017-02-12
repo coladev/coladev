@@ -28,7 +28,7 @@
 
   
     <meta property="og:title" content="JS Basic: EP2. Scope" />
-    <meta property="og:description" content="Lexical & Block Scope มองแว่บเดียวก็ดูออก" />
+    <meta property="og:description" content="มารู้จักและทำความเข้าใจ Scope ใน Javascripts กัน" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://coladev.com/assets/images/thumbnail/js101.png" />
   
@@ -76,28 +76,28 @@
 	<img src="/assets/images/thumbnail/js101.png">
 	<h1 class="post-title">JS Basic: EP2. Scope</h1>
 	<span class="post-date">16 Jan 2017</span>
-	<p>ต่อจากบล็อกที่แล้ว มาต่อกันที่เรื่องของ Scope นะครับ จริงๆเรื่อง scope เป็นเรื่องพื้นฐานบน js แต่ก่อนหน้า เรามาทำความเข้าใจเรื่องการวิธีการทำงานของตัวจาวาสคริปกันก่อนนะครับ</p>
+	<p>ต่อจากบล็อกที่แล้ว เรามาต่อกันที่เรื่องของ Scope นะครับ จริงๆเรื่อง Scope เป็นเรื่องพื้นฐานบน Javascripts มากๆเพราะเป็นเรื่องของการทำงานของโปรแกรมกันเลยทีเดียว แต่ก่อนหน้า เราต่องมาทำความเข้าใจเรื่องการวิธีการทำงานของตัว Javascript Engine กันก่อนนะครับ ว่าตอนที่เรารันโปรแกรมนั้น มันทำอะไรบ้าง</p>
 
-<h2 id="javascript-engine--friends">Javascript Engine &amp; Friends</h2>
+<h2 id="javascripts-engine--friends">Javascripts Engine &amp; Friends</h2>
 
-<p>เมื่อเราทำการรันตัวไฟล์ js บนระบบจะมี 3 ส่วนที่ทำหน้าที่เพื่อรันโค้ดด้วยกัน คือ</p>
+<p>เมื่อเราทำการรันตัวไฟล์ Javascripts บน Runtime อะไรก็ตามแต่ จะมี 3 ส่วนหลักๆที่ทำหน้าที่รันโค้ดด้วยกัน คือ</p>
 
 <ul>
   <li>
-    <p>Engine	ทำหน้าที่รันคำสั่งของโปรแกรม</p>
+    <p><code class="highlighter-rouge">Engine</code>	ทำหน้าที่รันคำสั่งของโปรแกรม</p>
   </li>
   <li>
-    <p>Compiler ทำหน้าที่แปลงโค้ดให้ Engine รัน</p>
+    <p><code class="highlighter-rouge">Compiler</code> ทำหน้าที่แปลงโค้ด Javascripts ของเราให้อยู่ในรูปแบบที่ Engine สามารถ Execute ได้</p>
   </li>
   <li>
-    <p>Scope ทำหน้าที่มองหาส่วนของที่อยู่ของตัวแปรในโค้ด เพื่อให้ Engine ระบุได้ว่า ตัวแปรนั้นอยู่ใน Scope ส่วนไหน เพื่อให้สามารถดึงค่าหรือรันโปรแกรมได้ถูกต้อง</p>
+    <p><code class="highlighter-rouge">Scope</code> ทำหน้าที่มองหาส่วนของที่อยู่ของตัวแปรในโค้ด เพื่อให้ Engine ระบุได้ว่า ตัวแปรนั้นอยู่ใน Scope ส่วนไหน เพื่อให้สามารถดึงค่าหรือรันโปรแกรมได้อย่างถูกต้อง</p>
   </li>
 </ul>
 
 <h3 id="lhs--rhs">LHS &amp; RHS</h3>
 
 <p>Left Hand Side คือค่าที่อยู่ฝั่งซ้ายมือของ <code class="highlighter-rouge">=</code> ซึ่งจะเป็นแค่การหา Reference ของตัวแปรนั้นๆ<br />
-Right Hand Side คือค่าที่อยู่ฝั่งขวามือของ <code class="highlighter-rouge">=</code> ซึ่งจะเป็นการหา Value และรันคำสั่งต่างๆ</p>
+Right Hand Side คือค่าที่อยู่ฝั่งขวามือของ <code class="highlighter-rouge">=</code> ซึ่งจะเป็นการหา Value และรัน Operator ต่างๆ</p>
 
 <p>ยกตัวอย่างเช่น</p>
 
@@ -106,14 +106,31 @@ var b = a + 2;
 </code></pre>
 </div>
 
-<p>LHS คือ <code class="highlighter-rouge">var a</code> และ <code class="highlighter-rouge">var b</code> คือการทำประกาศค่า<br />
-RHS คือ <code class="highlighter-rouge">10</code> และ <code class="highlighter-rouge">a + 2</code> ซึ่งจะไปทำการดึงค่าและรันคำสั่ง เพื่อทำการจัดเก็บไปที่ LHS</p>
+<p>LHS คือ <code class="highlighter-rouge">a</code> และ <code class="highlighter-rouge">b</code> คือการตัวแปรที่เราจะเข้าไปเปลี่ยนแปลงค่า<br />
+RHS คือ <code class="highlighter-rouge">10</code> และ <code class="highlighter-rouge">a + 2</code> ซึ่งจะไปทำการดึงค่าของตัวแปรและรันคำสั่ง เพื่อทำการจัดเก็บไปที่ LHS</p>
+
+<p>ลองมาดูกันว่า ในการรันโปรแกรมครั้งนึงนั้น แต่ละส่วนจะคุยกันอย่างไรบ้างเพื่อให้โปรแกรมทำงานได้</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = 10;
+var b = a + 2;
+
+Compiler: 	มีหน้าที่คอมไพล์อย่างเดียว คอมไพล์ไป
+Engine: 	ประกาศตัวแปร a
+Engine:		assign ค่าให้ a  // a = 10
+Engine: 	ประกาศตัวแปร b
+Engine:		มีการเรียกใช้งานตัวแปร a ต้องไปถาม scope ละ ขอที่อยู่ตัวแปร a หน่อย
+Scope: 		หาตำแหน่งของ a และส่งกลับไปให้ engine
+Engine: 	ได้ตำแหน่งมาแล้วก็ไปดึงค่า a แล้วทำงานต่อ b = 10 + 2;
+</code></pre>
+</div>
+
+<p>หลักคร่าวๆก็จะประมานนี้เพื่อให้ได้เห็นภาพกันนะครับ คงพอจะได้เห็นได้ว่า Compiler และ Engine นั้นมีหน้าที่คอมไพล์และรันโปรแกรม แต่ <code class="highlighter-rouge">Scope</code> นั้นทำหน้าที่หาตำแหน่งที่อยู่ของตัวแปรในโปรแกรมให้กับ Engine แต่อาจจะสงสัยว่าทำไมต้องหาด้วยละ ก็น่าจะมีที่เดียวอยู่แล้ว เดี๋ยวเรามาดูรายละเอียดกันครับ</p>
 
 <h2 id="lexical-scope">Lexical Scope</h2>
 
-<p>Scope เป็นพื้นที่ในการใช้ตัวแปร ซึ่งเราจะแบ่ง Scope ในจาวาสคริปด้วยเครื่องหมายปีกกา <code class="highlighter-rouge"><span class="p">{}</span></code> โดยพื้นที่นอกสุด เป็น Global Scope</p>
+<p>Scope เป็นพื้นที่ในการใช้ตัวแปร ซึ่งใน Javascripts เราจะแบ่ง Scope ด้วยเครื่องหมายปีกกา <code class="highlighter-rouge"><span class="p">{}</span></code> โดยพื้นที่นอกสุด เป็น Global Scope</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>var a = 10;
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = 10;		 // Global Scope
 
 if(a == 10) {		 // Block Scope
 	var c = 20;
@@ -166,17 +183,21 @@ i // 9
 <p>มาดู Scope ที่เกิดขึ้นจากฟังก์ชันกันบ้าง</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>var a = 10;
-function foo() {
+function foo(x) {
 	var b = 10;
 	b 	// 10
+	x		// 4
 }
 
-foo();
-b 	// ReferenceError
+foo(4);
+b 	// ReferenceError ( no "b" in this scope )
+x		// ReferenceError ( no "x" in this scope )
 </code></pre>
 </div>
 
 <p>ข้อแตกต่างที่แตกต่างจาก Block Scope นั้นคือ ตัว Function Scope นั้นจะ Declare Variable ในฟังก์ชัน ดังนั้น เราไม่สามารถเรียกใช้ตัวแปรที่ไม่ได้อยู่ใน scope นั้นและไม่ได้อยู่ที่ parent ของ scope นั้นๆได้</p>
+
+<p>การประกาศตัวแปรที่เกิดขึ้นใน Function Scope นั้นจะอยู่เฉพาะในฟังก์ชันนั้นเท่านั้น รวมไปถึง parameters ของฟังก์ชันด้วย</p>
 
 <h3 id="nested-function-scope">Nested Function Scope</h3>
 
@@ -205,20 +226,17 @@ function foo(x) {
 
 <p>ทีนี้มาดูกันก่อนว่าในแต่ละ Scope เมื่อเราทำการรันโปรแกรมจะมีวิธีการหาค่าของตัวแปรกันอย่างไร</p>
 
-<p>การหาค่าของตัวแปรนั้น จะเป็นการหาค่าแบบ <code class="highlighter-rouge">Down&gt;&gt;Top</code> คือ หาใน Scope ตัวเองเสร็จ หาไม่เจอ ก็จะค่อยๆหาขึ้นไปใน Parent Scope ขึ้นไปเรื่อยๆจนถึง Global Scope โดย Scope ที่หานั้น จะดูจาก Scope ที่ฟังก์ชันนั้นรันอยู่</p>
+<p>การหาค่าของตัวแปรนั้น จะเป็นการหาค่าแบบ <code class="highlighter-rouge">Down&gt;&gt;Top</code> คือ หาใน Scope ตัวเองเสร็จ หาไม่เจอ ก็จะค่อยๆหาขึ้นไปใน Parent Scope ขึ้นไปเรื่อยๆจนถึง Global Scope เมื่อเจอตัวแปรที่ Scope ที่ใกล้ที่สุดก็ใช้ตัวแปรนั้นในการรันครั้งนันๆ โดย Scope ที่หานั้น จะดูจาก Scope ที่ฟังก์ชันนั้นถูกเรียก หรือที่เรียกว่า call-site</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>var a = 1;
 
 function foo() {
 	var b = 2;
-
 	function bar() {
 		var c = a + b;
 	}
-
 	bar();
 }
-
 foo();
 </code></pre>
 </div>
@@ -282,22 +300,42 @@ Person.getName() 	// john
 </code></pre>
 </div>
 
+<h3 id="global-object">Global Object</h3>
+
 <h3 id="this">this</h3>
 
-<p>this เป็นตัวแปรที่อ้างอิงอยู่กับ scope นั้นตามที่อธืบายไปในห้วข้อก่อน และการทำ Variable Loop ก็มีหลักการเช่นเดียวกันกับตัวแปรทั่วไป คือหาแบบ <code class="highlighter-rouge">Down &gt;&gt; Top</code> จนถึง global scope เหมือนกัน</p>
+<p><code class="highlighter-rouge">this</code> เป็นตัวแปรที่อ้างอิงอยู่กับ scope นั้นตามที่อธิบายไปในห้วข้อก่อน และการทำ Variable Loop ก็มีหลักการเช่นเดียวกันกับตัวแปรทั่วไป คือหาแบบ <code class="highlighter-rouge">Down &gt;&gt; Top</code> จนถึง global scope เหมือนกัน</p>
 
 <h3 id="bind">bind</h3>
 
 <h2 id="es6">ES6</h2>
 
-<p>ใน ES6 นั้น เราใช้ <code class="highlighter-rouge">let</code> ในการประกาศตัวแปรแทน <code class="highlighter-rouge">var</code> ซึ่ง <code class="highlighter-rouge">let</code> มันมี behavior ของ scope ที่แตกต่างกันกับ <code class="highlighter-rouge">var</code>มาดูว่าแตกต่างกันยังไงบ้างนะครับ</p>
+<p>ใน ES6 นั้น เราใช้ <code class="highlighter-rouge">let</code> ในการประกาศตัวแปรแทน <code class="highlighter-rouge">var</code> ซึ่ง <code class="highlighter-rouge">let</code> มันมี behavior ของ scope ที่แตกต่างกันกับ <code class="highlighter-rouge">var</code> มาดูว่าแตกต่างกันยังไงบ้างนะครับ</p>
 
 <h3 id="let-scope">Let Scope</h3>
+
+<p>Scope ของ <code class="highlighter-rouge">let</code> นั้นแตกต่างจาก <code class="highlighter-rouge">var</code> ในส่วนของ Block Scope โดยหากเราย้อนกลับไปดูหัวข้อ Block Scope นั้น การประกาศตัวแปรโดยใช้ var จะสามารถเรียกใช้ได้นอก Block Scope เนื่องจากการ declare variable นั้นอยู่นอก scope แต่ใน <code class="highlighter-rouge">let</code>นั้น จะไม่สามารถใช้ได้ เนื่องจากจะถูก declare ใน Block Scope นั้นๆและใช้ได้แค่เพียงใน Scope นั้นเท่านั้น เช่น</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>if(true) {
+	var a = 2;
+} else {
+	var b = 3;
+}
+a 	// 2
+b 	// undefined
+
+if(true) {
+	let c = 2;
+}
+c 	// ReferenceError
+</code></pre>
+</div>
 
 <h2 id="references">References</h2>
 
 <ul>
   <li>Function vs Block Scope <a href="https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch3.md">https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch3.md</a></li>
+  <li>Let	<a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/let">https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/let</a></li>
 </ul>
 
 </div>

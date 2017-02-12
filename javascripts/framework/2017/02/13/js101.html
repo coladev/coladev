@@ -332,34 +332,6 @@ a.shift() 		// [2,3,4,5]
 
 <p>และยังมี Type อื่นๆ เช่น <code class="highlighter-rouge">Function</code> <code class="highlighter-rouge">Date</code> <code class="highlighter-rouge">Error</code> <code class="highlighter-rouge">RegExp</code></p>
 
-<h2 id="es6">ES6</h2>
-
-<p>การประกาศตัวแปรบน ES6 นั้น มีฟังก์ชันที่เพิ่มขึ้นมา โดยมีตัวเลือกให้สองแบบคือ <code class="highlighter-rouge">let</code> และ <code class="highlighter-rouge">const</code></p>
-
-<h3 id="let">Let</h3>
-
-<p><code class="highlighter-rouge">let</code> คือสิ่งที่มาแทน <code class="highlighter-rouge">var</code> นั่นเอง โดยจะมีคุณสมบัติพิเศษเรื่อง scope ซึ่งจะอธิบายในบทถัดไป</p>
-
-<h3 id="const">Const</h3>
-
-<p>คือตัวแปรที่ไม่สามารถเปลี่ยนแปลงค่าได้ ซึ่งเมื่อทำการ assign ค่าให้แล้ว จะไม่สามารถ assign ค่าใหม่ได้อีก ซึ่งหากเราพยายามทำการเปลี่ยนค่า จะเกิด Error แสดงทันที</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>const a = 10;
-a = 2		// TypeError
-</code></pre>
-</div>
-
-<p><strong>ข้อควรระวัง</strong> หากใช้ const กับ <code class="highlighter-rouge">Object</code> และ <code class="highlighter-rouge">Array</code> เรายังสามารถเปลี่ยนแปลงค่าได้ แต่ไม่สามารถชี้ไปที่ค่าใหม่ได้ เนื่องจากค่า references ของตัวแปรไม่ได้เปลี่ยน แต่เป็นการเปลี่ยนค่าที่ object นั่นเอง</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>const b = [1,2,3];
-b.push(4);
-
-b // [1,2,3,4]
-
-b = [4,5,6];  // TypeError
-</code></pre>
-</div>
-
 <h3 id="hoist">Hoist</h3>
 
 <p>Variable ใน js นั้น จะมีด้วยกัน 2 step คือการ <code class="highlighter-rouge">Declare</code> หรือการประกาศตัวแปร และ <code class="highlighter-rouge">Assign</code> หรือการชี้ตัวแปรไปยังค่านั้น เช่น</p>
@@ -619,6 +591,44 @@ a = 2		// ReferenceError a not defined
 
 <p>เนื่องจาก Engine หลายๆตัวได้ทำการ Optimize การรัน JS บน Strict Mode ไว้แล้ว ช่วยให้สามารถรันโค้ดบางอย่างได้เร็วกว่าโหมดธรรมดา</p>
 
+<h2 id="es6">ES6</h2>
+
+<p>การประกาศตัวแปรบน ES6 นั้น มีฟังก์ชันที่เพิ่มขึ้นมา โดยมีตัวเลือกให้สองแบบคือ <code class="highlighter-rouge">let</code> และ <code class="highlighter-rouge">const</code></p>
+
+<h3 id="let">Let</h3>
+
+<p><code class="highlighter-rouge">let</code> คือสิ่งที่มาแทน <code class="highlighter-rouge">var</code> นั่นเอง โดยการใช้ let แทน var จะช่วยให้แก้ปัญหาการเรียกใช้งานตัวแปรโดยที่ยังไม่ได้ประกาศค่า (TDZ) แต่เรียกใช้ได้เพราะ hoist นะครับ เช่น</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>a 	// undefined
+var a = 10;
+
+b 	// ReferenceError
+let b = 10;
+</code></pre>
+</div>
+
+<p>และมีคุณสมบัติพิเศษเรื่อง scope ซึ่งจะอธิบายในบทถัดไปครับ</p>
+
+<h3 id="const">Const</h3>
+
+<p>คือตัวแปรที่ไม่สามารถเปลี่ยนแปลงค่าได้ ซึ่งเมื่อทำการ assign ค่าให้แล้ว จะไม่สามารถ assign ค่าใหม่ได้อีก ซึ่งหากเราพยายามทำการเปลี่ยนค่า จะเกิด Error แสดงทันที</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>const a = 10;
+a = 2		// TypeError
+</code></pre>
+</div>
+
+<p><strong>ข้อควรระวัง</strong> หากใช้ const กับ <code class="highlighter-rouge">Object</code> และ <code class="highlighter-rouge">Array</code> เรายังสามารถเปลี่ยนแปลงค่าได้ แต่ไม่สามารถชี้ไปที่ค่าใหม่ได้ เนื่องจากค่า references ของตัวแปรไม่ได้เปลี่ยน แต่เป็นการเปลี่ยนค่าที่ object นั่นเอง</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>const b = [1,2,3];
+b.push(4);
+
+b // [1,2,3,4]
+
+b = [4,5,6];  // TypeError
+</code></pre>
+</div>
+
 <h2 id="references">References</h2>
 
 <ul>
@@ -626,6 +636,7 @@ a = 2		// ReferenceError a not defined
   <li><a href="https://dorey.github.io/JavaScript-Equality-Table/">JavaScript Equality Table</a></li>
   <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode">MDN: Strict Mode</a></li>
   <li><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Expressions_and_Operators">MDN: Expressions and operators</a></li>
+  <li><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/let">Let</a></li>
 </ul>
 
 </div>
