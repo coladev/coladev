@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+	<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      JS Basic: EP1. พื้นฐานแบบเน้นๆ &middot; Coladev.com
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/public/js/hightlightjs/styles/tomorrow.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+  
+    <meta property="og:title" content="JS Basic: EP1. พื้นฐานแบบเน้นๆ" />
+    <meta property="og:description" content="ปูพื้นฐาน javascripts ใหม่กันเถอะ" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://coladev.com/assets/images/thumbnail/js101.png" />
+  
+
+<script src="http://127.0.0.1:35729/livereload.js"></script></head>
+
+
+	<body>
+
+		<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <img src="/assets/images/coladev-logo-light.png">
+    <h3>COLADEV.COM</h3>
+    <p>บันทึกและบทความเกี่ยวกับการเขียนโปรแกรมจากโปรแกรมเมอร์น้อยๆผู้ชื่นชอบโค้กเป็นชีวิตจิตใจ</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+    <a class="sidebar-nav-item" href="/tags/javascripts">Javascripts</a>
+    <a class="sidebar-nav-item" href="/tags/devops">Devops</a>
+  </nav>
+</div>
+
+
+		<!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+				 content to avoid any CSS collisions with our real content. -->
+		<div class="wrap">
+			<div class="masthead">
+				<div class="container">
+					<div class="masthead-title">
+						<a href="/" title="Coladev.com">
+							<img src="/assets/images/logo.png">
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="container content">
+				<div class="post">
+	<img src="/assets/images/thumbnail/js101.png">
+	<h1 class="post-title">JS Basic: EP1. พื้นฐานแบบเน้นๆ</h1>
+	<span class="post-date">13 Feb 2017</span>
+	<p>เชื่อว่าหลายๆคนคงเขียน javascripts มากันพอสมควรแล้ว แต่น่าจะมีหลายคนที่อาจจะมองข้ามพื้นฐานเล็กๆน้อยๆไป ซึ่งผมก็เป็นหนึ่งในนั้น แต่หลังจากที่ไปศึกษาพื้นฐานในระดับลึกลงไปแล้ว ผมคิดว่าส่วนนี้สำคัญมากการในทำงาน ซึ่งคาดว่าจะช่วยให้การเขียนโค้ดของเราดีขึ้น เนื่องจากเราจะได้เห็นภาพอะไรบางอย่างที่แตกต่างออกไป ซึ่งเราจะมาเริ่มตั้งแต่การประกาศตัวแปร ไปจนถึงเรื่องใหม่ๆบน ES6 ในระดับละเอียดลงไปอีกระดับ</p>
+
+<p>ก่อนอื่นมารู้คำศัพท์กันก่อน จะได้เข้าใจตรงกันนะฮะ</p>
+
+<h2 id="section">คำศัพท์</h2>
+
+<ul>
+  <li>EcmaScript (ES)</li>
+</ul>
+
+<p>Ecmascript เป็นมาตรฐานของภาษาจาวาสคริปโดยมีการพัฒนาพื้นฐานมาเรื่อยๆจนถึงปัจจุบัน โดยในปัจจุบันที่รองรับในบราวเซอร์ทั่วไป คือ <code class="highlighter-rouge">ES5</code></p>
+
+<p>และเมื่อปีที่แล้วได้ทำการประกาศมาตรฐานรุ่นใหม่ขึ้นมาชื่อ <code class="highlighter-rouge">ES6</code> หรือ <code class="highlighter-rouge">ES2015</code> ซึ่งมีการปรับปรุงและเพิ่มเติมฟีเจอร์หลายๆอย่างซึ่งช่วยให้เราสามารถเขียน javascripts ได้ง่ายขึ้น แล้วก็ยังมีที่มาตรฐานในยุคถัดๆที่ยังร่างกันอยู่ เช่น <code class="highlighter-rouge">ES7</code> <code class="highlighter-rouge">ES8</code></p>
+
+<p>Browser และ Node.js เวอร์ชันใหม่ได้เริ่มพัฒนาให้รองรับ ES6 กันแล้ว แต่เราไม่สามารถใช้กับบราวเซอร์เก่าๆที่ยังใช้กันส่วนมากได้ แต่มีวิธีแก้ครับ</p>
+
+<ul>
+  <li>Transplier</li>
+</ul>
+
+<p>วิธีการแรกคือการแปลงโค้ดที่เราเขียนในรูปแบบของ ES6 ให้เป็นโค้ดในรูปแบบของ ES5 โดยใช้สิ่งที่เรียกว่า Transpiler ซึ่งมีอยู่หลายตัวด้วยกัน เช่น <code class="highlighter-rouge">babel</code> เป็นต้น</p>
+
+<ul>
+  <li>Polyfill</li>
+</ul>
+
+<p>วิธีการที่ 2 คือการเขียนฟังก์ชันขึ้นมาโดยใช้โค้ดที่ ES5 รองรับ แต่สามารถทำงานแทนฟังก์ชันที่ build-in มากับ ES6 ได้ เช่น</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Number.isInteger(0);
+</code></pre>
+</div>
+
+<p>ใช้สำหรับตรวจสอบว่าเป็นค่า int หรือไม่ หากใช้ในบราวเซอร์ที่ไม่รองรับ ES6 ก็สามารถเพิ่ม Polyfill ให้รองรับได้</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Number.isInteger = Number.isInteger || function(value) {
+  return typeof value === 'number' &amp;&amp; 
+    isFinite(value) &amp;&amp; 
+    Math.floor(value) === value;
+};
+</code></pre>
+</div>
+
+<h1 id="variable">Variable</h1>
+
+<p>การประกาศตัวแปรใน Javascripts นั้น เป็นการประกาศแบบไม่ระบุ type ของตัวแปร โดยใช้คำสั่งง่ายๆคือ <code class="highlighter-rouge">var</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = 69;
+var b = "hello world";
+</code></pre>
+</div>
+
+<p>หลายๆคนคงคุ้นชินอยู่แล้ว แต่จริงๆ แล้วตัวแปรบนจาวาสคริปนั้นมี type ของมันเอง ซึ่งแบ่งเป็น 2 ประเภทหลัก คือ</p>
+
+<h2 id="primitive-types">Primitive Types</h2>
+
+<p>หรือตัวแปรดั้งเดิม เป็นตัวแปรประเภทค่าเดียว ได้แก่ <code class="highlighter-rouge">String</code> <code class="highlighter-rouge">Number</code> <code class="highlighter-rouge">Boolean</code> <code class="highlighter-rouge">null</code> <code class="highlighter-rouge">undefined</code>
+โดยสามารถประกาศตัวแปรได้ง่ายๆ</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = "hello";
+var b = 2;
+var c = true;
+var d = null;
+var f = undefined;
+</code></pre>
+</div>
+
+<p>ซึ่งจะเป็นคุณสมบัติคร่าวๆดังนี้</p>
+
+<h4 id="pass-by-value">Pass by Value</h4>
+
+<p>ตัวแปรจำพวก Primitive Types พวกนี้เป็น pass by value โดยการสร้างตัวแปรใหม่ จะ copy value เดิมแล้วชี้ไปที่ memory ที่ใหม่ เช่น</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = 10;
+var b = a;
+b += 5;
+
+a 	// 10
+b 	// 15
+</code></pre>
+</div>
+
+<h4 id="immutable">Immutable</h4>
+
+<p>หรือไม่สามารถเปลี่ยนแปลงค่าได้ ทำแบบนี้ไม่ได้นะ ถึงจะไม่ error อะไรก็เถอะ</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = "test"
+a[1] = "4"
+a 	// "test"
+a = "test2"
+a 	// "test2"
+</code></pre>
+</div>
+
+<p>การเปลี่ยนแปลงค่าสามารถทำได้ด้วยการเปลี่ยนค่าผ่านการชี้ references ไปยัง memory ตัวใหม่เท่านั้น โดยผ่านเครื่องหมาย <code class="highlighter-rouge">=</code> นั่นเอง</p>
+
+<h2 id="object-types">Object Types</h2>
+
+<p>หรือตัวแปรที่มีค่าซับซ้อน เช่น <code class="highlighter-rouge">Object</code> <code class="highlighter-rouge">Array</code> สามารถประกาศตัวแปรได้ดังนี้</p>
+
+<p>Object =&gt; <code class="highlighter-rouge"><span class="p">{}</span></code> / Array =&gt; <code class="highlighter-rouge">[]</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = [];		// ประกาศอาเรย์เปล่า
+var b = [1,2,3];	// อาเรย์แบบมีค่าตั้งต้น
+
+var c = {};		// ออปเจ็คเปล่า
+var d = {		// ออปเจ็คแบบมีค่าตั้งต้น
+	x: 2
+};
+</code></pre>
+</div>
+
+<p>ตัวแปรประเภทนี้มีคุณสมบัติดังนี้</p>
+
+<h4 id="shared-value">Shared Value</h4>
+
+<p>ตัวแปรใน Javascripts นั้นจะเป็น <code class="highlighter-rouge">Pass by value</code> ทั้งหมด แต่ในค่าจำพวก Object นั้นตัว Value จะเก็บเป็น References ไปยัง memory ที่เก็บ Object อีกที ดังนั้นการประกาศตัวแปรใหม่ก็จะเป็นคนละตำแหน่งใน memory เช่นเดียวกับ Primitive Types จากนั้นก็จะได้ค่า References ที่ชี้ไปยังที่เก็บ Object อีกที แต่ตัว References นั้นจะเป็นตัวเดียวกันนั่นเอง ค่าของ Object จึงเป็นค่าเดียวกัน</p>
+
+<p>อาจจะมองเป็นภาพง่ายๆแบบนี้</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Point to Memory</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>a</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>b</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Memory Index</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>0001</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0001</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>ค่า Value ชี้มาที่ Object ตัวเดียวกัน</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Object</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0001</td>
+      <td>{ c: 2 }</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>ผลลัพธ์จึงเป็นการที่ค่านั้นสามารถเปลี่ยนแปลงได้หากทำการเปลี่ยนค่าในตัวแปรอื่นที่ใช้ค่าร่วมกัน</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = [0, 1, 2];
+var b = a;
+b.push(3)
+
+a // [0, 1, 2, 3]
+b // [0, 1, 2, 3]
+</code></pre>
+</div>
+
+<h3 id="object">Object</h3>
+
+<p>Object บน Javascript นั้นอยู่ในรูปแบบ <code class="highlighter-rouge">[key]:[value]</code> โดยสามารถเรียกใช้งานได้ทั้งแบบ key <code class="highlighter-rouge">a['key']</code> และแบบ property <code class="highlighter-rouge">a.key</code> โดยข้อดีของแบบ key คือเราสามารถใส่ String แปลกๆได้</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = {
+	['b']: 2,
+	c: 3
+	'd': 4
+}
+
+a['c'] 	// 3
+a.b 	// 2
+
+a['test-2'] = 4;
+a.f = 5
+</code></pre>
+</div>
+
+<p>และรูปแบบ key ยังสามารถใช้ operator ได้ด้วย ซึ่งจะช่วยให้ง่ายหากเราต้องใช้ key ในรูปแบบของ dynamic key</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var prefix = "test"
+var a = {
+	[prefix + "1"]: "a"
+}
+</code></pre>
+</div>
+
+<h3 id="array">Array</h3>
+
+<p>อาเรย์หรือการเก็บข้อมูลแบบชุด ไม่จำกัดว่าค่านั้นจะเป็นประเภทอะไร โดยเก็บค่าเป็น [index]:[value] โดย index มีค่าเป็น positive integer</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = [1,2,3,"4",true];
+
+a[0] 	// 1
+a[3] 	// "4"
+a[4] 	// true
+</code></pre>
+</div>
+
+<p>แต่จริงแล้วก็สามารถใช้อาเรย์ในรูปแบบของ [key]:[value] เหมือนกับ object ได้ เพราะจริงๆแล้วอาเรย์นั้นมีพื้นฐานคล้ายๆกับ object โดยเปรียบเสมือน objecy ที่มี key เป็น index นั้นเอง</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = ["a", "b", "c"];
+var b = { 0: "a", 1: "b", 2: "c" };
+
+a[0] // "a"
+b[0] // "a"
+
+a["a"] = 3
+
+a // [0: 0, 1: 1, 2: 2, a: 3, length: 3]
+</code></pre>
+</div>
+
+<p>แต่เราควรหลีกเลี่ยงหรือห้ามใช้งานแบบนี้ไปเลยนะครับ เนื่องจาก array ได้ถูก optimize มาสำหรับใช้เก็บค่าแบบ index อยู่แล้ว จะทำให้เกิดการทำงานที่ผิดพลาดขึ้นได้</p>
+
+<h4 id="build-in-method">ตัวอย่าง Build-In Method</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = [1,2,3,4,5];
+
+a.length 		// 5
+a.length = 10 		// [1,2,3,4,5,,,,,]
+a.push(6) 		// [1,2,3,4,5,6]
+a.pop() 		// [1,2,3,4]
+a.shift() 		// [2,3,4,5]
+</code></pre>
+</div>
+
+<h3 id="other">Other</h3>
+
+<p>และยังมี Type อื่นๆ เช่น <code class="highlighter-rouge">Function</code> <code class="highlighter-rouge">Date</code> <code class="highlighter-rouge">Error</code> <code class="highlighter-rouge">RegExp</code></p>
+
+<h2 id="es6">ES6</h2>
+
+<p>การประกาศตัวแปรบน ES6 นั้น มีฟังก์ชันที่เพิ่มขึ้นมา โดยมีตัวเลือกให้สองแบบคือ <code class="highlighter-rouge">let</code> และ <code class="highlighter-rouge">const</code></p>
+
+<h3 id="let">Let</h3>
+
+<p><code class="highlighter-rouge">let</code> คือสิ่งที่มาแทน <code class="highlighter-rouge">var</code> นั่นเอง โดยจะมีคุณสมบัติพิเศษเรื่อง scope ซึ่งจะอธิบายในบทถัดไป</p>
+
+<h3 id="const">Const</h3>
+
+<p>คือตัวแปรที่ไม่สามารถเปลี่ยนแปลงค่าได้ ซึ่งเมื่อทำการ assign ค่าให้แล้ว จะไม่สามารถ assign ค่าใหม่ได้อีก ซึ่งหากเราพยายามทำการเปลี่ยนค่า จะเกิด Error แสดงทันที</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>const a = 10;
+a = 2		// TypeError
+</code></pre>
+</div>
+
+<p><strong>ข้อควรระวัง</strong> หากใช้ const กับ <code class="highlighter-rouge">Object</code> และ <code class="highlighter-rouge">Array</code> เรายังสามารถเปลี่ยนแปลงค่าได้ แต่ไม่สามารถชี้ไปที่ค่าใหม่ได้ เนื่องจากค่า references ของตัวแปรไม่ได้เปลี่ยน แต่เป็นการเปลี่ยนค่าที่ object นั่นเอง</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>const b = [1,2,3];
+b.push(4);
+
+b // [1,2,3,4]
+
+b = [4,5,6];  // TypeError
+</code></pre>
+</div>
+
+<h3 id="hoist">Hoist</h3>
+
+<p>Variable ใน js นั้น จะมีด้วยกัน 2 step คือการ <code class="highlighter-rouge">Declare</code> หรือการประกาศตัวแปร และ <code class="highlighter-rouge">Assign</code> หรือการชี้ตัวแปรไปยังค่านั้น เช่น</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = 10;
+</code></pre>
+</div>
+
+<p>แต่ในการรัน แยกออกเป็น 2 step</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a;		// Declare
+a = 10;		// Assign
+</code></pre>
+</div>
+
+<p>เราจึงเห็นได้ว่า บางทีเราสามารถเรียกใช้ตัวแปรนั้นได้ก่อนการประกาศตัวแปร</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>a 	// undefined
+var a = 10;
+a 	// 10
+</code></pre>
+</div>
+
+<p>เนื่องจากจริงๆแล้วตัว JS Engine ได้ทำการยกการ Declare ตัวแปรทั้งหมดใน Scope นั้นขึ้นไปไว้บนสุดของ Scope</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a;
+a 	// undefined
+a = 10;
+a 	// 10
+</code></pre>
+</div>
+
+<h2 id="type-casting">Type Casting</h2>
+
+<p>การเปลี่ยน type ของค่าใน javascripts นั้นมีอยู่ 2 รูปแบบ</p>
+
+<h4 id="explicit-cast">Explicit Cast</h4>
+
+<p>หรือการเปลี่ยนแปลงค่าจากคำสั่งโปรแกรม เช่น แปลงค่าจาก String เป็น Number โดยใช้คำสั่ง <code class="highlighter-rouge">parseInt</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = parseInt("2");		// 2 (Number)
+a.toString();			// "2" (String)
+</code></pre>
+</div>
+
+<h4 id="implicit-cast">Implicit Cast</h4>
+
+<p>เป็นการเปลี่ยนแปลงค่าที่เกิดจากตัว JS Engine ทำการเปลี่ยนให้เพื่อให้ทำงานได้ ซึ่งจะเกิดขึ้นภายในการรันโปรแกรม เช่น การใช้ operator กับค่าที่เป็นคนละ Type กัน</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = 2 + "2"		// Implicit Cast 2 &gt;&gt; "2"
+var b = true + 1	// Implicit Cast true &gt;&gt; 1
+
+a 	// "22"
+b 	// 2
+</code></pre>
+</div>
+
+<p>ซึ่งทั้ง 2 แบบนี้มีวิธีและผลลัพธ์ที่เหมือนกัน โดยเราสามารถดูได้จากเว็บนี้ว่า ค่าใน type หนึ่งนั้น หาก cast ไป type อื่นจะสามารถเป็นอะไรได้บ้าง หรือเมื่อเปรียบเทียบแล้วจะเท่ากันหรือไม่ <a href="https://dorey.github.io/JavaScript-Equality-Table/">JavaScript Equality Table</a></p>
+
+<p><img src="/assets/images/posts/js101/js-equal-table.png" alt="JavaScript Equality Table" /></p>
+
+<p>ส่วน Priority ในการ Cast Type ใน operation ต่างๆนั้น ในแต่ละ Type จะมี Priority ต่างกัน และไล่คำนวนไปทีละ operator ตามวงเล็บครับ โดยในรายการนี้เรียงจาก Priority มากสุดไปน้อยสุด</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>String
+Number
+Boolean
+null
+undefined
+</code></pre>
+</div>
+
+<p>หากมีการเปลี่ยนเทียบหรือกระทำค่าระหว่าง String กับ Number ตัว Number Priority ต่ำกว่าก็จะถูก cast เป็น String</p>
+
+<h4 id="mini-quiz">Mini Quiz</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>true + 2 + ("2" + ( true + null + 1 ) + false) = ?
+</code></pre>
+</div>
+
+<p>ได้เท่าไหร่กันนะ …… คำตอบคือ “322false”</p>
+
+<h2 id="object-wrapper">Object Wrapper</h2>
+
+<p>ในการประกาศตัวแปรใน javascripts นั้น เราอาจจะเห็นว่าเราสามารถ assign ค่าที่เป็น type อะไรก็ได้เข้าไปในตัวแปรนั้นได้เลย แต่จริงๆแล้วยังมีวิธีการประกาศตัวแปรอีกแบบ คือ การสร้าง object ของ type นั้นขึ้นมาใหม่ โดยใช้คำสั่ง <code class="highlighter-rouge">new object</code> เช่น</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = new String("Hello World");
+var b = new Number(2);
+
+a 	// String { .... }
+b 	// Number { .... }
+</code></pre>
+</div>
+
+<p>ซึ่งจะเป็นการประกาศตัวแปรแบบระบุ type โดยจะมี object ของ type นั้นครอบอยู่ด้วย โดย Object พวกนี้ก็จะมี Built-in Method ให้เราเรียกใช้ตามค่านั้นๆ เช่น <code class="highlighter-rouge">.toString()</code> <code class="highlighter-rouge">.toUppercase()</code> เป็นต้น</p>
+
+<p>ย้อนกลับมาดูการประกาศตัวแปรแบบไม่ระบุ type</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = "hello world";
+
+a 				// "hello world"
+a.toUpperCase() 		// "HELLO WORLD"
+</code></pre>
+</div>
+
+<p>แต่เดี๋ยวก่อน ทั้งที่เราไม่ได้ประกาศตัวแปรเป็น object type นั้น แล้วทำไมเราถึงยังสามารถใช้ build-in method ได้อยู่ละ</p>
+
+<p>นั่นก็เพราะว่าจริงๆแล้วตัวแปรที่ประกาศใน javascripts นั้น จะมีส่วนของ <code class="highlighter-rouge">Object Wrapper</code> หรือการครอบ Object Type ของตัวแปรนั้นๆให้ หากค่านั้นเป็น <code class="highlighter-rouge">String</code> ก็จะมี <code class="highlighter-rouge">String</code> object ครอบอยู่ และเราก็สามารถเรียกใช้งาน build-in method ได้นั้นเอง</p>
+
+<h2 id="operator">Operator</h2>
+
+<h3 id="abstract-equal">Abstract Equal</h3>
+
+<p>เราใช้เครื่องหมาย <code class="highlighter-rouge">==</code> และ <code class="highlighter-rouge">!=</code> ในการเปรียบเทียบค่าว่าสองค่าทั้งสองฝั่ง</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>2 == 2		// true
+3 != 2		// true
+8 == 2		// false
+</code></pre>
+</div>
+
+<p>และหาก Type ทั้งสองฝั่งไม่เหมือนกัน ตัว javascripts engine จะทำการ cast ค่า หรือเปลี่ยนแปลงค่าให้เหมือนกันและทำการเปรียบเทียบ ดังนั้นเราจะเห็นได้ว่าบางครั้ง คนละ Type กัน แต่ผลลัพธ์สามารถออกเป็น <code class="highlighter-rouge">true</code> ได้ เช่น</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>2 == "2"	// true
+</code></pre>
+</div>
+
+<p>เมื่อทำการรันเปรียบเทียบ javascripts engine จะมองเห็นว่า type ของทั้งสองฝั่งไม่เหมือนกัน ฝั่งนึงเป็น <code class="highlighter-rouge">Number</code> และอีกฝงั่เป็น <code class="highlighter-rouge">String</code> ก็จะทำการ cast ตาม prioity ตามหัวข้อข้างบน โดย cast 2 เป็น “2” การรันจึงเปลี่ยนเป็น <code class="highlighter-rouge">"2" == "2"</code> จึงได้ผลลัพธ์เป็น true นั่นเอง</p>
+
+<h3 id="strict-equal">Strict Equal</h3>
+
+<p>ใช้เครื่องหมาย <code class="highlighter-rouge">===</code> และ <code class="highlighter-rouge">!==</code> ในการเปรียบเทียบ ซึ่งในกรณีนี้ ตัว Javascripts Engine จะไม่ทำการ Cast Type แล้ว หากคนละ Type ก็จะไม่เท่ากันไปเลย</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>2 === "2"		// false
+2 === 2			// true
+</code></pre>
+</div>
+
+<blockquote>
+  <p>จะเห็นได้ว่าเราควรใช้การเปรียบเทียบแบบ Strict Equal มากกว่า เพื่อป้องกันความผิดพลาดของโปรแกรมที่เกิดจากการแปลงค่าของตัว Javascripts Engine แต่ในบางกรณีการเปรียบเทียบแบบ Abstract ก็ช่วยให้เราเขียนโค้ดได้สวยงามกว่า ดังนั้นต้องเลือกใช้ให้ดีๆ</p>
+</blockquote>
+
+<h3 id="other-1">Other</h3>
+
+<p>ในส่วนของการเปรียบเทียบและกระทำการกับค่าและตัวแปรแบบอื่นๆนั้น จะเป็นรูปแบบของ Abtract เท่านั้น ไม่มีแบบ strict mode ดังนั้นเมื่อใช้งานให้ระวังการเกิด Implicit Type Casting กันด้วยนะครับ</p>
+
+<p><code class="highlighter-rouge">&gt;=</code> <code class="highlighter-rouge">&lt;=</code> <code class="highlighter-rouge">&gt;</code> <code class="highlighter-rouge">&lt;</code> <code class="highlighter-rouge">+</code> <code class="highlighter-rouge">-</code> <code class="highlighter-rouge">*</code> <code class="highlighter-rouge">/</code> <code class="highlighter-rouge">%</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>2 &lt;= "3"		// true
+2 &gt; true		// true
+false + 1		// 1
+true + "2"	// "true2"
+</code></pre>
+</div>
+
+<p>และอื่นๆ สามารถดู list operator ทั้งหมดได้ที่นี่ » <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Expressions_and_Operators">MDN: Expressions and operators</a></p>
+
+<h2 id="function">Function</h2>
+
+<p>ฟังก์ชัน ใน javascripts สามารถประกาศได้ง่ายๆโดยใช้คำสั่ง <code class="highlighter-rouge">function</code> โดยสามารถประกาศได้หลายแบบ</p>
+
+<ul>
+  <li>Named Function</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>function add(x,y) {
+	return x + y;
+}
+
+var a = add(10,20); // 30
+</code></pre>
+</div>
+
+<ul>
+  <li>Anonymous Function</li>
+</ul>
+
+<p>หรือฟังก์ชันที่ไม่มีชี่อ เราสามารถใช้ตัวแปรชี้ไปที่ฟังก์ชันนั้น และสามารถนำไปเรียกใช้ได้ หรือใช้ในการ pass เข้าไปเป็นตัวแปรในฟังก์ชันอื่นๆ</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var add = function(x,y) {
+	return x + y;
+}
+
+var a = add(10,20); // 30
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>setTimeout(function() {			// &lt;= Anonymous Function
+	var a = 1;
+}, 100)
+</code></pre>
+</div>
+
+<ul>
+  <li>IIFE Function (Immediately Invoked Function Expressions)</li>
+</ul>
+
+<p>หรือการประกาศฟังก์ชันที่รันทันที</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>(function echo() {
+	console.log("Hello")
+})();
+
+// Hello
+</code></pre>
+</div>
+
+<h3 id="new-operator">New Operator</h3>
+
+<p>คำสั่ง <code class="highlighter-rouge">new</code> ใน Javascripts ให้สำหรับสร้าง object ใหม่ซึ่ง references กับตัว function นั้นโดยตัวแปรที่สร้างจาก new จะทำการ inheriting function เดิม คือสามารถเรียกใช้ method, property ของฟังก์ชันเดิมได้ แต่เป็น scope คนละตัวกัน ซึ่งเรื่อง scope จะอธิบายต่อในบทถัดไปนะครับ</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var Person = function(name) {
+	this.name = name
+
+	this.getName = function() {
+		return this.name;
+	}
+}
+
+var john = new Person("john");
+var sara = new Person("sara");
+
+john.getName();		// "john"
+sara.getName();		// "sara"
+</code></pre>
+</div>
+
+<h2 id="strict-mode">Strict Mode</h2>
+
+<p>การรัน javascript นั้นมีด้วยกัน 2 โหมดคือ ธรรมดา และ strict mode ซึ่ง ข้อแตกต่างระหว่างสองอย่างนี้คือ</p>
+
+<ul>
+  <li>Strict Mode ช่วยให้โค้ด Error ง่ายขึ้น</li>
+</ul>
+
+<p>การออกแบบ javascript นั้น ในยุคก่อนหน้านี้ไม่ได้ให้ความสำคัญกับ error อะไรมาก ดังนั้นในการรันการทำงานหลายๆอย่างนั้น อาจจะไม่ี error ออกมา ทั้งๆที่โดย common sense แล้วมันควรจะ error ( engine ไม่ได้ออกแบบมาให้แสดง error ตรงส่วนนั้นในโหมดธรรมดา ) แต่พอรันด้วย strict mode แล้ว error หลายๆจะถูกปรับให้แสดงผลออกมา เพื่อช่วยให้เราเขียนโค้ดได้ง่ายและโปรแกรมรันได้ถูกต้องมากขึ้น ( ที่ไม่สามารถปรับให้โหมดธรรมดารันแล้วแสดงผล error ขึ้นมาได้ เพราะต้องการให้ compatible กับเวอร์ชันก่อนๆ ) ยกตัวอย่างเช่น</p>
+
+<p>การไม่ประกาศ var ก่อนหน้าการประกาศตัวแปร หากเราในโหมดธรรมดาก็จะรันได้ปกติ (ทำไมมันไม่ error ฟร่ะ ยังไม่ได้ประกาศซักหน่อย)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>a = 2
+a 	// 2
+</code></pre>
+</div>
+
+<p>หากรันบน strict mode ด้วยการคำสั่ง <code class="highlighter-rouge">use strict</code> ด้านบน ก็จะขึ้น error ด้วยประกาศฉะนี้แล</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>'use strict';
+
+a = 2		// ReferenceError a not defined
+</code></pre>
+</div>
+
+<p>ก็จะช่วยให้เราหลีกเลี่ยงความผิดพลาดที่อาจจะเกิดจากการโค้ดไม่ระวังได้ง่ายขึ้น</p>
+
+<ul>
+  <li>Strict Mode ช่วยให้โค้ดบางส่วนรันได้เร็วขึ้น</li>
+</ul>
+
+<p>เนื่องจาก Engine หลายๆตัวได้ทำการ Optimize การรัน JS บน Strict Mode ไว้แล้ว ช่วยให้สามารถรันโค้ดบางอย่างได้เร็วกว่าโหมดธรรมดา</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/up%20%26%20going/ch2.md">You Don’t Know JS: Up &amp; Going &gt; Chapter 2: Into JavaScript</a></li>
+  <li><a href="https://dorey.github.io/JavaScript-Equality-Table/">JavaScript Equality Table</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode">MDN: Strict Mode</a></li>
+  <li><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Expressions_and_Operators">MDN: Expressions and operators</a></li>
+</ul>
+
+</div>
+
+<div class="share-page">
+	<!-- Load Facebook SDK for JavaScript -->
+  <div id="fb-root"></div>
+  <!-- Your share button code -->
+  <div class="fb-share-button" 
+    data-href="/javascripts/framework/2017/02/13/js101" 
+    data-layout="button_count"
+    data-size="large">
+  </div>
+</div>
+
+<div class="author">
+	<h4>Author</h4>
+	<div class="profile">
+		<div class="img"></div>
+		<div class="info">
+			<h4>Anonymous</h4>
+			<p>Web Developer</p>
+			<p>Nextzy Technology Co,. LTD.</p>
+		</div>
+	</div>
+</div>
+
+<div class="related">
+	<h2>Related</h2>
+	<div class="ralated-posts">
+	
+		<a href="/aws/lambda/2017/02/11/aws-lambda-101">
+		<div class="post">
+			<img src="/assets/images/thumbnail/lambda.png">
+			<h2 class="post-title">
+					มาลองสร้าง Serverless Application บน AWS Lambda กัน
+			</h2>
+
+			<span class="post-date">รู้จักการทำ Serverless App / AWS Lambda + Mini Workshop</span>
+		</div>
+	</a>
+	
+		<a href="/javascripts/framework/2017/01/16/robot-framework">
+		<div class="post">
+			<img src="/assets/images/thumbnail/js101.png">
+			<h2 class="post-title">
+					VirtualDOM
+			</h2>
+
+			<span class="post-date">มารู้จัก VirtualDOM ใน HTML5 กัน</span>
+		</div>
+	</a>
+	
+		<a href="/javascripts/framework/2017/01/16/regression-test">
+		<div class="post">
+			<img src="/assets/images/thumbnail/js101.png">
+			<h2 class="post-title">
+					CSS Automate Test: Regression
+			</h2>
+
+			<span class="post-date">เทส CSS แบบ Automate บน PhantomJS</span>
+		</div>
+	</a>
+	
+	</div>
+</div>
+
+<div class="comments">
+	<div id="disqus_thread"></div>
+</div>
+
+<script>
+	
+	var disqus_developer = 1;
+	var disqus_config = function () {
+		this.page.identifier = "/javascripts/framework/2017/02/13/js101";
+	};
+	
+	(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		s.src = '//coladev.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
+	})();
+
+	(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8"
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+	</script>
+			</div>
+			<footer class="footer">
+	<div class="container">
+		&copy; Coladev.com 2017. All rights reserved.
+	</div>
+</footer>
+		</div>
+		
+
+		<label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+		<script src="/assets/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/assets/js/highlight.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/assets/js/app.js" type="text/javascript" charset="utf-8"></script>
+
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-35966443-7', 'auto');
+			ga('send', 'pageview');
+
+		</script>
+	</body>
+</html>
