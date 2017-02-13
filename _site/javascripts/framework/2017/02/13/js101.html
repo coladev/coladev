@@ -440,11 +440,13 @@ a.toUpperCase() 		// "HELLO WORLD"
 
 <p>นั่นก็เพราะว่าจริงๆแล้วตัวแปรที่ประกาศใน javascripts นั้น จะมีส่วนของ <code class="highlighter-rouge">Object Wrapper</code> หรือการครอบ Object Type ของตัวแปรนั้นๆให้ หากค่านั้นเป็น <code class="highlighter-rouge">String</code> ก็จะมี <code class="highlighter-rouge">String</code> object ครอบอยู่ และเราก็สามารถเรียกใช้งาน build-in method ได้นั้นเอง</p>
 
-<h2 id="operator">Operator</h2>
+<h2 id="expression--operators">Expression &amp; Operators</h2>
 
-<h3 id="loose-equality">Loose Equality</h3>
+<h3 id="comparison">Comparison</h3>
 
-<p>เราใช้เครื่องหมาย <code class="highlighter-rouge">==</code> และ <code class="highlighter-rouge">!=</code> ในการเปรียบเทียบค่าว่าสองค่าทั้งสองฝั่ง</p>
+<h4 id="loose-equality">Loose Equality</h4>
+
+<p>ใช้เครื่องหมาย <code class="highlighter-rouge">==</code> <code class="highlighter-rouge">!=</code> <code class="highlighter-rouge">&gt;</code> <code class="highlighter-rouge">&gt;=</code> <code class="highlighter-rouge">&lt;</code> <code class="highlighter-rouge">&lt;=</code>  ในการเปรียบเทียบค่าว่าสองค่าทั้งสองฝั่ง</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>2 == 2			// true
 3 != 2			// true
@@ -457,11 +459,11 @@ false == "1" 		// false
 
 <p>และหาก Type ทั้งสองฝั่งไม่เหมือนกัน ตัว JS Engine จะทำการ cast ค่าให้เป็น common type ซึ่งอาจเกิดการเปลี่ยนแปลงค่าได้สองฝั่งของการเปรียบเทียบ</p>
 
-<p>เราสามารถดูการเปรียบเทียบค่าแบบ Loose Equality ค่าไหนที่จะให้ผลลัพธ์เท่ากัน หรือไม่เท่ากันบ้าง แบบเข้าใจง่ายๆ ได้ที่ <a href="https://dorey.github.io/JavaScript-Equality-Table/">Javascripts Equality Table</a></p>
+<p>เราสามารถดูการเปรียบเทียบค่าแบบ Loose Equality ว่าเปรียบเทียบค่าไหนที่จะให้ผลลัพธ์เท่ากัน หรือไม่เท่ากันบ้าง แบบเข้าใจง่ายๆ ได้ที่ <a href="https://dorey.github.io/JavaScript-Equality-Table/">Javascripts Equality Table</a></p>
 
 <p><img src="/assets/images/posts/js101/js-equal-table.png" alt="JavaScript Equality Table" /></p>
 
-<h3 id="strict-equality">Strict Equality</h3>
+<h4 id="strict-equality">Strict Equality</h4>
 
 <p>ใช้เครื่องหมาย <code class="highlighter-rouge">===</code> และ <code class="highlighter-rouge">!==</code> ในการเปรียบเทียบ ซึ่งในกรณีนี้ ตัว Javascripts Engine จะไม่ทำการ Cast Type แล้ว หากคนละ Type ก็จะไม่เท่ากันไปเลย</p>
 
@@ -471,23 +473,83 @@ false == "1" 		// false
 </div>
 
 <blockquote>
-  <p>จะเห็นได้ว่าเราควรใช้การเปรียบเทียบแบบ Strict Equal มากกว่า เพื่อป้องกันความผิดพลาดของโปรแกรมที่เกิดจากการแปลงค่าของตัว Javascripts Engine แต่ในบางกรณีการเปรียบเทียบแบบ Abstract ก็ช่วยให้เราเขียนโค้ดได้สวยงามกว่า ดังนั้นต้องเลือกใช้ให้ดีๆ</p>
+  <p>จะเห็นได้ว่าเราควรใช้การเปรียบเทียบแบบ Strict Equality มากกว่า เพื่อป้องกันความผิดพลาดของโปรแกรมที่เกิดจากการแปลงค่าของตัว Javascripts Engine แต่ในบางกรณีการเปรียบเทียบแบบ Abstract ก็ช่วยให้เราเขียนโค้ดได้สวยงามกว่า ดังนั้นต้องเลือกใช้ให้ดีๆ</p>
 </blockquote>
 
-<h3 id="other-1">Other</h3>
+<h3 id="arithmetic-operators">Arithmetic operators</h3>
 
-<p>ในส่วนของการเปรียบเทียบและกระทำกับค่าและตัวแปรแบบอื่นๆนั้น จะเป็นรูปแบบของ Loose Equality เท่านั้น ไม่มีแบบ Strict Equality ดังนั้นเมื่อใช้งานให้ระวังการเกิด Implicit Type Casting กันด้วยนะครับ</p>
-
-<p><code class="highlighter-rouge">&gt;=</code> <code class="highlighter-rouge">&lt;=</code> <code class="highlighter-rouge">&gt;</code> <code class="highlighter-rouge">&lt;</code> <code class="highlighter-rouge">+</code> <code class="highlighter-rouge">-</code> <code class="highlighter-rouge">*</code> <code class="highlighter-rouge">/</code> <code class="highlighter-rouge">%</code></p>
+<p>หรือเครื่องหมายทางคณิตศาสตร์ <code class="highlighter-rouge">+</code> <code class="highlighter-rouge">-</code> <code class="highlighter-rouge">*</code> <code class="highlighter-rouge">/</code> <code class="highlighter-rouge">%</code> <code class="highlighter-rouge">++</code> <code class="highlighter-rouge">--</code> และเครื่องหมาย <code class="highlighter-rouge">+</code> ยังสามารถใช้ร่วมกับ String ได้ด้วย เป็นการ concat</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>2 &lt;= "3"		// true
 2 &gt; true		// true
 false + 1		// 1
-true + "2"	// "true2"
+true + "2"		// "true2"
 </code></pre>
 </div>
 
-<p>และอื่นๆ สามารถดู list operator ทั้งหมดได้ที่นี่ » <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Expressions_and_Operators">MDN: Expressions and operators</a></p>
+<h3 id="logical-operators">Logical operators</h3>
+
+<p><code class="highlighter-rouge">&amp;&amp;</code> =&gt; AND , <code class="highlighter-rouge">||</code> =&gt; OR และ <code class="highlighter-rouge">!</code> =&gt; Not</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>true &amp;&amp; true		// true
+true || false		// true
+false &amp;&amp; true		// false
+!true  			// false
+</code></pre>
+</div>
+
+<ul>
+  <li>Logical Operator นั้นลำดับก่อนหลังจะมีผลในการรันด้วย หากค่าก่อนหน้า Operator นั้นทำให้ได้ผลลัพธ์ที่แน่นอนของการเปรียบเทียบแล้ว คำสั่งเปรียบเทียบหลังจากนั้นก็จะไม่รัน เช่น</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>(1 == 2) &amp;&amp; isNumber(a)
+// เนื่องจาก 1 == 2 ให้ผลเป็น false แล้วต่อให้เมื่อเจอกับ &amp;&amp; ต่อให้ข้างหลังจากนั้นได้ค่าเป็นอะไร ผลลัพธ์โดยรวมก็จะเป็น false อยู่ดี ดังนั้นฟังก์ชัน isNumber จะไม่ถูกรันขึ้นมา
+
+(1 == 1) || isNumber(2)
+// เช่นเดียวกับ ยังไงผลลัพธ์ก็เป็น true ตัว isNumber ก็ไม่รัน
+</code></pre>
+</div>
+
+<p>ดังนั้นเราสามารถใช้ order ของการ compare logic ช่วยให้โค้ดของเราดูสั้นลงได้ เช่น object หากเป็น undefined หากทำการเรียกใช้ property ก็จะ error บางครั้งอาจจะใช้ <code class="highlighter-rouge">if ซ้อน if</code> เช่น</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>if(a !== undefined) {
+	if(a.value === 3) {
+		// a is 3
+	}
+}
+</code></pre>
+</div>
+
+<p>แต่ด้วย Order ก็ช่วยให้เราสามารถเขียน expression รวมกันได้ โดยเรียง order ให้ถูกต้อง</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>if(a !== undefined &amp;&amp; a.value === 3) {
+	// a is 3
+}
+</code></pre>
+</div>
+
+<p>เมื่อ <code class="highlighter-rouge">a = undefined</code> ก็จะให้ค่า false กลับมาทันที จะไม่รัน a.value ให้เกิด error ใดๆขึ้นมา</p>
+
+<p>และ Operators อื่นๆ สามารถดูได้ที่ <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Expressions_and_Operators">MDN: Expressions and operators</a></p>
+
+<h3 id="object-comparison">Object Comparison</h3>
+
+<p>ในการเปรียบเทียบค่าของ <code class="highlighter-rouge">Object</code> หรือ <code class="highlighter-rouge">Array</code> นั้นจะไม่สามารถเปรียบเทียบกันได้ด้วยการใช้ Comparison Operator ทั่วไป เนื่องจากหากเราจำได้ในต้นๆของบทความ ตัวแปรที่เก็บค่า Object นั้น ไม่ได้เก็บตัว Object แต่เป็นการเก็บตัว Reference ซึ่งในการสร้าง Object แต่ละครั้งนั้นจะไม่เหมือนกัน การใช้เครื่องหมาย <code class="highlighter-rouge">==</code> <code class="highlighter-rouge">===</code> จึงเป็นการเปรียบเทียบค่า Reference เท่านั้น ไม่ได้เปรียบเทียบค่า Object</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = { z: 1 }
+var b = { z: 1 }
+
+// เนื้อหาของออปเจ็คเดียวกันแต่เป็นค่าที่ละที่กัน
+a == b 		// false
+
+var c = a;	// ใช้ references ตัวเดียวกับ a
+a == c 		// true
+</code></pre>
+</div>
+
+<p>หากเราต้องการจะเปรียบเทียบค่า Object นั้นมีค่าเท่ากันหรือไม่ จึงจำเป็นต้องเข้าไปดูเนื้อหาของในของ Object และเปรียบเทียบทีละตัว เช่น มี key เท่ากันหรือไม่ ค่าของแต่ละ key เท่ากันหรือไม่</p>
+
+<p>แต่เราไม่ต้องไปเขียนเองนะครับ แน่นอนว่ามี Library ที่มีคนทำไว้อยู่แล้วให้เลือกใช้กันเยอะอยู่แล้ว แถมยังผ่านการทดสอบและปรับปรุงประสิทธิภาพมาอย่างดีกว่าด้วย เช่น <a href="http://underscorejs.org/">Underscore.js</a> ก็มีฟังก์ชัน <code class="highlighter-rouge">_.isEqual(a, b)</code> ให้เรียกใช้งานได้เลย</p>
 
 <h2 id="function">Function</h2>
 
