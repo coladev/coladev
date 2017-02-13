@@ -76,9 +76,9 @@
 	<img src="/assets/images/thumbnail/js101.png">
 	<h1 class="post-title">JS Basic: EP1. พื้นฐานแบบเน้นๆ</h1>
 	<span class="post-date">13 Feb 2017</span>
-	<p>เชื่อว่าหลายๆคนคงเขียน javascripts มากันพอสมควรแล้ว แต่น่าจะมีหลายคนที่อาจจะมองข้ามพื้นฐานเล็กๆน้อยๆไป ซึ่งผมก็เป็นหนึ่งในนั้น แต่หลังจากที่ไปศึกษาพื้นฐานในระดับลึกลงไปแล้ว ผมคิดว่าส่วนนี้สำคัญมากการในทำงาน ซึ่งคาดว่าจะช่วยให้การเขียนโค้ดของเราดีขึ้น เนื่องจากเราจะได้เห็นภาพอะไรบางอย่างที่แตกต่างออกไป ซึ่งเราจะมาเริ่มตั้งแต่การประกาศตัวแปร ไปจนถึงเรื่องใหม่ๆบน ES6 ในระดับละเอียดลงไปอีกระดับ</p>
+	<p>เชื่อว่าหลายๆคนคงเขียน Javascripts มากันพอสมควรแล้ว แต่น่าจะมีหลายคนที่อาจจะมองข้ามพื้นฐานเล็กๆน้อยๆไป ซึ่งผมก็เป็นหนึ่งในนั้น แต่หลังจากที่ได้ไปศึกษาพื้นฐานในระดับลึกลงไปแล้ว ผมคิดว่าส่วนนี้สำคัญมากการในทำงาน ซึ่งคิดว่าน่าจะช่วยให้การเขียนโค้ดของเราดีขึ้น เนื่องจากเราจะได้เห็นภาพอะไรบางอย่างที่แตกต่างออกไป ซึ่งในบทความนี้เราก็จะมาเริ่มตั้งแต่การประกาศตัวแปร ไปจนถึงเรื่องใหม่ๆบน ES6 ด้วยครับ</p>
 
-<p>ก่อนอื่นมารู้คำศัพท์กันก่อน จะได้เข้าใจตรงกันนะฮะ</p>
+<p>ก่อนอื่นมารู้คำศัพท์ที่เกี่ยวข้องกันก่อน เผื่อไปเจอในที่อื่นๆจะได้ไม่งงกันนะครับ</p>
 
 <h2 id="section">คำศัพท์</h2>
 
@@ -86,17 +86,19 @@
   <li>EcmaScript (ES)</li>
 </ul>
 
-<p>Ecmascript เป็นมาตรฐานของภาษาจาวาสคริปโดยมีการพัฒนาพื้นฐานมาเรื่อยๆจนถึงปัจจุบัน โดยในปัจจุบันที่รองรับในบราวเซอร์ทั่วไป คือ <code class="highlighter-rouge">ES5</code></p>
+<p>Ecmascript เป็นมาตรฐานของภาษา Javascripts โดยมีการพัฒนาพื้นฐานมาเรื่อยๆจนถึงปัจจุบัน โดยในปัจจุบันที่รองรับในบราวเซอร์ทั่วไป คือ <code class="highlighter-rouge">ES5</code> และเมื่อปีที่แล้วได้ทำการประกาศมาตรฐานรุ่นใหม่ขึ้นมาชื่อ <code class="highlighter-rouge">ES6</code> หรือ <code class="highlighter-rouge">ES2015</code> ซึ่งมีการปรับปรุงและเพิ่มเติมฟีเจอร์หลายๆอย่างซึ่งช่วยให้เราสามารถเขียน Javascripts ได้ง่ายขึ้น แล้วก็ยังมีที่มาตรฐานในยุคถัดๆที่ยังร่างกันอยู่ เช่น <code class="highlighter-rouge">ES7</code> <code class="highlighter-rouge">ES8</code></p>
 
-<p>และเมื่อปีที่แล้วได้ทำการประกาศมาตรฐานรุ่นใหม่ขึ้นมาชื่อ <code class="highlighter-rouge">ES6</code> หรือ <code class="highlighter-rouge">ES2015</code> ซึ่งมีการปรับปรุงและเพิ่มเติมฟีเจอร์หลายๆอย่างซึ่งช่วยให้เราสามารถเขียน javascripts ได้ง่ายขึ้น แล้วก็ยังมีที่มาตรฐานในยุคถัดๆที่ยังร่างกันอยู่ เช่น <code class="highlighter-rouge">ES7</code> <code class="highlighter-rouge">ES8</code></p>
+<p>ตัวอย่างบราวเซอร์ที่รองรับการประกาศตัวแปรแบบ <code class="highlighter-rouge">let</code> บน es6 จากเว็บ <a href="http://caniuse.com/#search=es6">caniuse.com</a></p>
 
-<p>Browser และ Node.js เวอร์ชันใหม่ได้เริ่มพัฒนาให้รองรับ ES6 กันแล้ว แต่เราไม่สามารถใช้กับบราวเซอร์เก่าๆที่ยังใช้กันส่วนมากได้ แต่มีวิธีแก้ครับ</p>
+<p><img src="/assets/images/posts/js101/es6-let-browser-support.png" alt="Let ES6 Browser Support" /></p>
+
+<p><code class="highlighter-rouge">Browser</code> และ <code class="highlighter-rouge">Node.js</code> เวอร์ชันใหม่ได้เริ่มพัฒนาให้รองรับ ES6 กันแล้ว แต่เราไม่สามารถใช้กับบราวเซอร์เก่าๆที่อาจจะยังใช้กันส่วนมากได้ แต่ก็มีวิธีแก้ครับ</p>
 
 <ul>
   <li>Transplier</li>
 </ul>
 
-<p>วิธีการแรกคือการแปลงโค้ดที่เราเขียนในรูปแบบของ ES6 ให้เป็นโค้ดในรูปแบบของ ES5 โดยใช้สิ่งที่เรียกว่า Transpiler ซึ่งมีอยู่หลายตัวด้วยกัน เช่น <code class="highlighter-rouge">babel</code> เป็นต้น</p>
+<p>วิธีการแรก คือ การแปลงโค้ดที่เราเขียนในรูปแบบของ ES6 ให้เป็นโค้ดในรูปแบบของ ES5 โดยใช้สิ่งที่เรียกว่า Transpiler ซึ่งมีอยู่หลายตัวด้วยกัน เช่น <code class="highlighter-rouge">babel</code> เป็นต้น</p>
 
 <ul>
   <li>Polyfill</li>
@@ -127,11 +129,11 @@ var b = "hello world";
 </code></pre>
 </div>
 
-<p>หลายๆคนคงคุ้นชินอยู่แล้ว แต่จริงๆ แล้วตัวแปรบนจาวาสคริปนั้นมี type ของมันเอง ซึ่งแบ่งเป็น 2 ประเภทหลัก คือ</p>
+<p>หลายๆคนคงคุ้นชินอยู่แล้ว แต่จริงๆ แล้วตัวแปรบน Javascripts นั้นมี type ของมันเอง ซึ่งแบ่งเป็น 2 ประเภทหลัก คือ</p>
 
 <h2 id="primitive-types">Primitive Types</h2>
 
-<p>หรือตัวแปรดั้งเดิม เป็นตัวแปรประเภทค่าเดียว ได้แก่ <code class="highlighter-rouge">String</code> <code class="highlighter-rouge">Number</code> <code class="highlighter-rouge">Boolean</code> <code class="highlighter-rouge">null</code> <code class="highlighter-rouge">undefined</code>
+<p>เป็นตัวแปรประเภทค่าเดียว ได้แก่ <code class="highlighter-rouge">String</code> <code class="highlighter-rouge">Number</code> <code class="highlighter-rouge">Boolean</code> <code class="highlighter-rouge">null</code> <code class="highlighter-rouge">undefined</code>
 โดยสามารถประกาศตัวแปรได้ง่ายๆ</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>var a = "hello";
@@ -146,7 +148,7 @@ var f = undefined;
 
 <h4 id="pass-by-value">Pass by Value</h4>
 
-<p>ตัวแปรจำพวก Primitive Types พวกนี้เป็น pass by value โดยการสร้างตัวแปรใหม่ จะ copy value เดิมแล้วชี้ไปที่ memory ที่ใหม่ เช่น</p>
+<p>การเก็บข้อมูลของตัวแปรจะเก็บเป็น value และหากทำการสร้างตัวแปรใหม่ จะ copy value เดิมแล้วชี้ไปที่ memory ที่ใหม่ เช่น</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>var a = 10;
 var b = a;
@@ -169,7 +171,7 @@ a 	// "test2"
 </code></pre>
 </div>
 
-<p>การเปลี่ยนแปลงค่าสามารถทำได้ด้วยการเปลี่ยนค่าผ่านการชี้ references ไปยัง memory ตัวใหม่เท่านั้น โดยผ่านเครื่องหมาย <code class="highlighter-rouge">=</code> นั่นเอง</p>
+<p>การเปลี่ยนแปลงค่าสามารถทำได้ด้วยการเปลี่ยนค่าผ่านการชี้ references ไปยัง memory ที่ใหม่เท่านั้น โดยผ่านเครื่องหมาย <code class="highlighter-rouge">=</code> นั่นเอง</p>
 
 <h2 id="object-types">Object Types</h2>
 
@@ -191,7 +193,7 @@ var d = {		// ออปเจ็คแบบมีค่าตั้งต้น
 
 <h4 id="shared-value">Shared Value</h4>
 
-<p>ตัวแปรใน Javascripts นั้นจะเป็น <code class="highlighter-rouge">Pass by value</code> ทั้งหมด แต่ในค่าจำพวก Object นั้นตัว Value จะเก็บเป็น References ไปยัง memory ที่เก็บ Object อีกที ดังนั้นการประกาศตัวแปรใหม่ก็จะเป็นคนละตำแหน่งใน memory เช่นเดียวกับ Primitive Types จากนั้นก็จะได้ค่า References ที่ชี้ไปยังที่เก็บ Object อีกที แต่ตัว References นั้นจะเป็นตัวเดียวกันนั่นเอง ค่าของ Object จึงเป็นค่าเดียวกัน</p>
+<p>ตัวแปรใน Javascripts นั้นจะเป็น <code class="highlighter-rouge">Pass by value</code> ทั้งหมด แต่ในค่าจำพวก Object นั้นตัว Value จะเก็บเป็น References ที่ชี้ไปยัง memory ที่เก็บ Object อีกที ดังนั้นการประกาศตัวแปรใหม่ก็จะเป็นคนละตำแหน่งใน memory เช่นเดียวกับ Primitive Types จากนั้นก็จะได้ค่า References ที่ชี้ไปยังที่เก็บ Object อีกที แต่ตัว References นั้นจะเป็นตัวเดียวกันนั่นเอง ค่าของ Object จึงเป็นค่าเดียวกัน</p>
 
 <p>อาจจะมองเป็นภาพง่ายๆแบบนี้</p>
 
@@ -334,13 +336,13 @@ a.shift() 		// [2,3,4,5]
 
 <h3 id="hoist">Hoist</h3>
 
-<p>Variable ใน js นั้น จะมีด้วยกัน 2 step คือการ <code class="highlighter-rouge">Declare</code> หรือการประกาศตัวแปร และ <code class="highlighter-rouge">Assign</code> หรือการชี้ตัวแปรไปยังค่านั้น เช่น</p>
+<p>การประกาศและ assign ค่าให้กับตัวแปรใน Javascript นั้น จะมีด้วยกัน 2 ขั้นตอน คือการ <code class="highlighter-rouge">Declare</code> หรือการประกาศตัวแปร และ <code class="highlighter-rouge">Assign</code> หรือการชี้ตัวแปรไปยังค่านั้น เช่น</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>var a = 10;
 </code></pre>
 </div>
 
-<p>แต่ในการรัน แยกออกเป็น 2 step</p>
+<p>แต่ในการรัน แยกออกเป็น 2 step โดยยกการ declare ขึ้นไปบนสุดของ scope นั้นๆ ( อ่านเรื่อง scope ได้ในบล็อค EP.2 นะครับ )</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>var a;		// Declare
 a = 10;		// Assign
@@ -355,7 +357,7 @@ a 	// 10
 </code></pre>
 </div>
 
-<p>เนื่องจากจริงๆแล้วตัว JS Engine ได้ทำการยกการ Declare ตัวแปรทั้งหมดใน Scope นั้นขึ้นไปไว้บนสุดของ Scope</p>
+<p>เพราะในการรันจริงๆ <code class="highlighter-rouge">var a;</code> จะขึ้นมาอยู่ด้านบนสุดของ scope นั้นนั่นเอง</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>var a;
 a 	// undefined
@@ -366,7 +368,7 @@ a 	// 10
 
 <h2 id="type-casting">Type Casting</h2>
 
-<p>การเปลี่ยน type ของค่าใน javascripts นั้นมีอยู่ 2 รูปแบบ</p>
+<p>การเปลี่ยน type ของค่าใน Javascripts นั้นมีอยู่ 2 รูปแบบ</p>
 
 <h4 id="explicit-cast">Explicit Cast</h4>
 
@@ -379,7 +381,7 @@ a.toString();			// "2" (String)
 
 <h4 id="implicit-cast">Implicit Cast</h4>
 
-<p>เป็นการเปลี่ยนแปลงค่าที่เกิดจากตัว JS Engine ทำการเปลี่ยนให้เพื่อให้ทำงานได้ ซึ่งจะเกิดขึ้นภายในการรันโปรแกรม เช่น การใช้ operator กับค่าที่เป็นคนละ Type กัน</p>
+<p>เป็นการเปลี่ยนแปลงค่าที่เกิดจากตัว JS Engine ทำการเปลี่ยนให้เพื่อให้โปรแกรมสามารถทำงานต่อได้ ซึ่งจะเกิดขึ้นภายในการรันโปรแกรม เช่น การใช้ operator กับค่าที่เป็นคนละ Type กัน</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>var a = 2 + "2"		// Implicit Cast 2 &gt;&gt; "2"
 var b = true + 1	// Implicit Cast true &gt;&gt; 1
@@ -389,11 +391,7 @@ b 	// 2
 </code></pre>
 </div>
 
-<p>ซึ่งทั้ง 2 แบบนี้มีวิธีและผลลัพธ์ที่เหมือนกัน โดยเราสามารถดูได้จากเว็บนี้ว่า ค่าใน type หนึ่งนั้น หาก cast ไป type อื่นจะสามารถเป็นอะไรได้บ้าง หรือเมื่อเปรียบเทียบแล้วจะเท่ากันหรือไม่ <a href="https://dorey.github.io/JavaScript-Equality-Table/">JavaScript Equality Table</a></p>
-
-<p><img src="/assets/images/posts/js101/js-equal-table.png" alt="JavaScript Equality Table" /></p>
-
-<p>ส่วน Priority ในการ Cast Type ใน operation ต่างๆนั้น ในแต่ละ Type จะมี Priority ต่างกัน และไล่คำนวนไปทีละ operator ตามวงเล็บครับ โดยในรายการนี้เรียงจาก Priority มากสุดไปน้อยสุด</p>
+<p>ในส่วน Priority ในการ Cast Type ใน operation ต่างๆนั้น ในแต่ละ Type จะมี Priority ต่างกัน และไล่คำนวนไปทีละ operator ตามวงเล็บครับ โดยในรายการนี้เรียงจาก Priority มากสุดไปน้อยสุด</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>String
 Number
@@ -412,6 +410,8 @@ undefined
 </div>
 
 <p>ได้เท่าไหร่กันนะ …… คำตอบคือ “3422false”</p>
+
+<hr />
 
 <h2 id="object-wrapper">Object Wrapper</h2>
 
@@ -442,25 +442,26 @@ a.toUpperCase() 		// "HELLO WORLD"
 
 <h2 id="operator">Operator</h2>
 
-<h3 id="abstract-equal">Abstract Equal</h3>
+<h3 id="loose-equality">Loose Equality</h3>
 
 <p>เราใช้เครื่องหมาย <code class="highlighter-rouge">==</code> และ <code class="highlighter-rouge">!=</code> ในการเปรียบเทียบค่าว่าสองค่าทั้งสองฝั่ง</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>2 == 2		// true
-3 != 2		// true
-8 == 2		// false
+<div class="highlighter-rouge"><pre class="highlight"><code>2 == 2			// true
+3 != 2			// true
+8 == 2			// false
+[1,2] == '1,2'		// true
+true == 1		// true
+false == "1" 		// false
 </code></pre>
 </div>
 
-<p>และหาก Type ทั้งสองฝั่งไม่เหมือนกัน ตัว javascripts engine จะทำการ cast ค่า หรือเปลี่ยนแปลงค่าให้เหมือนกันและทำการเปรียบเทียบ ดังนั้นเราจะเห็นได้ว่าบางครั้ง คนละ Type กัน แต่ผลลัพธ์สามารถออกเป็น <code class="highlighter-rouge">true</code> ได้ เช่น</p>
+<p>และหาก Type ทั้งสองฝั่งไม่เหมือนกัน ตัว JS Engine จะทำการ cast ค่าให้เป็น common type ซึ่งอาจเกิดการเปลี่ยนแปลงค่าได้สองฝั่งของการเปรียบเทียบ</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>2 == "2"	// true
-</code></pre>
-</div>
+<p>เราสามารถดูการเปรียบเทียบค่าแบบ Loose Equality ค่าไหนที่จะให้ผลลัพธ์เท่ากัน หรือไม่เท่ากันบ้าง แบบเข้าใจง่ายๆ ได้ที่ <a href="https://dorey.github.io/JavaScript-Equality-Table/">Javascripts Equality Table</a></p>
 
-<p>เมื่อทำการรันเปรียบเทียบ javascripts engine จะมองเห็นว่า type ของทั้งสองฝั่งไม่เหมือนกัน ฝั่งนึงเป็น <code class="highlighter-rouge">Number</code> และอีกฝงั่เป็น <code class="highlighter-rouge">String</code> ก็จะทำการ cast ตาม prioity ตามหัวข้อข้างบน โดย cast 2 เป็น “2” การรันจึงเปลี่ยนเป็น <code class="highlighter-rouge">"2" == "2"</code> จึงได้ผลลัพธ์เป็น true นั่นเอง</p>
+<p><img src="/assets/images/posts/js101/js-equal-table.png" alt="JavaScript Equality Table" /></p>
 
-<h3 id="strict-equal">Strict Equal</h3>
+<h3 id="strict-equality">Strict Equality</h3>
 
 <p>ใช้เครื่องหมาย <code class="highlighter-rouge">===</code> และ <code class="highlighter-rouge">!==</code> ในการเปรียบเทียบ ซึ่งในกรณีนี้ ตัว Javascripts Engine จะไม่ทำการ Cast Type แล้ว หากคนละ Type ก็จะไม่เท่ากันไปเลย</p>
 
@@ -475,7 +476,7 @@ a.toUpperCase() 		// "HELLO WORLD"
 
 <h3 id="other-1">Other</h3>
 
-<p>ในส่วนของการเปรียบเทียบและกระทำการกับค่าและตัวแปรแบบอื่นๆนั้น จะเป็นรูปแบบของ Abtract เท่านั้น ไม่มีแบบ strict mode ดังนั้นเมื่อใช้งานให้ระวังการเกิด Implicit Type Casting กันด้วยนะครับ</p>
+<p>ในส่วนของการเปรียบเทียบและกระทำกับค่าและตัวแปรแบบอื่นๆนั้น จะเป็นรูปแบบของ Loose Equality เท่านั้น ไม่มีแบบ Strict Equality ดังนั้นเมื่อใช้งานให้ระวังการเกิด Implicit Type Casting กันด้วยนะครับ</p>
 
 <p><code class="highlighter-rouge">&gt;=</code> <code class="highlighter-rouge">&lt;=</code> <code class="highlighter-rouge">&gt;</code> <code class="highlighter-rouge">&lt;</code> <code class="highlighter-rouge">+</code> <code class="highlighter-rouge">-</code> <code class="highlighter-rouge">*</code> <code class="highlighter-rouge">/</code> <code class="highlighter-rouge">%</code></p>
 
@@ -490,7 +491,7 @@ true + "2"	// "true2"
 
 <h2 id="function">Function</h2>
 
-<p>ฟังก์ชัน ใน javascripts สามารถประกาศได้ง่ายๆโดยใช้คำสั่ง <code class="highlighter-rouge">function</code> โดยสามารถประกาศได้หลายแบบ</p>
+<p>ฟังก์ชัน ใน Javascripts สามารถประกาศได้ง่ายๆโดยใช้คำสั่ง <code class="highlighter-rouge">function</code> โดยสามารถประกาศได้หลายแบบ</p>
 
 <ul>
   <li>Named Function</li>
@@ -508,7 +509,7 @@ var a = add(10,20); // 30
   <li>Anonymous Function</li>
 </ul>
 
-<p>หรือฟังก์ชันที่ไม่มีชี่อ เราสามารถใช้ตัวแปรชี้ไปที่ฟังก์ชันนั้น และสามารถนำไปเรียกใช้ได้ หรือใช้ในการ pass เข้าไปเป็นตัวแปรในฟังก์ชันอื่นๆ</p>
+<p>หรือฟังก์ชันที่ไม่มีชี่อ เราสามารถใช้ตัวแปรชี้ไปที่ฟังก์ชันนั้น และสามารถนำไปเรียกใช้ได้ หรือใช้ในการส่งผ่านเข้าไปเป็นตัวแปรในฟังก์ชันอื่นๆ</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>var add = function(x,y) {
 	return x + y;
@@ -540,13 +541,13 @@ var a = add(10,20); // 30
 
 <h2 id="strict-mode">Strict Mode</h2>
 
-<p>การรัน javascript นั้นมีด้วยกัน 2 โหมดคือ ธรรมดา และ strict mode ซึ่ง ข้อแตกต่างระหว่างสองอย่างนี้คือ</p>
+<p>การรัน Javascripts นั้นมีด้วยกัน 2 โหมดคือ ธรรมดา และ Strict Mode ซึ่ง ข้อแตกต่างระหว่างสองอย่างนี้คือ</p>
 
 <ul>
   <li>Strict Mode ช่วยให้โค้ด Error ง่ายขึ้น</li>
 </ul>
 
-<p>การออกแบบ javascript นั้น ในยุคก่อนหน้านี้ไม่ได้ให้ความสำคัญกับ error อะไรมาก ดังนั้นในการรันการทำงานหลายๆอย่างนั้น อาจจะไม่ี error ออกมา ทั้งๆที่โดย common sense แล้วมันควรจะ error ( engine ไม่ได้ออกแบบมาให้แสดง error ตรงส่วนนั้นในโหมดธรรมดา ) แต่พอรันด้วย strict mode แล้ว error หลายๆจะถูกปรับให้แสดงผลออกมา เพื่อช่วยให้เราเขียนโค้ดได้ง่ายและโปรแกรมรันได้ถูกต้องมากขึ้น ( ที่ไม่สามารถปรับให้โหมดธรรมดารันแล้วแสดงผล error ขึ้นมาได้ เพราะต้องการให้ compatible กับเวอร์ชันก่อนๆ ) ยกตัวอย่างเช่น</p>
+<p>การออกแบบ Javascripts นั้น ในยุคก่อนหน้านี้ไม่ได้ให้ความสำคัญกับ error อะไรมาก ดังนั้นในการรันการทำงานหลายๆอย่างนั้น อาจจะไม่มี error ออกมา ทั้งๆที่โดย common sense แล้วมันควรจะ error แต่พอรันด้วย strict mode แล้ว error หลายๆจะถูกปรับให้แสดงผลออกมา เพื่อช่วยให้เราเขียนโค้ดได้ง่ายและโปรแกรมรันได้ถูกต้องมากขึ้น ( ที่ไม่สามารถปรับให้โหมดธรรมดารันแล้วแสดงผล error ขึ้นมาได้ เพราะต้องการให้ compatible กับเวอร์ชันก่อนๆ ) ยกตัวอย่างเช่น</p>
 
 <p>การไม่ประกาศ var ก่อนหน้าการประกาศตัวแปร หากเราในโหมดธรรมดาก็จะรันได้ปกติ (ทำไมมันไม่ error ฟร่ะ ยังไม่ได้ประกาศซักหน่อย)</p>
 
@@ -570,6 +571,24 @@ a = 2		// ReferenceError a not defined
 </ul>
 
 <p>เนื่องจาก Engine หลายๆตัวได้ทำการ Optimize การรัน JS บน Strict Mode ไว้แล้ว ช่วยให้สามารถรันโค้ดบางอย่างได้เร็วกว่าโหมดธรรมดา</p>
+
+<p>Strict Mode สามารถประกาศในส่วนบนสุดของ Scope เช่น</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>'use strict';			// Strict Mode ทั้งไฟล์
+function foo() {
+	var b = 0;
+}
+var a = 0;
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>function foo() {
+	'use strict'; 		// Strict Mode เฉพาะในฟังก์ชัน foo
+	var b = 0;
+}
+var a = 0;
+</code></pre>
+</div>
 
 <h2 id="es6">ES6</h2>
 
@@ -602,10 +621,8 @@ a = 2		// TypeError
 
 <div class="highlighter-rouge"><pre class="highlight"><code>const b = [1,2,3];
 b.push(4);
-
-b // [1,2,3,4]
-
-b = [4,5,6];  // TypeError
+b 		// [1,2,3,4]
+b = [4,5,6];  	// TypeError
 </code></pre>
 </div>
 
@@ -616,6 +633,7 @@ b = [4,5,6];  // TypeError
   <li><a href="https://dorey.github.io/JavaScript-Equality-Table/">JavaScript Equality Table</a></li>
   <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode">MDN: Strict Mode</a></li>
   <li><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Expressions_and_Operators">MDN: Expressions and operators</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness">MDN: Equality comparisons and sameness</a></li>
   <li><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/let">Let</a></li>
 </ul>
 
