@@ -391,18 +391,6 @@ b 	// 2
 </code></pre>
 </div>
 
-<p>ในส่วน Priority ในการ Cast Type ใน operation ต่างๆนั้น ในแต่ละ Type จะมี Priority ต่างกัน และไล่คำนวนไปทีละ operator ตามวงเล็บครับ โดยในรายการนี้เรียงจาก Priority มากสุดไปน้อยสุด</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>String
-Number
-Boolean
-null
-undefined
-</code></pre>
-</div>
-
-<p>หากมีการเปลี่ยนเทียบหรือกระทำค่าระหว่าง String กับ Number ตัว Number Priority ต่ำกว่าก็จะถูก cast เป็น String</p>
-
 <h4 id="mini-quiz">Mini Quiz</h4>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>true + 2 + (2 + 2 + "2" + ( true + null + 1 ) + false) = ?
@@ -415,7 +403,7 @@ undefined
 
 <h2 id="object-wrapper">Object Wrapper</h2>
 
-<p>ในการประกาศตัวแปรใน javascripts นั้น เราอาจจะเห็นว่าเราสามารถ assign ค่าที่เป็น type อะไรก็ได้เข้าไปในตัวแปรนั้นได้เลย แต่จริงๆแล้วยังมีวิธีการประกาศตัวแปรอีกแบบ คือ การสร้าง object ของ type นั้นขึ้นมาใหม่ โดยใช้คำสั่ง <code class="highlighter-rouge">new object</code> เช่น</p>
+<p>ในการประกาศตัวแปรใน Javascripts นั้น เราอาจจะเห็นว่าเราสามารถ assign ค่าที่เป็น type อะไรก็ได้เข้าไปในตัวแปรนั้นได้เลย แต่จริงๆแล้วยังมีวิธีการประกาศตัวแปรอีกแบบ คือ การสร้าง object ของ type นั้นขึ้นมาใหม่ โดยใช้คำสั่ง <code class="highlighter-rouge">new object</code> เช่น</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>var a = new String("Hello World");
 var b = new Number(2);
@@ -438,7 +426,7 @@ a.toUpperCase() 		// "HELLO WORLD"
 
 <p>แต่เดี๋ยวก่อน ทั้งที่เราไม่ได้ประกาศตัวแปรเป็น object type นั้น แล้วทำไมเราถึงยังสามารถใช้ build-in method ได้อยู่ละ</p>
 
-<p>นั่นก็เพราะว่าจริงๆแล้วตัวแปรที่ประกาศใน javascripts นั้น จะมีส่วนของ <code class="highlighter-rouge">Object Wrapper</code> หรือการครอบ Object Type ของตัวแปรนั้นๆให้ หากค่านั้นเป็น <code class="highlighter-rouge">String</code> ก็จะมี <code class="highlighter-rouge">String</code> object ครอบอยู่ และเราก็สามารถเรียกใช้งาน build-in method ได้นั้นเอง</p>
+<p>นั่นก็เพราะว่าจริงๆแล้วตัวแปรที่ประกาศใน Javascripts นั้น จะมีส่วนของ <code class="highlighter-rouge">Object Wrapper</code> หรือการครอบ Object Type ของตัวแปรนั้นๆให้ หากค่านั้นเป็น <code class="highlighter-rouge">String</code> ก็จะมี <code class="highlighter-rouge">String</code> object ครอบอยู่ และเราก็สามารถเรียกใช้งาน build-in method ได้นั้นเอง</p>
 
 <h2 id="expression--operators">Expression &amp; Operators</h2>
 
@@ -454,14 +442,18 @@ a.toUpperCase() 		// "HELLO WORLD"
 [1,2] == '1,2'		// true
 true == 1		// true
 false == "1" 		// false
+2 &lt; "3"			// true
+2 &gt; true		// true
 </code></pre>
 </div>
 
-<p>และหาก Type ทั้งสองฝั่งไม่เหมือนกัน ตัว JS Engine จะทำการ cast ค่าให้เป็น common type ซึ่งอาจเกิดการเปลี่ยนแปลงค่าได้สองฝั่งของการเปรียบเทียบ</p>
+<p>และหาก Type ทั้งสองฝั่งไม่เหมือนกัน ตัว JS Engine จะทำการ cast ค่าให้เป็น common type ซึ่งอาจเกิดการเปลี่ยนแปลงค่าได้สองฝั่งของการเปรียบเทียบ และการเปรียบเทียบที่มี Arithmetic มาเกี่ยวข้อง ก็จะ cast เป็น <code class="highlighter-rouge">Number</code> เพื่อทำการเปรียบเทียบ</p>
 
 <p>เราสามารถดูการเปรียบเทียบค่าแบบ Loose Equality ว่าเปรียบเทียบค่าไหนที่จะให้ผลลัพธ์เท่ากัน หรือไม่เท่ากันบ้าง แบบเข้าใจง่ายๆ ได้ที่ <a href="https://dorey.github.io/JavaScript-Equality-Table/">Javascripts Equality Table</a></p>
 
 <p><img src="/assets/images/posts/js101/js-equal-table.png" alt="JavaScript Equality Table" /></p>
+
+<p> </p>
 
 <h4 id="strict-equality">Strict Equality</h4>
 
@@ -480,10 +472,17 @@ false == "1" 		// false
 
 <p>หรือเครื่องหมายทางคณิตศาสตร์ <code class="highlighter-rouge">+</code> <code class="highlighter-rouge">-</code> <code class="highlighter-rouge">*</code> <code class="highlighter-rouge">/</code> <code class="highlighter-rouge">%</code> <code class="highlighter-rouge">++</code> <code class="highlighter-rouge">--</code> และเครื่องหมาย <code class="highlighter-rouge">+</code> ยังสามารถใช้ร่วมกับ String ได้ด้วย เป็นการ concat</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>2 &lt;= "3"		// true
-2 &gt; true		// true
-false + 1		// 1
+<div class="highlighter-rouge"><pre class="highlight"><code>false + 1		// 1
 true + "2"		// "true2"
+</code></pre>
+</div>
+<p>เมื่อมีการใช้งาน Arithmetic Operator หากมี type อื่นๆที่ไม่ใช่ number ก็จะถูก cast ไป number ก่อน เช่น <code class="highlighter-rouge">true &gt;&gt; 1</code> , <code class="highlighter-rouge">false &gt;&gt; 0</code> , <code class="highlighter-rouge">null &gt;&gt; 0</code> , <code class="highlighter-rouge">undefined &gt;&gt; NaN</code> แต่หากมีการใช้ <code class="highlighter-rouge">+</code> กับ String ก็จะถูก cast เป็น String ทันที เช่น</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>true + 1  		// 2
+false + 3 		// 3
+4 + undefined 		// NaN
+"3" - 1 		// 2
+"3" + 1 		// "31"
 </code></pre>
 </div>
 
