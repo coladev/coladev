@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+	<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      JS Basic: EP2. Scope &middot; Coladev.com
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/public/js/hightlightjs/styles/tomorrow.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+  
+    <meta property="og:title" content="JS Basic: EP2. Scope" />
+    <meta property="og:description" content="มารู้จักและทำความเข้าใจ Scope ใน Javascripts กัน" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://coladev.com/assets/images/thumbnail/js101.png" />
+  
+
+<script src="http://127.0.0.1:35729/livereload.js"></script></head>
+
+
+	<body>
+
+		<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <img src="/assets/images/coladev-logo-light.png">
+    <h3>COLADEV.COM</h3>
+    <p>บันทึกและบทความเกี่ยวกับการเขียนโปรแกรมจากโปรแกรมเมอร์น้อยๆผู้ชื่นชอบโค้กเป็นชีวิตจิตใจ</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+    <a class="sidebar-nav-item" href="/tags/javascripts">Javascripts</a>
+    <a class="sidebar-nav-item" href="/tags/devops">Devops</a>
+  </nav>
+</div>
+
+
+		<!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+				 content to avoid any CSS collisions with our real content. -->
+		<div class="wrap">
+			<div class="masthead">
+				<div class="container">
+					<div class="masthead-title">
+						<a href="/" title="Coladev.com">
+							<img src="/assets/images/logo.png">
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="container content">
+				<div class="post">
+	<img src="/assets/images/thumbnail/js101.png">
+	<h1 class="post-title">JS Basic: EP2. Scope</h1>
+	<span class="post-date">16 Jan 2017</span>
+	<p>ต่อจากบล็อกที่แล้ว เรามาต่อกันที่เรื่องของ Scope นะครับ จริงๆเรื่อง Scope เป็นเรื่องพื้นฐานบน Javascripts มากๆเพราะเป็นเรื่องของการทำงานของโปรแกรมกันเลยทีเดียว แต่ก่อนหน้า เราต่องมาทำความเข้าใจเรื่องการวิธีการทำงานของตัว Javascript Engine กันก่อนนะครับ ว่าตอนที่เรารันโปรแกรมนั้น มันทำอะไรบ้าง</p>
+
+<h2 id="javascripts-engine--friends">Javascripts Engine &amp; Friends</h2>
+
+<p>เมื่อเราทำการรันตัวไฟล์ Javascripts บน Runtime อะไรก็ตามแต่ จะมี 3 ส่วนหลักๆที่ทำหน้าที่รันโค้ดด้วยกัน คือ</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">Engine</code>	ทำหน้าที่รันคำสั่งของโปรแกรม</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Compiler</code> ทำหน้าที่แปลงโค้ด Javascripts ของเราให้อยู่ในรูปแบบที่ Engine สามารถ Execute ได้</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Scope</code> ทำหน้าที่มองหาส่วนของที่อยู่ของตัวแปรในโค้ด เพื่อให้ Engine ระบุได้ว่า ตัวแปรนั้นอยู่ใน Scope ส่วนไหน เพื่อให้สามารถดึงค่าหรือรันโปรแกรมได้อย่างถูกต้อง</p>
+  </li>
+</ul>
+
+<h3 id="lhs--rhs">LHS &amp; RHS</h3>
+
+<p>Left Hand Side คือค่าที่อยู่ฝั่งซ้ายมือของ <code class="highlighter-rouge">=</code> เป็นแค่การหา Reference ของตัวแปรนั้นๆ<br />
+Right Hand Side คือค่าที่อยู่ฝั่งขวามือของ <code class="highlighter-rouge">=</code> ทำการหา Value และรัน Operator ต่างๆ</p>
+
+<p>ยกตัวอย่างเช่น</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = 10;
+var b = a + 2;
+</code></pre>
+</div>
+
+<p>LHS คือ <code class="highlighter-rouge">a</code> และ <code class="highlighter-rouge">b</code> คือการหาตัวแปรที่เราจะเข้าไปเปลี่ยนแปลงค่า<br />
+RHS คือ <code class="highlighter-rouge">10</code> และ <code class="highlighter-rouge">a + 2</code> จะไปทำการดึงค่าของตัวแปรและรันคำสั่ง เพื่อทำการจัดเก็บไปที่ LHS</p>
+
+<p>ลองมาดูกันว่า ในการรันโปรแกรมครั้งนึงนั้น แต่ละส่วนจะคุยกันอย่างไรบ้างเพื่อให้โปรแกรมทำงานได้</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = 10;
+var b = a + 2;
+
+Compiler: 	มีหน้าที่คอมไพล์อย่างเดียว คอมไพล์ไป
+Engine: 	ประกาศตัวแปร a
+Engine:		assign ค่าให้ a  // a = 10
+Engine: 	ประกาศตัวแปร b
+Engine:		มีการเรียกใช้งานตัวแปร a ต้องไปถาม scope ละ ขอที่อยู่ตัวแปร a หน่อย
+Scope: 		หาตำแหน่งของ a และส่งกลับไปให้ engine
+Engine: 	ได้ตำแหน่งมาแล้วก็ไปดึงค่า a แล้วทำงานต่อ b = 10 + 2;
+</code></pre>
+</div>
+
+<p>หลักการคร่าวๆก็จะประมานนี้เพื่อให้ได้เห็นภาพกันนะครับ คงพอจะได้เห็นได้ว่า Compiler และ Engine นั้นมีหน้าที่คอมไพล์และรันโปรแกรม แต่ <code class="highlighter-rouge">Scope</code> นั้นทำหน้าที่หาตำแหน่งที่อยู่ของตัวแปรในโปรแกรมให้กับ Engine แต่อาจจะสงสัยว่าทำไมต้องหาด้วยละ ตัวแปรก็น่าจะมีที่เดียวอยู่แล้ว เดี๋ยวเรามาดูรายละเอียดกันครับ</p>
+
+<h2 id="lexical-scope">Lexical Scope</h2>
+
+<p>Scope เป็นพื้นที่ในการใช้ตัวแปร ซึ่งใน Javascripts เราจะแบ่ง Scope ด้วยเครื่องหมายปีกกา <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code> โดยพื้นที่นอกสุด เป็น Global Scope</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = 10;		 // Global Scope
+
+if(a == 10) {		 // Block Scope
+	var c = 20;
+}
+
+function foo() {	 // Function Scope
+	var b = 10;
+}
+</code></pre>
+</div>
+
+<h3 id="block-scope">Block Scope</h3>
+
+<p>สามารถพบเห็นได้ทั่วไปทั้งการใช้คำสั่ง <code class="highlighter-rouge">if..else</code> <code class="highlighter-rouge">for</code> <code class="highlighter-rouge">while</code> และอื่นๆ โดย Block Scope เป็น Block สำหรับการรันคำสั่งๆในแต่ละ Block แต่จะไม่ครอบคลุมถึงการ Declare ตัวแปร ซึ่งจะถูก Declare นอก Block Scope เช่น</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>if(true) {
+	var a = 10;
+} else {
+	var b = 10;
+}
+
+a 	// 10
+b 	// undefined
+</code></pre>
+</div>
+
+<p>เราจะสังเกตุได้ว่า b ไม่ใช่ <code class="highlighter-rouge">ReferenceError</code> ทั้งๆที่โปรแกรมไม่ได้เข้าไปทำงานใน <code class="highlighter-rouge">else</code> เนื่องจากเวลารันจริงตัว declare จะถูกประกาศด้านนอก block scope แบบนี้</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a, b;
+if(true) {
+	a = 10
+} else {
+	b = 10;
+}
+</code></pre>
+</div>
+
+<p>เช่นเดียวกันกับ <code class="highlighter-rouge">for</code> loop</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>for(var i = 0; i &lt; 10; i++) {
+	i 	// 0..9	
+}
+
+i // 10
+</code></pre>
+</div>
+
+<p>เราจะเห็นได้ว่า var ที่ประกาศนั้นเป็นการประกาศนอก Block Scope ดังนั้นหากเราใช้ asynchronous ฟังก์ชันใน loop เช่น <code class="highlighter-rouge">setTimeout</code> และเรียกใช้ตัวแปรนั้น ค่าของตัวแปรจะไม่ถูกต้อง</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>for(var i = 0; i &lt; 10; i++) {
+	i 		// 0..9
+	setTimeout(function() {
+		i 		// 10
+	}, 1000)
+}
+i // 10
+</code></pre>
+</div>
+
+<p>เนื่องมาจากฟังก์ชันนั้นไม่ได้ในรันในทันที เมื่อฟังก์ชันนั้นถูกรันภายหลัง ก็จะมองหาตัวแปร <code class="highlighter-rouge">i</code> ซึ่งตัวแปร i ใน scope นั้น ซึ่งกลายเป็นค่าที่ถูกบวกไปเรื่อยๆตาม loop ไปแล้ว จึงได้ค่าเป็น 10 นั่นเอง</p>
+
+<h3 id="function-scope">Function Scope</h3>
+
+<p>มาดู Scope ที่เกิดขึ้นจากฟังก์ชันกันบ้าง</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = 10;
+function foo(x) {
+	var b = 10;
+	b 	// 10
+	x		// 4
+}
+
+foo(4);
+b 		// ReferenceError ( no "b" in this scope )
+x		// ReferenceError ( no "x" in this scope )
+</code></pre>
+</div>
+
+<p>ข้อแตกต่างที่แตกต่างจาก Block Scope นั้นคือ ตัว Function Scope นั้นจะ Declare Variable ในฟังก์ชัน ดังนั้น เราไม่สามารถเรียกใช้ตัวแปรที่ไม่ได้อยู่ใน scope นั้นและไม่ได้อยู่ที่ parent ของ scope นั้นๆได้</p>
+
+<h3 id="nested-function-scope">Nested Function Scope</h3>
+
+<p>เมื่อเราทำการประกาศฟังก์ชันแยกย่อยลงไป Scope ก็จะแยกย่อยลงไปด้วย</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = 1;
+
+function foo(x) {
+	var b = 2;
+	function bar(y) {
+		var c = 3;
+	}
+}
+</code></pre>
+</div>
+
+<p>หากจะมอง scope เป็นภาพง่ายๆก็จะเป็นประมานนี้</p>
+
+<p><img src="/assets/images/posts/js101/scope.png" alt="/assets/images/posts/js101/scope.png" /></p>
+
+<h3 id="variable-lookup">Variable Lookup</h3>
+
+<p>ทีนี้มาดูกันก่อนว่าในแต่ละ Scope เมื่อเราทำการรันโปรแกรมจะมีวิธีการหาค่าของตัวแปรกันอย่างไร</p>
+
+<p>การหาค่าของตัวแปรนั้น จะเป็นการหาค่าแบบ <code class="highlighter-rouge">Down&gt;&gt;Top</code> คือ หาใน Scope ตัวเองเสร็จ หาไม่เจอ ก็จะค่อยๆหาขึ้นไปใน Parent Scope ขึ้นไปเรื่อยๆจนถึง Global Scope เมื่อเจอตัวแปรที่ Scope ที่ใกล้ที่สุดก็ใช้ตัวแปรนั้นในการรันครั้งนันๆ</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = 1;
+
+function foo() {
+	var b = 2;
+	function bar() {
+		var c = a + b;
+	}
+	bar();
+}
+foo();
+</code></pre>
+</div>
+
+<p>เมื่อการเรียกใช้ตัวแปรในฝั่ง RHS ในที่นี้คือ <code class="highlighter-rouge">a</code> และ <code class="highlighter-rouge">b</code> ตัว Engine ต้องการจะรันคำสั่ง ก็จะคุยกับ Scope เพื่อหาค่าของตัวแปร</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Engine: 	เฮ้ อยากได้ค่า a อะ มันอยู่ที่ไหน
+Scope: 		แปปนะ หาก่อน เอ... ไม่เจอในชั้น `bar` แฮะ เดี๋ยวขอขึ้นไปดูชั้นบนก่อนนะ
+Scope: 		ชั้น `foo` ก็ไม่มีแฮะ เดี๋ยวขึ้นไปดูชั้นบนสุด
+Scope: 		อะ เจอแล้ว อยู่ชั้นบนสุด ไปดึงค่ามาจากที่นี่นะ
+Engine: 	Thxกิ้ว
+</code></pre>
+</div>
+
+<h3 id="lookup-example">Lookup Example</h3>
+
+<p>เรามาลองดูกันว่าเข้าใจวิธีการหาตัวแปรของ Scope กันรึเปล่านะครับ</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = 1;
+
+function bar() {
+	a 			// 1
+}
+function foo() {
+	var a = 2;
+	a 			// 2
+	bar();
+}
+foo();
+</code></pre>
+</div>
+
+<p>ใน scope ของ <code class="highlighter-rouge">foo</code> นั้นมีตัวแปร a อยู่ ดังนั้นเมื่อมีการเรียกตัวแปร a ในฟังก์ชันนี้ Scope ก็จะส่งค่า a ใน scope นี้ไปให้ จึงได้ค่าเป็น a ในขณะที่ scope <code class="highlighter-rouge">bar</code> นั้นไม่มีตัวแปร a ตัว Scope เองจึงต้องขึ้นไปดูที่ Global Scope เมื่อเจอค่า a ก็ส่งกลับไปให้ ค่า a ใน bar จึงเป็น 1</p>
+
+<p>ทีนี้พอเข้าใจการทำงานของ Scope แล้ว มาลองแก้ปัญหา <code class="highlighter-rouge">setTimeout</code> ใน loop ตามหัวข้อด้านบนกันดูนะครับ หากจะแก้ปัญหา เราจำเป็นต้องนำ function มาใช้เพื่อให้ได้ Scope ใหม่ภายใต้ loop นั้น เช่น การใช้ IIFE Function หรือเรียก setTimeout ในฟังก์ชันอื่น</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>for(var i = 0; i &lt; 10; i++) {
+	(function() {
+		var j = i;
+		setTimeout(function() {
+			console.log(j)
+		}, 1000)
+	})();
+}
+</code></pre>
+</div>
+
+<p>หรือ</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var delay = function(x) {
+	setTimeout(function() {
+		console.log(x)
+	}, 1000);
+}
+
+for(var i = 0; i &lt; 10; i++) {
+	delay(i)
+}
+</code></pre>
+</div>
+
+<p>จะเห็นได้ว่า เราประกาศตัวแปรใหม่คือ j และ assign ค่าจาก i ให้ จะถูกรันในระหว่าง loop ค่า j จึงเป็นการนับตามค่า i และเนื่องจากเป็นการประกาศ IIFE ฟังก์ชันใหม่ค่า j ของเราในแต่ละรูปนั้น จะเป็นคนละ scope กัน ทำให้ผลรันจึงออกมาถูกต้อง เพราะ Variable Lookup นั้นขึ้นไปหาค่าของตัวแปร <code class="highlighter-rouge">j</code> ของ scope นั้นได้ถูกต้องนั่นเอง</p>
+
+<h2 id="es6">ES6</h2>
+
+<p>ใน ES6 นั้น เราใช้ <code class="highlighter-rouge">let</code> ในการประกาศตัวแปรแทน <code class="highlighter-rouge">var</code> ซึ่ง <code class="highlighter-rouge">let</code> มันมี behavior ของ scope ที่แตกต่างกันกับ <code class="highlighter-rouge">var</code> มาดูว่าแตกต่างกันยังไงบ้างนะครับ</p>
+
+<h3 id="let-scope">Let Scope</h3>
+
+<p>Scope ของ <code class="highlighter-rouge">let</code> นั้นแตกต่างจาก <code class="highlighter-rouge">var</code> ในส่วนของ Block Scope โดยหากเราย้อนกลับไปดูหัวข้อ Block Scope นั้น การประกาศตัวแปรโดยใช้ var จะสามารถเรียกใช้ได้นอก Block Scope เนื่องจากการ declare variable นั้นอยู่นอก scope แต่ใน <code class="highlighter-rouge">let</code>นั้น จะไม่สามารถใช้ได้ เนื่องจากจะถูก declare ใน Block Scope นั้นๆและใช้ได้แค่เพียงใน Scope นั้นเท่านั้น เช่น</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>if(true) {
+	var a = 2;
+} else {
+	var b = 3;
+}
+a 	// 2
+b 	// undefined
+
+if(true) {
+	let c = 2;
+}
+c 	// ReferenceError
+</code></pre>
+</div>
+
+<p>และแน่นอนว่าเมื่อ let นั้นใช้สร้าง scope ใหม่ภายใน block scope ด้วย ดังนั้นปัญหากับ loop แบบ var จึงไม่เกิดขึ้น</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>for(let i = 0; i &lt; 10; i++) {
+	setTimeout(function() {
+		i 		// 0..9
+	}, 1000)
+}
+
+i 		// ReferenceError
+</code></pre>
+</div>
+
+<p>และแน่นอนว่า scope ของ <code class="highlighter-rouge">const</code> ก็เหมือนกับ let เลยครับ</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>Function vs Block Scope <a href="https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch3.md">https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch3.md</a></li>
+  <li>Let	<a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/let">https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/let</a></li>
+</ul>
+
+</div>
+
+<div class="share-page">
+	<!-- Load Facebook SDK for JavaScript -->
+  <div id="fb-root"></div>
+  <!-- Your share button code -->
+  <div class="fb-share-button" 
+    data-href="/javascripts/framework/2017/01/16/js101-scope" 
+    data-layout="button_count"
+    data-size="large">
+  </div>
+</div>
+
+<div class="author">
+	<h4>Author</h4>
+	<div class="profile">
+		<div class="img"></div>
+		<div class="info">
+			<h4>Anonymous</h4>
+			<p>Web Developer</p>
+			<p>Nextzy Technology Co,. LTD.</p>
+		</div>
+	</div>
+</div>
+
+<div class="related">
+	<h2>Related</h2>
+	<div class="ralated-posts">
+	
+		<a href="/javascripts/basic/2017/02/13/js101">
+		<div class="post">
+			<img src="/assets/images/thumbnail/js101.png">
+			<h2 class="post-title">
+					JS Basic: EP1. พื้นฐานแบบเน้นๆ
+			</h2>
+
+			<span class="post-date">ปูพื้นฐาน javascripts ใหม่กันเถอะ</span>
+		</div>
+	</a>
+	
+		<a href="/aws/lambda/2017/02/11/aws-lambda-101">
+		<div class="post">
+			<img src="/assets/images/thumbnail/lambda.png">
+			<h2 class="post-title">
+					มาลองสร้าง Serverless Application บน AWS Lambda กัน
+			</h2>
+
+			<span class="post-date">รู้จักการทำ Serverless App / AWS Lambda + Mini Workshop</span>
+		</div>
+	</a>
+	
+		<a href="/javascripts/framework/2017/01/16/robot-framework">
+		<div class="post">
+			<img src="/assets/images/thumbnail/js101.png">
+			<h2 class="post-title">
+					Robot Framework 101
+			</h2>
+
+			<span class="post-date">ทำ E2E Tesing บนเว็บไซต์ด้วย Robot Framework</span>
+		</div>
+	</a>
+	
+	</div>
+</div>
+
+<div class="comments">
+	<div id="disqus_thread"></div>
+</div>
+
+<script>
+	
+	var disqus_developer = 1;
+	var disqus_config = function () {
+		this.page.identifier = "/javascripts/framework/2017/01/16/js101-scope";
+	};
+	
+	(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		s.src = '//coladev.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
+	})();
+
+	(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8"
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+	</script>
+			</div>
+			<footer class="footer">
+	<div class="container">
+		&copy; Coladev.com 2017. All rights reserved.
+	</div>
+</footer>
+		</div>
+		
+
+		<label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+		<script src="/assets/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/assets/js/highlight.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/assets/js/app.js" type="text/javascript" charset="utf-8"></script>
+
+		<script>
+		
+		</script>
+	</body>
+</html>
