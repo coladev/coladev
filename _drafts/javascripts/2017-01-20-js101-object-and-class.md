@@ -53,6 +53,8 @@ House.name 	// House
 Tower.name 	// Tower
 ```
 
+### Object Scope
+
 ### Constructor
 
 ### Prototype

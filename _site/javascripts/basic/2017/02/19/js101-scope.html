@@ -75,12 +75,12 @@
 				<div class="post">
 	<img src="/assets/images/thumbnail/js101-scope.png">
 	<h1 class="post-title">JS Basic: EP2. Scope</h1>
-	<span class="post-date">16 Jan 2017</span>
-	<p>ต่อจากบล็อกที่แล้ว เรามาต่อกันที่เรื่องของ Scope นะครับ จริงๆเรื่อง Scope เป็นเรื่องพื้นฐานบน Javascripts มากๆเพราะเป็นเรื่องของการทำงานของโปรแกรมกันเลยทีเดียว แต่ก่อนหน้า เราต่องมาทำความเข้าใจเรื่องการวิธีการทำงานของตัว Javascript Engine กันก่อนนะครับ ว่าตอนที่เรารันโปรแกรมนั้น มันทำอะไรบ้าง</p>
+	<span class="post-date">19 Feb 2017</span>
+	<p>ต่อจากบล็อกที่แล้ว <a href="https://coladev.com/javascripts/basic/2017/02/13/js101">JS Basic: EP1. พื้นฐานแบบเน้นๆ</a> เราจะมาต่อกันที่เรื่องของ Scope นะครับ ซึ่งเป็นเรื่องพื้นฐานบน Javascripts มากๆเพราะเป็นเรื่องของการทำงานของโปรแกรม แต่ก่อนหน้า เราต่องมาทำความเข้าใจเรื่องการวิธีการทำงานของตัว Javascript Engine กันก่อนนะครับ ว่าตอนที่เรารันโปรแกรมนั้น มันทำอะไรบ้าง</p>
 
 <h2 id="javascripts-engine--friends">Javascripts Engine &amp; Friends</h2>
 
-<p>เมื่อเราทำการรันตัวไฟล์ Javascripts บน Runtime อะไรก็ตามแต่ จะมี 3 ส่วนหลักๆที่ทำหน้าที่รันโค้ดด้วยกัน คือ</p>
+<p>เมื่อเราทำการรันตัวไฟล์ Javascripts บน Runtime จะมี 3 ส่วนหลักๆที่ทำหน้าที่รันโค้ดด้วยกัน คือ</p>
 
 <ul>
   <li>
@@ -96,7 +96,7 @@
 
 <h3 id="lhs--rhs">LHS &amp; RHS</h3>
 
-<p>Left Hand Side คือค่าที่อยู่ฝั่งซ้ายมือของ <code class="highlighter-rouge">=</code> เป็นแค่การหา Reference ของตัวแปรนั้นๆ<br />
+<p>Left Hand Side คือค่าที่อยู่ฝั่งซ้ายมือของ <code class="highlighter-rouge">=</code> เป็นแค่การหา References ของตัวแปรนั้นๆ<br />
 Right Hand Side คือค่าที่อยู่ฝั่งขวามือของ <code class="highlighter-rouge">=</code> ทำการหา Value และรัน Operator ต่างๆ</p>
 
 <p>ยกตัวอย่างเช่น</p>
@@ -118,17 +118,17 @@ Compiler: 	มีหน้าที่คอมไพล์อย่างเด
 Engine: 	ประกาศตัวแปร a
 Engine:		assign ค่าให้ a  // a = 10
 Engine: 	ประกาศตัวแปร b
-Engine:		มีการเรียกใช้งานตัวแปร a ต้องไปถาม scope ละ ขอที่อยู่ตัวแปร a หน่อย
+Engine:		มีการเรียกใช้งานตัวแปร a ต้องไปถาม scope "เฮ้ scope ขอที่อยู่ตัวแปร a หน่อย"
 Scope: 		หาตำแหน่งของ a และส่งกลับไปให้ engine
 Engine: 	ได้ตำแหน่งมาแล้วก็ไปดึงค่า a แล้วทำงานต่อ b = 10 + 2;
 </code></pre>
 </div>
 
-<p>หลักการคร่าวๆก็จะประมานนี้เพื่อให้ได้เห็นภาพกันนะครับ คงพอจะได้เห็นได้ว่า Compiler และ Engine นั้นมีหน้าที่คอมไพล์และรันโปรแกรม แต่ <code class="highlighter-rouge">Scope</code> นั้นทำหน้าที่หาตำแหน่งที่อยู่ของตัวแปรในโปรแกรมให้กับ Engine แต่อาจจะสงสัยว่า Scope จริงๆแล้วนั้นคืออะไร มาลองดูกัน</p>
+<p>หลักการคร่าวๆก็จะประมานนี้เพื่อให้ได้เห็นภาพกันนะครับ คงพอจะได้เห็นได้ว่า Compiler และ Engine นั้นมีหน้าที่คอมไพล์และรันโปรแกรม แต่ <code class="highlighter-rouge">Scope</code> นั้นทำหน้าที่หาตำแหน่งที่อยู่ของตัวแปรในโปรแกรมให้กับ Engine มาดูกันว่า Scope บน Javascript นั้นจะเกิดขึ้นเมื่อไหร่ และมีการทำงานยังไง</p>
 
 <h2 id="lexical-scope">Lexical Scope</h2>
 
-<p>Scope เป็นพื้นที่ในการใช้ตัวแปร ซึ่งใน Javascripts เราจะแบ่ง Scope ด้วยเครื่องหมายปีกกา <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code> โดยพื้นที่นอกสุด เป็น Global Scope</p>
+<p>Scope เป็นพื้นที่ในการรันคำสั่งและเรียกใช้ตัวแปร ซึ่งใน Javascripts เราจะแบ่ง scope ด้วยเครื่องหมายปีกกา <code class="highlighter-rouge"><span class="p">{}</span></code> โดยพื้นที่นอกสุด เป็น Global Scope</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>var a = 10;		 // Global Scope
 
@@ -144,7 +144,7 @@ function foo() {	 // Function Scope
 
 <h3 id="block-scope">Block Scope</h3>
 
-<p>สามารถพบเห็นได้ทั่วไปทั้งการใช้คำสั่ง <code class="highlighter-rouge">if..else</code> <code class="highlighter-rouge">for</code> <code class="highlighter-rouge">while</code> และอื่นๆ โดย Block Scope เป็น Block สำหรับการรันคำสั่งๆในแต่ละ Block แต่จะไม่ครอบคลุมถึงการ Declare ตัวแปร ซึ่งจะถูก Declare นอก Block Scope เช่น</p>
+<p>สามารถพบเห็นได้ทั่วไปทั้งการใช้คำสั่ง <code class="highlighter-rouge">if..else</code> <code class="highlighter-rouge">for</code> <code class="highlighter-rouge">while</code> และอื่นๆ โดย Block Scope เป็นพื้นที่สำหรับการรันคำสั่งๆในแต่ละ Block แต่จะไม่ครอบคลุมถึงการ declare ตัวแปรของ <code class="highlighter-rouge">var</code> ซึ่งจะถูก declare นอก Block Scope เช่น</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>if(true) {
 	var a = 10;
@@ -190,7 +190,9 @@ i // 10
 </code></pre>
 </div>
 
-<p>เนื่องมาจากฟังก์ชันนั้นไม่ได้ในรันในทันที เมื่อฟังก์ชันนั้นถูกรันภายหลัง ก็จะมองหาตัวแปร <code class="highlighter-rouge">i</code> ซึ่งตัวแปร i ใน scope นั้น ซึ่งกลายเป็นค่าที่ถูกบวกไปเรื่อยๆตาม loop ไปแล้ว จึงได้ค่าเป็น 10 นั่นเอง</p>
+<p>เนื่องมาจากฟังก์ชันนั้นไม่ได้ในรันในทันที เมื่อฟังก์ชันนั้นถูกรันภายหลัง ก็จะมองหาตัวแปร <code class="highlighter-rouge">i</code> ซึ่งตัวแปร i ใน scope นั้น ซึ่งกลายเป็นค่าที่ถูกบวกไปเรื่อยๆตาม loop ไปแล้ว จึงได้ค่าเป็น <code class="highlighter-rouge">10</code> นั่นเอง (ไม่ได้มองเห็นค่า i ตาม loop เนื่องจาก loop ได้ทำงานเสร็จไปแล้ว)</p>
+
+<p><img src="/assets/images/posts/js101/scope-loop1.png" alt="Loop Asynchronous" /></p>
 
 <h3 id="function-scope">Function Scope</h3>
 
@@ -199,7 +201,7 @@ i // 10
 <div class="highlighter-rouge"><pre class="highlight"><code>var a = 10;
 function foo(x) {
 	var b = 10;
-	b 	// 10
+	b 		// 10
 	x		// 4
 }
 
@@ -209,7 +211,7 @@ x		// ReferenceError ( no "x" in this scope )
 </code></pre>
 </div>
 
-<p>ข้อแตกต่างที่แตกต่างจาก Block Scope นั้นคือ ตัว Function Scope นั้นจะ Declare Variable ในฟังก์ชัน ดังนั้น เราไม่สามารถเรียกใช้ตัวแปรที่ไม่ได้อยู่ใน scope นั้นและไม่ได้อยู่ที่ parent ของ scope นั้นๆได้</p>
+<p>ข้อแตกต่างที่แตกต่างจาก Block Scope นั้นคือ ตัว <code class="highlighter-rouge">Function Scope</code> นั้นจะ Declare Variable ในฟังก์ชัน ดังนั้น เราไม่สามารถเรียกใช้ตัวแปรที่ไม่ได้อยู่ใน scope และของ Parent scope นั้นได้</p>
 
 <h3 id="nested-function-scope">Nested Function Scope</h3>
 
@@ -228,7 +230,7 @@ function foo(x) {
 
 <p>หากจะมอง scope เป็นภาพง่ายๆก็จะเป็นประมานนี้</p>
 
-<p><img src="/assets/images/posts/js101/scope.png" alt="/assets/images/posts/js101/scope.png" /></p>
+<p><img src="/assets/images/posts/js101/scope.png" alt="Scope" /></p>
 
 <h3 id="variable-lookup">Variable Lookup</h3>
 
@@ -277,9 +279,11 @@ foo();
 </code></pre>
 </div>
 
-<p>ใน scope ของ <code class="highlighter-rouge">foo</code> นั้นมีตัวแปร a อยู่ ดังนั้นเมื่อมีการเรียกตัวแปร a ในฟังก์ชันนี้ Scope ก็จะส่งค่า a ใน scope นี้ไปให้ จึงได้ค่าเป็น a ในขณะที่ scope <code class="highlighter-rouge">bar</code> นั้นไม่มีตัวแปร a ตัว Scope เองจึงต้องขึ้นไปดูที่ Global Scope เมื่อเจอค่า a ก็ส่งกลับไปให้ ค่า a ใน bar จึงเป็น 1</p>
+<p>ใน scope ของ <code class="highlighter-rouge">foo</code> นั้นมีตัวแปร a อยู่ ดังนั้นเมื่อมีการเรียกตัวแปร a ในฟังก์ชันนี้ Scope ก็จะส่งค่า a ใน scope นี้ไปให้ จึงได้ค่าเป็น <code class="highlighter-rouge">2</code> ในขณะที่ scope <code class="highlighter-rouge">bar</code> นั้นไม่มีตัวแปร a ตัว Scope เองจึงต้องขึ้นไปดูที่ Global Scope เมื่อเจอค่า a ก็ส่งกลับไปให้ ค่า a ใน bar จึงเป็น <code class="highlighter-rouge">1</code></p>
 
 <p>ทีนี้พอเข้าใจการทำงานของ Scope แล้ว มาลองแก้ปัญหา <code class="highlighter-rouge">setTimeout</code> ใน loop ตามหัวข้อด้านบนกันดูนะครับ หากจะแก้ปัญหา เราจำเป็นต้องนำ function มาใช้เพื่อให้ได้ Scope ใหม่ภายใต้ loop นั้น เช่น การใช้ IIFE Function หรือเรียก setTimeout ในฟังก์ชันอื่น</p>
+
+<p><img src="/assets/images/posts/js101/scope-loop2.png" alt="Loop Asynchronous Fix" /></p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>for(var i = 0; i &lt; 10; i++) {
 	(function() {
@@ -294,9 +298,9 @@ foo();
 
 <p>หรือ</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>var delay = function(x) {
+<div class="highlighter-rouge"><pre class="highlight"><code>var delay = function(j) {
 	setTimeout(function() {
-		console.log(x)
+		console.log(j)
 	}, 1000);
 }
 
@@ -306,15 +310,15 @@ for(var i = 0; i &lt; 10; i++) {
 </code></pre>
 </div>
 
-<p>จะเห็นได้ว่า เราประกาศตัวแปรใหม่คือ j และ assign ค่าจาก i ให้ จะถูกรันในระหว่าง loop ค่า j จึงเป็นการนับตามค่า i และเนื่องจากเป็นการประกาศ IIFE ฟังก์ชันใหม่ค่า j ของเราในแต่ละรูปนั้น จะเป็นคนละ scope กัน ทำให้ผลรันจึงออกมาถูกต้อง เพราะ Variable Lookup นั้นขึ้นไปหาค่าของตัวแปร <code class="highlighter-rouge">j</code> ของ scope นั้นได้ถูกต้องนั่นเอง</p>
+<p>จะเห็นได้ว่า เราประกาศตัวแปรใหม่คือ j และ assign ค่าจาก i เข้าไป โดยคำสั่งนี้จะถูกรันในระหว่าง loop ค่า j จึงเป็นการนับตามค่า i และเนื่องจากเป็นการประกาศ IIFE ฟังก์ชันใหม่ค่า j ของเราในแต่ละ loop นั้น จะเป็นคนละ scope กัน ค่า j จึงเป็น <code class="highlighter-rouge">0..9</code> ของแต่ละ loop ทำให้ผลรันจึงออกมาถูกต้องนั่นเอง</p>
 
 <h2 id="es6">ES6</h2>
 
-<p>ใน ES6 นั้น เราใช้ <code class="highlighter-rouge">let</code> ในการประกาศตัวแปรแทน <code class="highlighter-rouge">var</code> ซึ่ง <code class="highlighter-rouge">let</code> มันมี behavior ของ scope ที่แตกต่างกันกับ <code class="highlighter-rouge">var</code> มาดูว่าแตกต่างกันยังไงบ้างนะครับ</p>
+<p>ใน ES6 นั้น เราใช้ <code class="highlighter-rouge">let</code> ในการประกาศตัวแปรแทน <code class="highlighter-rouge">var</code> ซึ่ง <code class="highlighter-rouge">let</code> มันมีรูปแบบของ scope ที่แตกต่างกันกับ <code class="highlighter-rouge">var</code> มาดูว่าแตกต่างกันยังไงบ้างนะครับ</p>
 
 <h3 id="let-scope">Let Scope</h3>
 
-<p>Scope ของ <code class="highlighter-rouge">let</code> นั้นแตกต่างจาก <code class="highlighter-rouge">var</code> ในส่วนของ Block Scope โดยหากเราย้อนกลับไปดูหัวข้อ Block Scope นั้น การประกาศตัวแปรโดยใช้ var จะสามารถเรียกใช้ได้นอก Block Scope เนื่องจากการ declare variable นั้นอยู่นอก scope แต่ใน <code class="highlighter-rouge">let</code>นั้น จะไม่สามารถใช้ได้ เนื่องจากจะถูก declare ใน Block Scope นั้นๆและใช้ได้แค่เพียงใน Scope นั้นเท่านั้น เช่น</p>
+<p>Scope ของ <code class="highlighter-rouge">let</code> นั้นแตกต่างจาก <code class="highlighter-rouge">var</code> ในส่วนของ Block Scope โดยหากเราย้อนกลับไปดูหัวข้อ Block Scope นั้น การประกาศตัวแปรโดยใช้ var จะสามารถเรียกใช้ได้นอก Block Scope เนื่องจากการ declare variable นั้นอยู่นอก scope แต่ใน <code class="highlighter-rouge">let</code>นั้น จะไม่สามารถใช้ได้ เนื่องจากมันจะถูก declare ใน Block Scope นั้นๆและใช้ได้แค่เพียงใน Scope นั้นเท่านั้น เช่น</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>if(true) {
 	var a = 2;
@@ -359,7 +363,7 @@ i 		// ReferenceError
   <div id="fb-root"></div>
   <!-- Your share button code -->
   <div class="fb-share-button" 
-    data-href="/javascripts/framework/2017/01/16/js101-scope" 
+    data-href="/javascripts/basic/2017/02/19/js101-scope" 
     data-layout="button_count"
     data-size="large">
   </div>
@@ -425,7 +429,7 @@ i 		// ReferenceError
 	
 	var disqus_developer = 1;
 	var disqus_config = function () {
-		this.page.identifier = "/javascripts/framework/2017/01/16/js101-scope";
+		this.page.identifier = "/javascripts/basic/2017/02/19/js101-scope";
 	};
 	
 	(function() { // DON'T EDIT BELOW THIS LINE

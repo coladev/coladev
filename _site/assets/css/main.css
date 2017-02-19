@@ -13,8 +13,7 @@ body {
   .highlight .hljs {
     background-color: #FFF;
     padding: 0.8rem;
-    border-radius: 2px;
-    overflow: hidden; }
+    border-radius: 2px; }
 
 code.highlighter-rouge {
   border-radius: 2px;
