@@ -1,14 +1,14 @@
 body {
 	background-color: $grey;
 	font-weight: 200;
-	font-size: 22px;
+	font-size: 21px;
 	color: #353535;
 	font-family: "PT Sans", Helvetica, Arial, sans-serif;
 }
 
 @media (min-width: 56em) {
 	.container {
-		max-width: 46rem;
+		max-width: 42rem;
 	}
 }
 
@@ -67,6 +67,11 @@ blockquote {
 
 p {
 	line-height: 1.8em;
+
+	img {
+		width: 100%;
+		height: auto;
+	}
 }
 
 table {

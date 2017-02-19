@@ -7,7 +7,6 @@ categories: machine-learning neuron-network
 image: /assets/images/thumbnail/js101.png
 ---
 
-# Neuron Network Basic
 ในโลกของ Developer ทุกวันนี้ ทุกคนคงจะได้ยินเทรนด์ในการพัฒนาซอฟแวร์ยุคใหม่ที่อยู่บนพื้นฐานของ machine learning หรือหลายๆคนเรียกว่า AI-first ซึ่งจะเข้ามาแทนยุค Mobile-first ในปัจจุบัน
 
 ในส่วนพื้นฐานล่างสุดของการทำ Machine Leaning นั้น คือส่วนที่เรียกว่า Neuron network หรือโครงข่ายประสาทเทียม ซึ่งหลายๆคนที่เข้ามาลองหาข้อมูลในด้านนี้คงเห็นว่าแล้ว มันอิงกับคณิตศาสตร์ค่อนข้างมาก เปิดเล่มไหนก็จะเจอ Math หรือไปลองใช้ Library ก็จะพบว่า มันคืออะไรก็ไม่รู้ เต็มไปหมด แม้จะไม่มี Math ก็ตาม แล้ว Developer ผู้อ่อนด๋อยในคณิตศาสตร์แบบพวกเราจะเข้าใจมันได้อย่างไร เดี๋ยวผมจะมาอธิบายพื้นฐานการทำงานและแนวคิด เพื่อที่เราจะได้เข้าใจแบบง่ายๆ และนำไปปรับใช้งานกับ Library ได้อย่างเข้าใจนะครับ
@@ -47,4 +46,123 @@ function isDogOrCat(input) {
 
 
 ## Neuron
-ส่วนที่เล็กที่สุดของ Neuron Network ก็คือ Neuron ซึ่งทำหน้าที่คำนวนความน่าจะเป็นเพื่อให้ได้คำตอบจากข้อมูลที่เข้ามา
+ส่วนที่เล็กที่สุดของ Neuron Network ก็คือ Neuron ซึ่งทำหน้าที่คำนวน input ที่เข้ามา เพื่อให้ได้ผลลัพธ์ออกไป โดยมีส่วนประกอบสำคัญดังนี้
+
+- `Input` หรือค่าที่ส่งเข้าที่ Nueron โดยจะมี ขาที่เข้ามาได้หลายขา ขึ้นอยู่กับเราจะสร้าง
+- `Weight` เป็นการให้นำหนักของขาแต่ละที่ส่งเข้ามา โดยมีค่าระหว่าง 0-1 เมื่อเริ่มต้นจะเป็นการ Random ขึ้นมา จากนั้นตัว Neuron เมื่อทำการเรียนรู้เรื่อยๆ ก็จะเป็นการปรับ weight ตัวแหละ ให้มันได้คำตอบที่ใกล้เคียงที่สุด
+- `Output` คือผลลัพธ์
+- `Back Propagation` คือการที่ Nueron นำค่า Error ของ Output ที่ได้ กับ Output ที่เราสั่งให้มันเรียนรู้ นำไปปรับ Weight ของ Input ที่เข้ามาให้เกิดผลลัพธ์ที่ถูกต้องตามที่ได้เรียนรู้มา
+
+มาดูเป็นภาพกันดีกว่า
+
+![Neuron](/assets/images/posts/neuron/neuron1.png)
+
+เมื่อทำการสร้างตัว  Neuron ขึ้น ตัว Neuron ก็จะมาดูว่า มี Input ขาไหนบ้าง จากนั้นกำหนด Weight ของขา Input แต่ละขา โดยเป็นค่า Random จาก 0 - 1
+
+![Random Weight](/assets/images/posts/neuron/neuron2.png)
+
+จากนั้นเมื่อเราป้อน Input และ Output ให้มัน เพื่อทำการเรียนรู้ ตัว Nueron ก็จะทำการ Sum ตัว Input ด้วย Weight ของแต่ละขา แล้วนำไปเข้าฟังก์ชันที่ตัว Neuron นั้นกำหนดไว้ ก็จะได้ Ouput จริงๆที่คำนวนออกมานะครับ โดยฟังก์ชันก็จะมีหลายแบบขึ้นอยู่รูปแบบที่จะนำไปใช้งาน เช่น `Sigmoid`, `Hyperbolic Tangens`, `Hard Limit`, `Rectified Linear Unit` เป็นต้น  โดยในตัวอย่างจะเป็น Sigmoid นะครับเนื่องจากง่ายที่สุด และเป็นฟังก์ชันพื้นฐานในหลายๆ Library ครับ
+
+ทีนี้จะมาดูวิธีการเรียนรู้ของมันกันบ้าง โจทย์คือเราต้องการให้มันเรียนรู้การทำงานของ XOR
+
+| Input 1  	| Input 2		 | Output		 	|
+| --------- | ---------- | ---------- | 
+| 1    			| 1 				 | 1 				  |
+| 1    			| 1 				 | 1 				  |
+| 0   			| 1 				 | 1 				  |
+| 0    			| 0 				 | 0 				  |
+
+เมื่อเราทำการสอนในแต่ละครั้ง เราก็จะกำหนด Input และ Output ให้ตัว Neuron จากนั้นตัว Neuron ก็จะไปคำนวนและเก็บ State เพื่อที่จะปรับปรุงการคำนวนในครั้งถัดไปให้ได้ผลลัพธ์ตามข้อมูลที่ได้รับมา
+
+Input [1,1] : Output [1]
+
+![Sum Input](/assets/images/posts/neuron/neuron3.png)
+
+จะเห็นได้ว่า Output ที่ตัว Neuron นั้นคำนวนได้ และ Output ที่เราสอนมันนั้น ไม่ตรงกัน มีความคลาดเคลื่อน หรือเราจะเรียกว่ามันเกิด `Error` เมื่อมีความคลาดเคลื่อน ตัว Neuron ก็จะทำการ Back Propagation หรือการนำค่า Error นั้นมาปรับค่า Weight ใหม่นั่นเอง เช่น ในกรณีนี้คลาดเคลื่อนไป `0.25` ก็จะนำไปเข้าสมการโน้นนี่นั้น แล้วนำค่าที่ได้มาปรับ Weight เช่น Weight ใหม่อาจจะเป็น `0.75` และ `0.45` เป็นต้น
+
+จากนั้นเราก็จะสอนตัว Neuron ไปเรื่อยๆ ตัว Weight ที่ได้ก็จะทำให้ผลลัพธ์ออกมาใกล้เคียงที่สุดนั่นเอง
+
+
+![Sum Input2](/assets/images/posts/neuron/neuron4.png)
+
+ดังนั้นการสอนตัว Neuron นั้นจำเป็นต้องสอนหลายๆรอบเพื่อให้เกิด Error น้อยที่สุดนะครับ
+
+## 
+
+## Network
+
+## Feed-Forward Neuron Network
+
+## Workshop with Synaptic.js
+
+มาลอง Implement Neuron Network แบบง่ายๆบน Javascripts กันนะครับ โดย Library ที่ผมเลือกนำมาใช้คือ Synaptic.js โดยเราจะมาทำฟังก์ชัน `XOR` ด้วยกัน Neuron เท่านั้นนะครับ
+
+```
+const { Neuron } = require('synaptic');
+
+let A = new Neuron();
+let B = new Neuron();
+let C = new Neuron();
+
+A.project(C);
+B.project(C);
+
+let learningRate = 0.3;
+
+/* Train Neuron for 10000 Loop */
+for(let i = 0; i < 10000; i++) {
+	/* Input [1,1] */
+	A.activate(1);
+	B.activate(1);
+
+	/* Train to Output 1 */
+	C.activate();
+	C.propagate(learningRate, 1);
+
+	/* Input [1,0] */
+	A.activate(1);
+	B.activate(0);
+
+	/* Train to Output 1 */
+	C.activate();
+	C.propagate(learningRate, 1);
+
+	/* Input [0,1] */
+	A.activate(0);
+	B.activate(1);
+
+	/* Train to Output 1 */
+	C.activate();
+	C.propagate(learningRate, 1);
+
+	/* Input [0,0] */
+	A.activate(0);
+	B.activate(0);
+
+	/* Train to Output 0 */
+	C.activate();
+	C.propagate(learningRate, 0);
+}
+
+/* Tesing [1,1] */
+A.activate(1);
+B.activate(1);
+C.activate();		// Output: 0.9999999992481563
+
+/* Tesing [1,0] */
+A.activate(1);
+B.activate(0);
+C.activate();		// Output: 0.9993307263410083
+
+/* Tesing [0,1] */
+A.activate(1);
+B.activate(0);
+C.activate();		// Output: 0.9993307263410083
+
+/* Tesing [0,0] */
+A.activate(0);
+B.activate(0);
+C.activate();		// Output: 0.0016727753175200947
+```
+
+
