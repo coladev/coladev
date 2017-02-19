@@ -1,13 +1,13 @@
 body {
   background-color: #F9F9F9;
   font-weight: 200;
-  font-size: 22px;
+  font-size: 21px;
   color: #353535;
   font-family: "PT Sans", Helvetica, Arial, sans-serif; }
 
 @media (min-width: 56em) {
   .container {
-    max-width: 46rem; } }
+    max-width: 42rem; } }
 .highlight {
   font-size: 0.8em; }
   .highlight .hljs {
@@ -48,6 +48,9 @@ blockquote {
 
 p {
   line-height: 1.8em; }
+  p img {
+    width: 100%;
+    height: auto; }
 
 table {
   table-layout: fixed; }
