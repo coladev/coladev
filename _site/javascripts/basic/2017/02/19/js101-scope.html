@@ -236,14 +236,16 @@ function foo(x) {
 
 <p>ทีนี้มาดูกันก่อนว่าในแต่ละ Scope เมื่อเราทำการรันโปรแกรมจะมีวิธีการหาค่าของตัวแปรกันอย่างไร</p>
 
-<p>การหาค่าของตัวแปรนั้น จะเป็นการหาค่าแบบ <code class="highlighter-rouge">Down&gt;&gt;Top</code> คือ หาใน Scope ตัวเองเสร็จ หาไม่เจอ ก็จะค่อยๆหาขึ้นไปใน Parent Scope ขึ้นไปเรื่อยๆจนถึง Global Scope เมื่อเจอตัวแปรที่ Scope ที่ใกล้ที่สุดก็ใช้ตัวแปรนั้นในการรันครั้งนันๆ</p>
+<p>การหาค่าของตัวแปรนั้น จะเป็นการหาค่าแบบ <code class="highlighter-rouge">Down&gt;&gt;Top</code> คือ หาใน Scope ตัวเองเสร็จ หาไม่เจอ ก็จะค่อยๆหาขึ้นไปใน Parent Scope ขึ้นไปเรื่อยๆจนถึง Global Scope เมื่อเจอตัวแปรที่ Scope ที่ใกล้ที่สุดก็ใช้ตัวแปรนั้นในการรันครั้งนั้น</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>var a = 1;
+var b = 5;
 
 function foo() {
 	var b = 2;
 	function bar() {
 		var c = a + b;
+		c 		// 1 + 2 = 3
 	}
 	bar();
 }
