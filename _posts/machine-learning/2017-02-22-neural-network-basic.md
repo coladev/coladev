@@ -3,7 +3,7 @@ layout: post
 title:  "สรุปแนวคิด Neural Network แบบไม่มี Math"
 subtitle: "เข้าใจพื้นฐานของ Machine Learning แบบ Neural Network โดยไม่ต้องรู้ Math !!"
 date:   2017-02-22 06:00:00 +0700
-categories: machine-learning neuron-network
+categories: machine-learning neural-network
 image: /assets/images/thumbnail/neuron.png
 ---
 
