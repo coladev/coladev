@@ -4,7 +4,7 @@ title:  "Neuron Network แบบง่ายๆ"
 subtitle: "เข้าใจพื้นฐานของ Machine Learning แบบไม่ต้องรู้ Math !!"
 date:   2017-02-23 06:00:00 +0700
 categories: machine-learning neuron-network
-image: /assets/images/thumbnail/js101.png
+image: /assets/images/thumbnail/neuron.png
 ---
 
 ในโลกของ Developer ทุกวันนี้ ทุกคนคงจะได้ยินเทรนด์ในการพัฒนาซอฟแวร์ยุคใหม่ที่อยู่บนพื้นฐานของ machine learning หรือที่หลายๆคนเรียกว่า `AI-first` ซึ่งจะเข้ามาแทนยุค Mobile-first ในปัจจุบัน
