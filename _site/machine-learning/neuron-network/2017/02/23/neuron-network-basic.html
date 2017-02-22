@@ -11,7 +11,7 @@
 
   <title>
     
-      Neuron Network แบบง่ายๆ &middot; Coladev.com
+      สรุปแนวคิด Neuron Network แบบไม่มี Math &middot; Coladev.com
     
   </title>
 
@@ -27,13 +27,13 @@
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
 
   
-    <meta property="og:title" content="Neuron Network แบบง่ายๆ" />
-    <meta property="og:description" content="เข้าใจพื้นฐานของ Machine Learning แบบไม่ต้องรู้ Math !!" />
+    <meta property="og:title" content="สรุปแนวคิด Neuron Network แบบไม่มี Math" />
+    <meta property="og:description" content="เข้าใจพื้นฐานของ Machine Learning แบบ Neuron Network โดยไม่ต้องรู้ Math !!" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://coladev.com/assets/images/thumbnail/neuron.png" />
   
 
-<script src="http://127.0.0.1:35729/livereload.js"></script></head>
+</head>
 
 
 	<body>
@@ -74,11 +74,11 @@
 			<div class="container content">
 				<div class="post">
 	<img src="/assets/images/thumbnail/neuron.png">
-	<h1 class="post-title">Neuron Network แบบง่ายๆ</h1>
+	<h1 class="post-title">สรุปแนวคิด Neuron Network แบบไม่มี Math</h1>
 	<span class="post-date">23 Feb 2017</span>
 	<p>ในโลกของ Developer ทุกวันนี้ ทุกคนคงจะได้ยินเทรนด์ในการพัฒนาซอฟแวร์ยุคใหม่ที่อยู่บนพื้นฐานของ machine learning หรือที่หลายๆคนเรียกว่า <code class="highlighter-rouge">AI-first</code> ซึ่งจะเข้ามาแทนยุค Mobile-first ในปัจจุบัน</p>
 
-<p>ในส่วนพื้นฐานล่างสุดของการทำ Machine Leaning นั้น คือส่วนที่เรียกว่า Neuron network หรือโครงข่ายประสาทเทียม ซึ่งหลายๆคนที่เข้ามาลองหาข้อมูลในด้านนี้คงเห็นว่าแล้ว มันอิงกับคณิตศาสตร์ค่อนข้างมาก เปิดเล่มไหนก็จะเจอ <code class="highlighter-rouge">Math</code> หรือไปลองใช้ Library ก็จะพบว่า มันคืออะไรก็ไม่รู้ เต็มไปหมด แม้จะไม่มี Math ก็ตาม แล้ว Developer ผู้อ่อนด๋อยในคณิตศาสตร์แบบพวกเราจะเข้าใจมันได้อย่างไร เดี๋ยวผมจะมาอธิบายพื้นฐานการทำงานและแนวคิด เพื่อที่เราจะได้เข้าใจแบบง่ายๆ และนำไปปรับใช้งานกับ Library ได้อย่างเข้าใจนะครั</p>
+<p>ในส่วนพื้นฐานล่างสุดของการทำ Machine Leaning นั้น คือส่วนที่เรียกว่า Neuron network หรือโครงข่ายประสาทเทียม ซึ่งหลายๆคนที่เข้ามาลองหาข้อมูลในด้านนี้คงเห็นว่าแล้ว มันอิงกับคณิตศาสตร์ค่อนข้างมาก เปิดเล่มไหนก็จะเจอ <code class="highlighter-rouge">Math</code> หรือไปลองใช้ Library ก็จะพบว่า มันคืออะไรก็ไม่รู้ เต็มไปหมด แม้จะไม่มี Math ก็ตาม แล้ว Developer ผู้อ่อนด๋อยในคณิตศาสตร์แบบพวกเราจะเข้าใจมันได้อย่างไร เดี๋ยวผมจะมาอธิบายพื้นฐานแนวคิดและการทำงาน เพื่อที่เราจะได้เข้าใจแบบง่ายๆ และนำไปปรับใช้งานกับ Library ได้อย่างเข้าใจนะครับ</p>
 
 <h2 id="neuron-network">Neuron Network</h2>
 <p>คือโครงข่ายประสามเทียมที่เป็นการ<code class="highlighter-rouge">จำลองมาจากสมอง</code>ของเรา โดยสมองของเรานั้นจะมีหน่วยประมวลผลขนาดเล็กอยู่เยอะมาก และเชื่อมโยงกันด้วยโครงข่ายประสาทมากมาย ช่วยให้เราได้เรียนรู้และคิดวิเคราะห์ได้อย่างรวดเร็ว</p>
@@ -86,7 +86,7 @@
 <p>แต่ในส่วนคอมพิวเตอร์นั้นไม่ได้มีโครงข่ายที่ซับซ้อนเหมือนกับสมองของเรา มันมีหน้าที่แค่รันโปรแกรมตามคำสั่งของเราเท่านั้น ดังนั้นเมื่อเราจะให้มันทำการเรียนรู้อะไรซักอย่าง จึงเป็นเรื่องยากในรูปแบบปกติ จึงเกิดการจำลองแนวทางการเรียนรู้ของคน ไปสู่คอมพิวเตอร์ด้วย Neuron Network นั่นเอง</p>
 
 <h2 id="human-learning">Human Learning</h2>
-<p>ในการเรียนรู้ของมนุษย์นั้น มีหลายวิธี หนึ่งในนั้นคือการที่เรารับข้อมูลมา และรับข้อมูลว่าข้อมูลนั้นคืออะไร จากนั้นเราก็จะจำและเรียนรู้ในการรับรู้ในสิ่งที่คล้ายๆกัน</p>
+<p>ในการเรียนรู้ของมนุษย์นั้น มีหลายวิธี หนึ่งในนั้นคือการที่เรารับข้อมูลมา และรับรู้ว่าข้อมูลนั้นคืออะไร จากนั้นเราก็จะจำและเรียนรู้ในการรับรู้ในสิ่งที่คล้ายๆกัน</p>
 
 <p>เช่น ในตอนที่เราเกิดมา เราไม่รู้ว่าหมาคืออะไร แต่เราได้เห็น จากนั้นพ่อแม่เราก็บอกว่านี่คือ “หมา” นะ สมองของแต่ละคนก็จะ<code class="highlighter-rouge">หาวิธีจดจำว่ารูปแบบข้อมูลลักษณะนี้</code>คือ หมา เช่น มีสี่ขา มีขน เห่าได้ อะไรพวกนี้</p>
 
@@ -113,14 +113,14 @@
 
 <p>ซึ่งเราจะเห็นว่า Machine นั้นไม่จำเป็นต้องเรียนรู้อะไร เพียงแค่ทำงานตามคำสั่งไปเท่านั้น</p>
 
-<p>แต่เมื่อเราปรับให้เป็น Machine Learning นั้น ก็เหมือนเราจำลองการทำ Human Learning แบบข้างต้น โดยเราจำไม่เขียนโปรแกรมแบบระบุการทำงานตรงๆ แต่เราจะให้ <code class="highlighter-rouge">Input</code> และ <code class="highlighter-rouge">Output</code> เข้าไป เพื่อสอนตัวคอมพิวเตอร์ ให้มันพัฒนาตัวเองและเรียนรู้ จากนั้นเมื่อเราให้ Input ใหม่เข้าไป ตัว Machine Learning ก็จะให้คำตอบออกมาโดย<code class="highlighter-rouge">อ้างอิงจากสิ่งที่มันได้เรียนรู้ไป</code>นั่นเอง</p>
+<p>แต่เมื่อเราปรับให้เป็น Machine Learning นั้น ก็เหมือนเราจำลองการทำ Human Learning แบบข้างต้น โดยเราจำไม่เขียนโปรแกรมแบบระบุการทำงานตรงๆ แต่เราจะให้ <code class="highlighter-rouge">Input</code> และ <code class="highlighter-rouge">Output</code> เข้าไป เพื่อสอนตัวคอมพิวเตอร์ ให้มันพัฒนาตัวเองและเรียนรู้ จากนั้นเมื่อเราให้ Input ใหม่เข้าไป ตัว Machine Learning ก็จะให้คำตอบออกมาโดย<code class="highlighter-rouge">อ้างอิงจากสิ่งที่มันได้เรียนรู้ไปแล้ว</code>นั่นเอง</p>
 
 <h2 id="neuron">Neuron</h2>
-<p>ส่วนที่เล็กที่สุดของ Neuron Network ก็คือ Neuron ซึ่งทำหน้าที่คำนวน input ที่เข้ามา เพื่อให้ได้ผลลัพธ์ออกไป โดยมีส่วนประกอบสำคัญดังนี้</p>
+<p>ส่วนที่เล็กที่สุดของ Neuron Network ก็คือ <code class="highlighter-rouge">Neuron</code> ซึ่งทำหน้าที่คำนวน input ที่เข้ามา เพื่อให้ได้ผลลัพธ์ออกไป โดยมีส่วนประกอบสำคัญดังนี้</p>
 
 <ul>
-  <li><code class="highlighter-rouge">Input</code> หรือค่าที่ส่งเข้าที่ Nueron โดยจะมี ขาที่เข้ามาได้หลายขา ขึ้นอยู่กับเราจะสร้าง</li>
-  <li><code class="highlighter-rouge">Weight</code> เป็นการให้นำหนักของขาแต่ละที่ส่งเข้ามา โดยมีค่าระหว่าง 0-1 เมื่อเริ่มต้นจะเป็นการ Random ขึ้นมา จากนั้นตัว Neuron เมื่อทำการเรียนรู้เรื่อยๆ ก็จะเป็นการปรับ weight ตัวแหละ ให้มันได้คำตอบที่ใกล้เคียงที่สุด</li>
+  <li><code class="highlighter-rouge">Input</code> หรือค่าที่ส่งเข้ามาที่ Nueron โดยจะมีขาที่เข้ามาได้หลายขา ขึ้นอยู่กับเราจะสร้าง</li>
+  <li><code class="highlighter-rouge">Weight</code> เป็นการให้น้ำหนักของขาแต่ละที่ส่งเข้ามา โดยมีค่าระหว่าง 0-1 เมื่อเริ่มต้นจะเป็นการ Random ขึ้นมา จากนั้นตัว Neuron เมื่อทำการเรียนรู้เรื่อยๆ ก็จะเป็นการปรับ weight ตัวแหละ ให้มันได้คำตอบที่ใกล้เคียงที่สุด</li>
   <li><code class="highlighter-rouge">Bias</code> คือค่าที่จะช่วยเข้ามาทำให้ค่าที่เข้ามาอยู่ในระหว่าง 0 - 1 ได้ โดยจะเป็นเลข random และปรับไปเรื่อยๆทุกครั้งที่เรียนรู้</li>
   <li><code class="highlighter-rouge">Output</code> คือผลลัพธ์</li>
   <li><code class="highlighter-rouge">Back Propagation</code> คือการที่ Nueron นำค่า Error ของ Output ที่ได้ กับ Output ที่เราสั่งให้มันเรียนรู้ นำไปปรับ Weight และ Bias ให้เกิดผลลัพธ์ที่ถูกต้องตามที่ได้เรียนรู้มา</li>
@@ -605,6 +605,15 @@ C.activate();		// Output: 0.0016727753175200947
 		<script src="/assets/js/app.js" type="text/javascript" charset="utf-8"></script>
 
 		<script>
+		
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-35966443-7', 'auto');
+			ga('send', 'pageview');
+
 		
 		</script>
 	</body>
