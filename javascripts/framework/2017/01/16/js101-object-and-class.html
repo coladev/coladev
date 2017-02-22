@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+	<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      JS Basic: EP3. Object & Class &middot; Coladev.com
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/public/js/hightlightjs/styles/tomorrow.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+  
+    <meta property="og:title" content="JS Basic: EP3. Object & Class" />
+    <meta property="og:description" content="object และ class แบบเจาะลึก" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://coladev.com/assets/images/thumbnail/js101.png" />
+  
+
+<script src="http://127.0.0.1:35729/livereload.js"></script></head>
+
+
+	<body>
+
+		<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <img src="/assets/images/coladev-logo-light.png">
+    <h3>COLADEV.COM</h3>
+    <p>บันทึกและบทความเกี่ยวกับการเขียนโปรแกรมจากโปรแกรมเมอร์น้อยๆผู้ชื่นชอบโค้กเป็นชีวิตจิตใจ</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+    <a class="sidebar-nav-item" href="/tags/javascripts">Javascripts</a>
+    <a class="sidebar-nav-item" href="/tags/devops">Devops</a>
+  </nav>
+</div>
+
+
+		<!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+				 content to avoid any CSS collisions with our real content. -->
+		<div class="wrap">
+			<div class="masthead">
+				<div class="container">
+					<div class="masthead-title">
+						<a href="/" title="Coladev.com">
+							<img src="/assets/images/logo.png">
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="container content">
+				<div class="post">
+	<img src="/assets/images/thumbnail/js101.png">
+	<h1 class="post-title">JS Basic: EP3. Object & Class</h1>
+	<span class="post-date">16 Jan 2017</span>
+	<h2 id="object">Object</h2>
+
+<h3 id="new-operator">New Operator</h3>
+
+<p>จากบทที่แล้วเราจะเห็น operator ตัวหนึ่งที่ใช้สำหรับสร้าง object ใหม่นั่นคือ <code class="highlighter-rouge">new</code> operator โดยตัว object ที่เราสร้างขึ้นมาใหม่นั้นจะมี scope เป็นของตัวเอง โดย</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var Person = function(name) {
+	this.name = name
+}
+
+var john = new Person("john");		// new object
+var sara = new Person("sara");		// new object
+</code></pre>
+</div>
+
+<p>โดยใน object ที่เราสร้างขึ้นมานั้นจะมีตัวแปรๆนึงที่สามารถใช้ได้ภายใน object นั้น คือ <code class="highlighter-rouge">this</code> โดยจากตัวอย่างข้างต้นเราจะเห็นได้ว่า มีความเหมือนกัน class บนภาษาอื่นๆเลยทีเดียว แล้วมี private variable อ้างอิงอยู่กับ this นั่นเอง</p>
+
+<p>นอกจากการใช้คำสั่ง new แล้ว การประกาศ object ใหม่ก็เป็นการสร้าง scope ขึ้นมาใหม่เช่นกัน และสามารถเรียกใช้ this ใน scope นั้นได้เช่นกัน</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var Person = {
+	name: "john",
+	getName: function() {
+		return this.name;
+	}
+}
+
+Person.getName() 	// john
+</code></pre>
+</div>
+
+<h2 id="class">Class</h2>
+
+<p>จริงๆแล้ว javascript นั้น ไม่มีสิ่งที่เรียกว่า class จริงๆเหมือนพวกภาษาจาวา มีแต่สิ่งที่เราเรียกว่า Class-like หรือสิ่งที่คล้ายๆกันเท่านั้น เราจะเห็นได้ว่าเราจะใช้ function แทนการใช้ class เช่น</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var Building = function(name) {
+	this.name = name;
+}
+
+var House = new Building("House");
+var Tower = new Building("Tower");
+
+House.name 	// House
+Tower.name 	// Tower
+</code></pre>
+</div>
+
+<h3 id="object-scope">Object Scope</h3>
+
+<h3 id="constructor">Constructor</h3>
+
+<h3 id="prototype">Prototype</h3>
+
+<h3 id="es6-class">ES6 Class</h3>
+
+
+</div>
+
+<div class="share-page">
+	<!-- Load Facebook SDK for JavaScript -->
+  <div id="fb-root"></div>
+  <!-- Your share button code -->
+  <div class="fb-share-button" 
+    data-href="/javascripts/framework/2017/01/16/js101-object-and-class" 
+    data-layout="button_count"
+    data-size="large">
+  </div>
+</div>
+
+<div class="author">
+	<h4>Author</h4>
+	<div class="profile">
+		<div class="img"></div>
+		<div class="info">
+			<h4>Anonymous</h4>
+			<p>Web Developer</p>
+			<p>Nextzy Technology Co,. LTD.</p>
+		</div>
+	</div>
+</div>
+
+<div class="related">
+	<h2>Related</h2>
+	<div class="ralated-posts">
+	
+		<a href="/machine-learning/neuron-network/2017/02/22/neural-network-basic">
+		<div class="post">
+			<img src="/assets/images/thumbnail/neuron.png">
+			<h2 class="post-title">
+					สรุปแนวคิด Neural Network แบบไม่มี Math
+			</h2>
+
+			<span class="post-date">เข้าใจพื้นฐานของ Machine Learning แบบ Neural Network โดยไม่ต้องรู้ Math !!</span>
+		</div>
+	</a>
+	
+		<a href="/2017/02/22/neural-network-basic">
+		<div class="post">
+			<img src="">
+			<h2 class="post-title">
+					Neural Network Basic
+			</h2>
+
+			<span class="post-date"></span>
+		</div>
+	</a>
+	
+		<a href="/javascripts/basic/2017/02/19/js101-scope">
+		<div class="post">
+			<img src="/assets/images/thumbnail/js101-scope.png">
+			<h2 class="post-title">
+					JS Basic: EP2. Scope
+			</h2>
+
+			<span class="post-date">มารู้จักและทำความเข้าใจ Scope ใน Javascripts กัน</span>
+		</div>
+	</a>
+	
+	</div>
+</div>
+
+<div class="comments">
+	<div id="disqus_thread"></div>
+</div>
+
+<script>
+	
+	var disqus_developer = 1;
+	var disqus_config = function () {
+		this.page.identifier = "/javascripts/framework/2017/01/16/js101-object-and-class";
+	};
+	
+	(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		s.src = '//coladev.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
+	})();
+
+	(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8"
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+	</script>
+			</div>
+			<footer class="footer">
+	<div class="container">
+		&copy; Coladev.com 2017. All rights reserved.
+	</div>
+</footer>
+		</div>
+		
+
+		<label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+		<script src="/assets/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/assets/js/highlight.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/assets/js/app.js" type="text/javascript" charset="utf-8"></script>
+
+		<script>
+		
+		</script>
+	</body>
+</html>
