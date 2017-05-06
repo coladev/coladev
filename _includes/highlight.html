@@ -1,0 +1,60 @@
+<nav class="highlight-container">
+  <div class="container">
+  	<div class="tile is-ancestor">
+  		<div class="tile is-12">
+
+		  {% for post in paginator.posts %}
+		    {% if post.top_one %}
+		  			<div class="highlight-item">
+					  	<div class="highlight-title">
+					  		<div class="highlight-title-inner">
+					  			<span>TOP</span>
+					  			<span class="bold">STORIES</span>
+					  		</div>
+					  	</div>
+		  				<div class="item-bg">
+								<img src="{{post.image}}" />
+		  				</div>
+		  				<div class="item-message">
+		  					<h3 class="item-title">{{ post.title }}</h3>
+		  					<h5 class="item-subtitle">{{ post.subtitle }}</h5>
+		  				</div>
+		  			</div>
+		    {% endif %}
+		  {% endfor %}
+  		</div>
+  	</div>
+  	<div class="tile is-ancestor">
+  		<div class="tile is-6">
+		  {% for post in paginator.posts %}
+		    {% if post.top_two %}
+  			<div class="highlight-item is-small">
+  				<div class="item-bg">
+						<img src="{{post.image}}" />
+  				</div>
+  				<div class="item-message">
+  					<h3 class="item-title">{{ post.title }}</h3>
+  					<h5 class="item-subtitle">{{ post.subtitle }}</h5>
+  				</div>
+  			</div>
+		    {% endif %}
+		  {% endfor %}
+  		</div>
+  		<div class="tile is-6">
+		  {% for post in paginator.posts %}
+		    {% if post.top_three %}
+  			<div class="highlight-item is-small">
+  				<div class="item-bg">
+						<img src="{{post.image}}" />
+  				</div>
+  				<div class="item-message">
+  					<h3 class="item-title">{{ post.title }}</h3>
+  					<h5 class="item-subtitle">{{ post.subtitle }}</h5>
+  				</div>
+  			</div>
+		    {% endif %}
+		  {% endfor %}
+  		</div>
+  	</div>
+  </div>
+</nav>

@@ -1,15 +1,8 @@
 body {
-	background-color: $grey;
 	font-weight: 200;
 	font-size: 21px;
 	color: #353535;
 	font-family: "PT Sans", Helvetica, Arial, sans-serif;
-}
-
-@media (min-width: 56em) {
-	.container {
-		max-width: 42rem;
-	}
 }
 
 .highlight {

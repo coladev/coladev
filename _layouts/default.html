@@ -5,26 +5,12 @@
 
 	<body>
 
-		{% include sidebar.html %}
+		{% include navbar.html %}
 
 		<!-- Wrap is the content to shift when toggling the sidebar. We wrap the
 				 content to avoid any CSS collisions with our real content. -->
-		<div class="wrap">
-			<div class="masthead">
-				<div class="container">
-					<div class="masthead-title">
-						<a href="{{ site.baseurl }}/" title="Coladev.com">
-							<img src="{{ site.baseurl}}/assets/images/logo.png">
-						</a>
-					</div>
-				</div>
-			</div>
-
-			<div class="container content">
-				{{ content }}
-			</div>
-			{% include footer.html %}
-		</div>
+		{{ content }}
+		{% include footer.html %}
 		{% include foot.html %}
 	</body>
 </html>

@@ -21,6 +21,8 @@
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="stylesheet" href="/public/js/hightlightjs/styles/tomorrow.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/apple-touch-icon-precomposed.png">
@@ -33,46 +35,37 @@
     <meta property="og:image" content="https://coladev.com/assets/images/thumbnail/neural-network-thumb.png" />
   
 
-</head>
+<script src="http://127.0.0.1:35729/livereload.js"></script></head>
 
 
 	<body>
 
-		<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
-     styles, `#sidebar-checkbox` for behavior. -->
-<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
-
-<!-- Toggleable sidebar -->
-<div class="sidebar" id="sidebar">
-  <div class="sidebar-item">
-    <img src="/assets/images/coladev-logo-light.png">
-    <h3>COLADEV.COM</h3>
-    <p>บันทึกและบทความเกี่ยวกับการเขียนโปรแกรมจากโปรแกรมเมอร์น้อยๆผู้ชื่นชอบโค้กเป็นชีวิตจิตใจ</p>
+		<nav class="nav">
+  <div class="container">
+    <div class="nav-left">
+      <a class="nav-item nav-logo" href="/" title="Coladev.com">
+				<img src="/assets/images/logo.png">
+			</a>
+    </div>
+    <span class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+    <div class="nav-right nav-menu">
+      <div class="nav-item">
+	      <a class="nav-menu-item" style="background: url(/assets/images/menu/blog.png)">
+	      	<div class="nav-icon"><i class="fa fa-code" aria-hidden="true"></i></div>
+	      	<div class="nav-title">Blog</div>
+	      </a>
+      </div>
+    </div>
   </div>
-
-  <nav class="sidebar-nav">
-    <a class="sidebar-nav-item" href="/">Home</a>
-    <a class="sidebar-nav-item" href="/tags/javascripts">Javascripts</a>
-    <a class="sidebar-nav-item" href="/tags/devops">Devops</a>
-  </nav>
-</div>
-
+</nav>
 
 		<!-- Wrap is the content to shift when toggling the sidebar. We wrap the
 				 content to avoid any CSS collisions with our real content. -->
-		<div class="wrap">
-			<div class="masthead">
-				<div class="container">
-					<div class="masthead-title">
-						<a href="/" title="Coladev.com">
-							<img src="/assets/images/logo.png">
-						</a>
-					</div>
-				</div>
-			</div>
-
-			<div class="container content">
-				<div class="post">
+		<div class="post">
 	<img src="/assets/images/thumbnail/neural-network-thumb.png">
 	<h1 class="post-title">สรุปแนวคิด Neural Network แบบไม่มี Math</h1>
 	<span class="post-date">22 Feb 2017</span>
@@ -589,31 +582,17 @@ C.activate();		// Output: 0.0016727753175200947
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));</script>
 	</script>
-			</div>
-			<footer class="footer">
+		<footer class="footer">
 	<div class="container">
 		&copy; Coladev.com 2017. All rights reserved.
 	</div>
 </footer>
-		</div>
 		
-
-		<label for="sidebar-checkbox" class="sidebar-toggle"></label>
-
 		<script src="/assets/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/assets/js/highlight.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/assets/js/app.js" type="text/javascript" charset="utf-8"></script>
 
 		<script>
-		
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-			ga('create', 'UA-35966443-7', 'auto');
-			ga('send', 'pageview');
-
 		
 		</script>
 	</body>

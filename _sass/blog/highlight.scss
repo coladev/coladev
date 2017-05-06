@@ -1,0 +1,84 @@
+.highlight-container {
+	background-color: #333;	
+	padding-top: 0.75rem;
+	padding-bottom: 0.75rem;
+	position: relative;
+	font-family: 'Roboto Condensed', sans-serif;
+	margin-bottom: 3rem;
+
+	.highlight-title {
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding: 1.5rem;
+		z-index: 3;
+		width: 100%;
+
+		.highlight-title-inner {
+			color: $white;
+			border: 3px solid $white;
+			padding: 0.6rem 1.2rem;
+			display: inline-block;
+			.bold {
+				font-weight: bold;
+			}
+		}
+	}
+
+	.tile {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	.highlight-item {
+		width: 100%;
+		position: relative;
+		.item-bg {
+			img {
+				width: 100%;
+				height: auto;
+				border-radius: 0;
+				margin-bottom: 0;
+			}
+		}
+
+		.item-message {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			padding: 1.2rem 1.5rem;
+			.item-title {
+				width: 100%;
+				display: block;
+				margin-top: 0;
+				margin-bottom: 0;
+				color: $white;
+				position: relative;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+
+			.item-subtitle {
+				width: 100%;
+				display: block;
+				color: $white;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+		}
+
+		&.is-small {
+			.item-message {
+				.item-title {
+					font-size: 1.6rem;
+				}
+				.item-subtitle {
+					font-size: 1.2rem;
+				}
+			}
+		}
+	}
+}

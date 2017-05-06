@@ -6,6 +6,9 @@ layout: default
 paginate: true
 ---
 
+{% include highlight.html %}
+
+<div class="container">
 <div class="posts">
   {% for post in paginator.posts %}
   <a href="{{ site.baseurl }}{{ post.url }}">
@@ -38,3 +41,4 @@ paginate: true
   {% endif %}
 </div>
 
+</div>
