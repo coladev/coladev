@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="stylesheet" href="/public/js/hightlightjs/styles/tomorrow.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Prompt:300,400|Roboto:300,400,500&amp;subset=thai" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
   <!-- Icons -->
@@ -65,11 +65,20 @@
 
 		<!-- Wrap is the content to shift when toggling the sidebar. We wrap the
 				 content to avoid any CSS collisions with our real content. -->
-		<div class="post">
-	<img src="/assets/images/thumbnail/js101-scope.png">
-	<h1 class="post-title">JS Basic: EP2. Scope</h1>
-	<span class="post-date">19 Feb 2017</span>
-	<p>ต่อจากบล็อกที่แล้ว <a href="https://coladev.com/javascripts/basic/2017/02/13/js101">JS Basic: EP1. พื้นฐานแบบเน้นๆ</a> เราจะมาต่อกันที่เรื่องของ Scope นะครับ ซึ่งเป็นเรื่องพื้นฐานบน Javascripts มากๆเพราะเป็นเรื่องของการทำงานของโปรแกรม แต่ก่อนหน้านั้น เราต้องมาทำความเข้าใจเรื่องการวิธีการทำงานของตัว Javascript Engine กันก่อนนะครับ ว่าตอนที่เรารันโปรแกรมนั้น มันทำอะไรบ้าง</p>
+		<div class="post-page">
+	
+	<div class="post-bg">
+		<div class="post-bg-img">
+			<img src="/assets/images/thumbnail/js101-scope.png">
+			<div class="post-bg-overlay" style="background-color: #DC4405;"></div>
+		</div>
+		<div class="post-heading">
+			<h1 class="post-title">JS Basic: EP2. Scope</h1>
+		</div>
+	</div>
+	<div class="container">
+		<span class="post-date">19 Feb 2017</span>
+		<p>ต่อจากบล็อกที่แล้ว <a href="https://coladev.com/javascripts/basic/2017/02/13/js101">JS Basic: EP1. พื้นฐานแบบเน้นๆ</a> เราจะมาต่อกันที่เรื่องของ Scope นะครับ ซึ่งเป็นเรื่องพื้นฐานบน Javascripts มากๆเพราะเป็นเรื่องของการทำงานของโปรแกรม แต่ก่อนหน้านั้น เราต้องมาทำความเข้าใจเรื่องการวิธีการทำงานของตัว Javascript Engine กันก่อนนะครับ ว่าตอนที่เรารันโปรแกรมนั้น มันทำอะไรบ้าง</p>
 
 <h2 id="javascripts-engine--friends">Javascripts Engine &amp; Friends</h2>
 
@@ -351,8 +360,10 @@ i 		// ReferenceError
   <li>Let	<a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/let">https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/let</a></li>
 </ul>
 
+	</div>
 </div>
 
+	<div class="container">
 <div class="share-page">
 	<!-- Load Facebook SDK for JavaScript -->
   <div id="fb-root"></div>
@@ -418,6 +429,7 @@ i 		// ReferenceError
 
 <div class="comments">
 	<div id="disqus_thread"></div>
+</div>
 </div>
 
 <script>

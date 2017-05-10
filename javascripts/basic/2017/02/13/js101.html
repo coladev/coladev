@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="stylesheet" href="/public/js/hightlightjs/styles/tomorrow.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Prompt:300,400|Roboto:300,400,500&amp;subset=thai" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
   <!-- Icons -->
@@ -65,11 +65,20 @@
 
 		<!-- Wrap is the content to shift when toggling the sidebar. We wrap the
 				 content to avoid any CSS collisions with our real content. -->
-		<div class="post">
-	<img src="/assets/images/thumbnail/js101.png">
-	<h1 class="post-title">JS Basic: EP1. พื้นฐานแบบเน้นๆ</h1>
-	<span class="post-date">13 Feb 2017</span>
-	<p>เชื่อว่าหลายๆคนคงเขียน Javascripts มากันพอสมควรแล้ว แต่น่าจะมีหลายคนที่อาจจะมองข้ามพื้นฐานเล็กๆน้อยๆไป ซึ่งผมก็เป็นหนึ่งในนั้น แต่หลังจากที่ได้ไปศึกษาพื้นฐานในระดับลึกลงไปแล้ว ผมคิดว่าส่วนนี้สำคัญมากการในทำงาน ซึ่งคิดว่าน่าจะช่วยให้การเขียนโค้ดของเราดีขึ้น เนื่องจากเราจะได้เห็นภาพอะไรบางอย่างที่แตกต่างออกไป ซึ่งในบทความนี้เราก็จะมาเริ่มตั้งแต่การประกาศตัวแปร ไปจนถึงเรื่องใหม่ๆบน ES6 ด้วยครับ</p>
+		<div class="post-page">
+	
+	<div class="post-bg">
+		<div class="post-bg-img">
+			<img src="/assets/images/thumbnail/js101.png">
+			<div class="post-bg-overlay" style="background-color: #FCA311;"></div>
+		</div>
+		<div class="post-heading">
+			<h1 class="post-title">JS Basic: EP1. พื้นฐานแบบเน้นๆ</h1>
+		</div>
+	</div>
+	<div class="container">
+		<span class="post-date">13 Feb 2017</span>
+		<p>เชื่อว่าหลายๆคนคงเขียน Javascripts มากันพอสมควรแล้ว แต่น่าจะมีหลายคนที่อาจจะมองข้ามพื้นฐานเล็กๆน้อยๆไป ซึ่งผมก็เป็นหนึ่งในนั้น แต่หลังจากที่ได้ไปศึกษาพื้นฐานในระดับลึกลงไปแล้ว ผมคิดว่าส่วนนี้สำคัญมากการในทำงาน ซึ่งคิดว่าน่าจะช่วยให้การเขียนโค้ดของเราดีขึ้น เนื่องจากเราจะได้เห็นภาพอะไรบางอย่างที่แตกต่างออกไป ซึ่งในบทความนี้เราก็จะมาเริ่มตั้งแต่การประกาศตัวแปร ไปจนถึงเรื่องใหม่ๆบน ES6 ด้วยครับ</p>
 
 <p>ก่อนอื่นมารู้คำศัพท์ที่เกี่ยวข้องกันก่อน เผื่อไปเจอในที่อื่นๆจะได้ไม่งงกันนะครับ</p>
 
@@ -691,8 +700,10 @@ b = [4,5,6];  	// TypeError
   <li><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/let">Let</a></li>
 </ul>
 
+	</div>
 </div>
 
+	<div class="container">
 <div class="share-page">
 	<!-- Load Facebook SDK for JavaScript -->
   <div id="fb-root"></div>
@@ -758,6 +769,7 @@ b = [4,5,6];  	// TypeError
 
 <div class="comments">
 	<div id="disqus_thread"></div>
+</div>
 </div>
 
 <script>
