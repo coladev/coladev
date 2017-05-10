@@ -115,3 +115,13 @@ table {
 	text-align: center;
 	margin-bottom: 30px;
 }
+
+.container {
+	max-width: 54em;
+}
+
+@media (min-width: 56em) {
+	.container {
+		max-width: 54em;
+	}
+}

@@ -7,20 +7,31 @@ paginate: true
 ---
 
 {% include highlight.html %}
+{% include tags.html %}
 
 <div class="container">
 <div class="posts">
+	<div class="posts-heading">
+		<div class="posts-heading-inner"><b>Latest</b> Blog</div>
+	</div>
+  <div class="line"></div>
   {% for post in paginator.posts %}
   <a href="{{ site.baseurl }}{{ post.url }}">
     <div class="post">
-      <img src="{{post.image}}">
-      <h1 class="post-title">
-          {{ post.title }}
-      </h1>
+    	<div class="post-img">
+      	<img src="{{post.image}}">
+      </div>
+      <div class="post-detail">
+        <h1 class="post-title">
+            {{ post.title }}
+        </h1>
 
-      <span class="post-date">{{ post.subtitle }}</span>
+    		<div class="post-subtitle">{{ post.description }}</div>
+    		<div class="post-date">{{ post.date | date_to_long_string }}</div>
+    	</div>
     </div>
   </a>
+  <div class="line"></div>
   {% endfor %}
 </div>
 

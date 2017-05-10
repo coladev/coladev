@@ -2,10 +2,12 @@
 layout: post
 title:  "สรุปแนวคิด Neural Network แบบไม่มี Math"
 subtitle: "เข้าใจพื้นฐานของ Machine Learning แบบ Neural Network โดยไม่ต้องรู้ Math !!"
+description: "เข้าใจพื้นฐานของ Neural Network โดยไม่ต้องอาศัยความรู้ Math และลองเล่นเบื้องต้นบนจาวาสคริปด้วย Synaptic.js"
 date:   2017-02-22 06:00:00 +0700
 categories: machine-learning neural-network
 image: /assets/images/thumbnail/neural-network-thumb.png
 top_three: true
+highlight_color: "#17B890"
 ---
 
 ในโลกของ Developer ทุกวันนี้ ทุกคนคงจะได้ยินเทรนด์ในการพัฒนาซอฟแวร์ยุคใหม่ที่อยู่บนพื้นฐานของ machine learning หรือที่หลายๆคนเรียกว่า `AI-first` ซึ่งจะเข้ามาแทนยุค Mobile-first ในปัจจุบัน

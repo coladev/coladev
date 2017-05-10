@@ -2,13 +2,24 @@
 layout: default
 ---
 
-<div class="post">
-	<img src="{{page.image}}">
-	<h1 class="post-title">{{ page.title }}</h1>
-	<span class="post-date">{{ page.date | date_to_string }}</span>
-	{{ content }}
+<div class="post-page">
+	
+	<div class="post-bg">
+		<div class="post-bg-img">
+			<img src="{{page.image}}">
+			<div class="post-bg-overlay" style="background-color: {{ page.highlight_color }};"></div>
+		</div>
+		<div class="post-heading">
+			<h1 class="post-title">{{ page.title }}</h1>
+		</div>
+	</div>
+	<div class="container">
+		<span class="post-date">{{ page.date | date_to_string }}</span>
+		{{ content }}
+	</div>
 </div>
 
+	<div class="container">
 <div class="share-page">
 	<!-- Load Facebook SDK for JavaScript -->
   <div id="fb-root"></div>
@@ -52,6 +63,7 @@ layout: default
 
 <div class="comments">
 	<div id="disqus_thread"></div>
+</div>
 </div>
 
 <script>

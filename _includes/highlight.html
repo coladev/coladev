@@ -5,7 +5,8 @@
 
 		  {% for post in paginator.posts %}
 		    {% if post.top_one %}
-		  			<div class="highlight-item">
+
+		  			<a class="highlight-item" href="{{ site.baseurl }}{{ post.url }}">
 					  	<div class="highlight-title">
 					  		<div class="highlight-title-inner">
 					  			<span>TOP</span>
@@ -14,12 +15,13 @@
 					  	</div>
 		  				<div class="item-bg">
 								<img src="{{post.image}}" />
+								<div class="item-bg-overlay" style="background-color: {{ post.highlight_color }};"></div>
 		  				</div>
 		  				<div class="item-message">
 		  					<h3 class="item-title">{{ post.title }}</h3>
 		  					<h5 class="item-subtitle">{{ post.subtitle }}</h5>
 		  				</div>
-		  			</div>
+		  			</a>
 		    {% endif %}
 		  {% endfor %}
   		</div>
@@ -28,30 +30,32 @@
   		<div class="tile is-6">
 		  {% for post in paginator.posts %}
 		    {% if post.top_two %}
-  			<div class="highlight-item is-small">
+  			<a class="highlight-item is-small" href="{{ site.baseurl }}{{ post.url }}">
   				<div class="item-bg">
 						<img src="{{post.image}}" />
+								<div class="item-bg-overlay" style="background-color: {{ post.highlight_color }};"></div>
   				</div>
   				<div class="item-message">
   					<h3 class="item-title">{{ post.title }}</h3>
   					<h5 class="item-subtitle">{{ post.subtitle }}</h5>
   				</div>
-  			</div>
+  			</a>
 		    {% endif %}
 		  {% endfor %}
   		</div>
   		<div class="tile is-6">
 		  {% for post in paginator.posts %}
 		    {% if post.top_three %}
-  			<div class="highlight-item is-small">
+  			<a class="highlight-item is-small" href="{{ site.baseurl }}{{ post.url }}">
   				<div class="item-bg">
 						<img src="{{post.image}}" />
+								<div class="item-bg-overlay" style="background-color: {{ post.highlight_color }};"></div>
   				</div>
   				<div class="item-message">
   					<h3 class="item-title">{{ post.title }}</h3>
   					<h5 class="item-subtitle">{{ post.subtitle }}</h5>
   				</div>
-  			</div>
+  			</a>
 		    {% endif %}
 		  {% endfor %}
   		</div>

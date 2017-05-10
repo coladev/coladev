@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="stylesheet" href="/public/js/hightlightjs/styles/tomorrow.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Prompt:300,400|Roboto:300,400,500&amp;subset=thai" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
   <!-- Icons -->
@@ -65,11 +65,20 @@
 
 		<!-- Wrap is the content to shift when toggling the sidebar. We wrap the
 				 content to avoid any CSS collisions with our real content. -->
-		<div class="post">
-	<img src="/assets/images/thumbnail/lambda.png">
-	<h1 class="post-title">มาลองสร้าง Serverless Application บน AWS Lambda กัน</h1>
-	<span class="post-date">11 Feb 2017</span>
-	<p>    Serverless เป็นรูปแบบใหม่ของการทำ Backend Application ในยุคปัจจุบันที่สามารถสร้างและขยายปริมาณการรองรับการใช้งานได้อย่างง่ายดาย และบน AWS Lambda นั่น สามารถช่วยให้เราทำ Serverless Application ในการจัดการข้อมูล รวมไปถึง API สำหรับแอพลิเคชันหน้าบ้านได้โดยแทบไม่ต้องใช้ความรู้ในการ setup และ deploy แอพในรูปแบบของเซิฟเวอร์แบบเดิมเลยทีเดียว เพียงแค่เขียนโปรแกรมให้ได้ตามที่ต้องการก็เพียงพอแล้ว</p>
+		<div class="post-page">
+	
+	<div class="post-bg">
+		<div class="post-bg-img">
+			<img src="/assets/images/thumbnail/lambda.png">
+			<div class="post-bg-overlay" style="background-color: ;"></div>
+		</div>
+		<div class="post-heading">
+			<h1 class="post-title">มาลองสร้าง Serverless Application บน AWS Lambda กัน</h1>
+		</div>
+	</div>
+	<div class="container">
+		<span class="post-date">11 Feb 2017</span>
+		<p>    Serverless เป็นรูปแบบใหม่ของการทำ Backend Application ในยุคปัจจุบันที่สามารถสร้างและขยายปริมาณการรองรับการใช้งานได้อย่างง่ายดาย และบน AWS Lambda นั่น สามารถช่วยให้เราทำ Serverless Application ในการจัดการข้อมูล รวมไปถึง API สำหรับแอพลิเคชันหน้าบ้านได้โดยแทบไม่ต้องใช้ความรู้ในการ setup และ deploy แอพในรูปแบบของเซิฟเวอร์แบบเดิมเลยทีเดียว เพียงแค่เขียนโปรแกรมให้ได้ตามที่ต้องการก็เพียงพอแล้ว</p>
 
 <hr />
 
@@ -325,8 +334,10 @@ exports.handler = (event, context, callback) =&gt; {
   <li><a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-as-simple-proxy.html">AWS Lambda + API Gateway Proxy Intregration</a></li>
 </ul>
 
+	</div>
 </div>
 
+	<div class="container">
 <div class="share-page">
 	<!-- Load Facebook SDK for JavaScript -->
   <div id="fb-root"></div>
@@ -392,6 +403,7 @@ exports.handler = (event, context, callback) =&gt; {
 
 <div class="comments">
 	<div id="disqus_thread"></div>
+</div>
 </div>
 
 <script>
