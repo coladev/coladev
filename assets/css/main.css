@@ -4278,18 +4278,27 @@ body {
 .highlight {
   font-size: 0.8em; }
   .highlight .hljs {
-    background-color: #FFF;
     padding: 0.8rem;
-    border-radius: 2px; }
+    border-radius: 2px;
+    margin-top: 1rem;
+    margin-bottom: 1rem; }
 
 code.highlighter-rouge {
   border-radius: 2px;
   padding: 0.15rem;
   color: #FD5200;
+  font-size: 1em;
+  background-color: #FFF;
   font-family: "PT Sans", Helvetica, Arial, sans-serif; }
 
+pre {
+  background-color: #FFF; }
+
 ul {
-  padding-left: 20px; }
+  padding-left: 20px;
+  margin-top: 1rem;
+  margin-bottom: 0.6rem;
+  list-style: disc; }
 
 h1, h2, h3 {
   margin-top: 2em;
@@ -4438,6 +4447,16 @@ table {
 .post .post-title {
   margin-top: 1em; }
 
+.post-page table {
+  background-color: #FFF; }
+  .post-page table > thead > tr > th {
+    background-color: #EEE;
+    padding: 6px 10px; }
+  .post-page table > tbody > tr > td {
+    background-color: #FFF;
+    padding: 6px 10px; }
+.post-page > .container {
+  max-width: 44em; }
 .post-page .post-bg {
   position: relative;
   max-height: 30rem;
@@ -4472,7 +4491,8 @@ table {
       color: #FFF;
       display: block;
       padding: 1.4rem 2rem;
-      font-family: 'Roboto', 'Prompt', sans-serif; }
+      font-family: 'Roboto', 'Prompt', sans-serif;
+      font-size: 1.6em; }
 
 .posts .posts-heading {
   display: block;
@@ -4585,11 +4605,11 @@ table {
           color: #FFF; }
 
 footer.footer {
-  background-color: #FFF;
+  background-color: #333;
   margin-top: 1em;
-  box-shadow: 0 -1px 2px #EEE;
-  padding: 1em 0;
-  font-size: 14px; }
+  padding: 1em 0; }
+  footer.footer > .container {
+    max-width: 44em; }
 
 .author {
   text-align: center;
