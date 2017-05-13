@@ -6,4 +6,9 @@ footer.footer {
 	& > .container {
 		max-width: 44em;
 	}
+
+	.footer-content {
+		font-size: 0.75em;
+		color: $white;
+	}
 }

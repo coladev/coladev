@@ -6,15 +6,21 @@ layout: default
 paginate: true
 ---
 
-{% include highlight.html %}
-{% include tags.html %}
+{% if paginator.page == 1 %}
+	{% include highlight.html %}
+	{% include tags.html %}
+{% else %}
+	{% include tags.html %}
+{% endif %}
 
 <div class="container">
 <div class="posts">
-	<div class="posts-heading">
-		<div class="posts-heading-inner"><b>Latest</b> Blog</div>
-	</div>
-  <div class="line"></div>
+   {% if paginator.page == 1 %}
+		<div class="posts-heading">
+			<div class="posts-heading-inner"><b>Latest</b> Blog</div>
+		</div>
+	  <div class="line"></div>
+  {% endif %}
   {% for post in paginator.posts %}
   <a href="{{ site.baseurl }}{{ post.url }}">
     <div class="post">

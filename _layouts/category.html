@@ -2,10 +2,21 @@
 layout: default
 ---
 
+<div class="categories-container">
+
+	<div class="categories-bg">
+		<div class="categories-bg-img">
+			<img src="{{page.image}}">
+			<div class="categories-bg-overlay" style="background-color: {{ page.highlight_color }};"></div>
+		</div>
+		<div class="categories-heading">
+			<h1 class="categories-title">{{ page.title }}</h1>
+		</div>
+	</div>
+</div>
+<div class="container">
 <div class="posts">
-  <h2 class="catalog-title">{{page.category}}</h2>
   {% for post in paginator.posts %}
-    {% if post.categories contains page.category %}
       <a href="{{ site.baseurl }}{{ post.url }}">
     <div class="post">
     	<div class="post-img">
@@ -20,21 +31,22 @@ layout: default
     	</div>
     </div>
       </a>
-    {% endif %}
+  <div class="line"></div>
   {% endfor %}
+</div>
 </div>
 
 <div class="pagination">
   {% if paginator.next_page %}
-    <a class="pagination-item older" href="{{ site.baseurl }}/page{{paginator.next_page}}">Older</a>
+    <a class="pagination-item older" href="{{ site.baseurl }}/tags/{{page.category}}/page{{paginator.next_page}}">Older</a>
   {% else %}
     <span class="pagination-item older">Older</span>
   {% endif %}
   {% if paginator.previous_page %}
     {% if paginator.page == 2 %}
-      <a class="pagination-item newer" href="{{ site.baseurl }}/">Newer</a>
+      <a class="pagination-item newer" href="{{ site.baseurl }}/tags/{{page.category}}">Newer</a>
     {% else %}
-      <a class="pagination-item newer" href="{{ site.baseurl }}/page{{paginator.previous_page}}">Newer</a>
+      <a class="pagination-item newer" href="{{ site.baseurl }}/tags/{{page.category}}/page{{paginator.previous_page}}">Newer</a>
     {% endif %}
   {% else %}
     <span class="pagination-item newer">Newer</span>

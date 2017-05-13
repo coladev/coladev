@@ -101,4 +101,36 @@
 	margin-bottom: 3rem;
 	background-color: #F8F8F8;
 	padding: 1rem 0;
+
+	ul {
+		@include flex($align: center, $justify: center);
+		list-style: none;
+		padding: 1rem 0;
+		margin: 0;
+
+		& > li {
+			a {
+				@include flex($direction: column, $align: center, $justify: center);
+				padding: 0 1.5rem;
+
+				&.tag-item {
+					color: #666;
+
+					.tag-icon {
+						font-size: 2em;
+						margin-bottom: 0;
+						line-height: 0;
+					}
+
+					.tag-title {
+						font-size: 0.9em;
+					}
+				}
+
+				&:hover {
+					color: $orange;
+				}
+			}
+		}
+	}
 }

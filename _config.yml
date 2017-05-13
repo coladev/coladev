@@ -32,5 +32,6 @@ exclude:
 sass:
   sass_dir: _sass
 future: true
+pagination_dir: posts
 
 permalink: /:categories/:year/:month/:day/:title

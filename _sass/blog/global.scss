@@ -25,6 +25,14 @@ code.highlighter-rouge {
 	font-family: "PT Sans", Helvetica, Arial, sans-serif;
 }
 
+a {
+	color: #00A58A;
+
+	&:hover {
+		text-decoration: none;
+	}
+}
+
 pre {
 
 	background-color: #FFF;
@@ -134,5 +142,91 @@ table {
 @media (min-width: 56em) {
 	.container {
 		max-width: 54em;
+	}
+}
+
+.pagination {
+	max-width: 200px;
+	margin: 0 auto;
+	margin-bottom: 5rem;
+
+	.pagination-item {
+		&.older {
+			border-right: 0;
+		}
+	}
+
+	a {
+		color: #00A58A;
+	}
+}
+
+.categories-container {
+
+	.categories-heading {
+
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			left: 0;
+			top: 0;
+			@include flex($align: center, $justify: center);
+			z-index: 10;
+
+			.categories-title {
+				border: 3px solid #FFF;
+				color: #FFF;
+				display: block;
+				padding: 1.1rem 1.6rem;
+				font-family: 'Roboto', 'Prompt', sans-serif;
+				font-size: 1.6em;
+				margin-top: 0;
+				margin-bottom: 0;
+			}
+	}
+
+	.categories-bg {
+		position: relative;
+		max-height: 30rem;
+		overflow: hidden;
+		background-color: #333;
+		margin-bottom: 3rem;	
+
+		.categories-bg-img {
+			img {
+				width: 100%;
+				height: auto;
+			}
+
+
+			.categories-bg-overlay {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 1;
+				opacity: 0.7;
+			}
+		}
+
+	.categories-heading {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			left: 0;
+			top: 0;
+			@include flex($align: center, $justify: center);
+			z-index: 10;
+
+			.categories-title {
+				border: 3px solid #FFF;
+				color: #FFF;
+				display: block;
+				padding: 1.4rem 2rem;
+				font-family: 'Roboto', 'Prompt', sans-serif;
+				font-size: 1.6em;
+			}
+		}
 	}
 }
