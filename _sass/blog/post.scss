@@ -6,6 +6,32 @@
 }
 
 .post-page {
+
+	table {
+		background-color: $white;
+
+		& > thead {
+			& > tr {
+				& > th {
+					background-color: #EEE;
+					padding: 6px 10px;
+				}
+			}
+		}
+
+		& > tbody {
+			& > tr {
+				& > td {
+					background-color: $white;
+					padding: 6px 10px;
+				}
+			}
+		}
+	}
+
+	& > .container {
+		max-width: 44em;
+	}
 	.post-bg {
 		position: relative;
 		max-height: 30rem;
@@ -46,6 +72,7 @@
 				display: block;
 				padding: 1.4rem 2rem;
 				font-family: 'Roboto', 'Prompt', sans-serif;
+				font-size: 1.6em;
 			}
 		}
 	}

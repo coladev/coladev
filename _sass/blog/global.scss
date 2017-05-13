@@ -9,9 +9,10 @@ body {
 	font-size: 0.8em;
 
 	.hljs {
-		background-color: $white;
 		padding: 0.8rem;
 		border-radius: 2px;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
 	}
 }
 
@@ -19,11 +20,21 @@ code.highlighter-rouge {
 	border-radius: 2px;
 	padding: 0.15rem;
 	color: $orange;
+	font-size: 1em;
+	background-color: #FFF;
 	font-family: "PT Sans", Helvetica, Arial, sans-serif;
+}
+
+pre {
+
+	background-color: #FFF;
 }
 
 ul {
 	padding-left: 20px;
+	margin-top: 1rem;
+	margin-bottom: 0.6rem;
+	list-style: disc;
 	li {
 
 	}

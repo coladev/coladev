@@ -7,7 +7,7 @@ date:   2017-02-22 06:00:00 +0700
 categories: machine-learning neural-network
 image: /assets/images/thumbnail/neural-network-thumb.png
 top_three: true
-highlight_color: "#17B890"
+highlight_color: "#01A4CC"
 ---
 
 ในโลกของ Developer ทุกวันนี้ ทุกคนคงจะได้ยินเทรนด์ในการพัฒนาซอฟแวร์ยุคใหม่ที่อยู่บนพื้นฐานของ machine learning หรือที่หลายๆคนเรียกว่า `AI-first` ซึ่งจะเข้ามาแทนยุค Mobile-first ในปัจจุบัน

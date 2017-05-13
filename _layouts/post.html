@@ -17,53 +17,53 @@ layout: default
 		<span class="post-date">{{ page.date | date_to_string }}</span>
 		{{ content }}
 	</div>
-</div>
-
+	
 	<div class="container">
-<div class="share-page">
-	<!-- Load Facebook SDK for JavaScript -->
-  <div id="fb-root"></div>
-  <!-- Your share button code -->
-  <div class="fb-share-button" 
-    data-href="{{ site.baseurl }}{{ page.url }}" 
-    data-layout="button_count"
-    data-size="large">
-  </div>
-</div>
+		<div class="share-page">
+			<!-- Load Facebook SDK for JavaScript -->
+		  <div id="fb-root"></div>
+		  <!-- Your share button code -->
+		  <div class="fb-share-button" 
+		    data-href="{{ site.baseurl }}{{ page.url }}" 
+		    data-layout="button_count"
+		    data-size="large">
+		  </div>
+		</div>
 
-<div class="author">
-	<h4>Author</h4>
-	<div class="profile">
-		<div class="img"></div>
-		<div class="info">
-			<h4>Anonymous</h4>
-			<p>Web Developer</p>
-			<p>Nextzy Technology Co,. LTD.</p>
+		<div class="author">
+			<h4>Author</h4>
+			<div class="profile">
+				<div class="img"></div>
+				<div class="info">
+					<h4>Anonymous</h4>
+					<p>Web Developer</p>
+					<p>Nextzy Technology Co,. LTD.</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="related">
+			<h2>Related</h2>
+			<div class="ralated-posts">
+			{% for post in site.related_posts limit:3 %}
+				<a href="{{ site.baseurl }}{{ post.url }}">
+				<div class="post">
+					<img src="{{post.image}}">
+					<h2 class="post-title">
+							{{ post.title }}
+					</h2>
+
+					<span class="post-date">{{ post.subtitle }}</span>
+				</div>
+			</a>
+			{% endfor %}
+			</div>
+		</div>
+
+		<div class="comments">
+			<div id="disqus_thread"></div>
 		</div>
 	</div>
-</div>
-
-<div class="related">
-	<h2>Related</h2>
-	<div class="ralated-posts">
-	{% for post in site.related_posts limit:3 %}
-		<a href="{{ site.baseurl }}{{ post.url }}">
-		<div class="post">
-			<img src="{{post.image}}">
-			<h2 class="post-title">
-					{{ post.title }}
-			</h2>
-
-			<span class="post-date">{{ post.subtitle }}</span>
-		</div>
-	</a>
-	{% endfor %}
-	</div>
-</div>
-
-<div class="comments">
-	<div id="disqus_thread"></div>
-</div>
 </div>
 
 <script>
