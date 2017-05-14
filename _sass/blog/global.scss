@@ -26,7 +26,7 @@ code.highlighter-rouge {
 }
 
 a {
-	color: #00A58A;
+	color: $blue;
 
 	&:hover {
 		text-decoration: none;
@@ -157,7 +157,7 @@ table {
 	}
 
 	a {
-		color: #00A58A;
+		color: $blue;
 	}
 }
 
