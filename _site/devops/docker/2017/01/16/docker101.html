@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+	<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Docker 101: Basic & Overview &middot; Coladev.com
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/public/js/hightlightjs/styles/atom-one-dark.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link href="https://fonts.googleapis.com/css?family=Prompt:300,400|Roboto:300,400,500&amp;subset=thai" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/images/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+  
+    <meta property="og:title" content="Docker 101: Basic & Overview" />
+    <meta property="og:description" content="ลองใช้แบบง่ายๆ docker ทั้ง dockerfile / docker-compose / docker-swarm" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://coladev.com/assets/images/thumbnail/docker101.png" />
+  
+
+<script src="http://127.0.0.1:35729/livereload.js"></script></head>
+
+
+	<body>
+
+		<nav class="nav">
+  <div class="container">
+    <div class="nav-left">
+      <a class="nav-item nav-logo" href="/" title="Coladev.com">
+				<img src="/assets/images/logo.png">
+			</a>
+    </div>
+    <span class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+    <div class="nav-right nav-menu">
+      <div class="nav-item">
+	      <a class="nav-menu-item" style="background: url(/assets/images/menu/blog.png)">
+	      	<div class="nav-icon"><i class="fa fa-code" aria-hidden="true"></i></div>
+	      	<div class="nav-title">Blog</div>
+	      </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+		<!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+				 content to avoid any CSS collisions with our real content. -->
+		<div class="post-page">
+	
+	<div class="post-bg">
+		<div class="post-bg-img">
+			<img src="/assets/images/thumbnail/docker101.png">
+			<div class="post-bg-overlay" style="background-color: ;"></div>
+		</div>
+		<div class="post-heading">
+			<h1 class="post-title">Docker 101: Basic & Overview</h1>
+		</div>
+	</div>
+	<div class="container">
+		<span class="post-date">16 Jan 2017</span>
+		<p>เคยเจอปัญหาดีพลอยแอพลิเคชันขึ้นบนเซิฟเวอร์แล้วเจอปัญหาในการรันหรือเปล่า เช่น version node ไม่ตรงกับที่ต้องการ , ไม่สามารถอัพเดตได้ เพราะมีแอพอื่นรันอยู่ หรือเทสบนเครื่องเสร็จแล้วใช้งานได้ปกติ แต่พอดีพลอยจริงแล้วเกิดปัญหาสารพัด ปัญหานี้จะหมดไปเพียงแค่เราใช้ Doggy เอ้ย  <code class="highlighter-rouge">Docker</code></p>
+
+<p><img src="/assets/images/posts/docker101/environment.png" alt="It's Work" /></p>
+
+<h3 id="what-is-docker">What is Docker?</h3>
+
+<p><img src="/assets/images/posts/docker101/docker.png" alt="Docker" /></p>
+
+<p>Docker เป็น <code class="highlighter-rouge">Container</code> สำหรับใช้ในการดีพลอยเว็บเซอร์วิสต่างๆ ซึ่งจะช่วยเราในการ Bundle ทุกอย่างที่จำเป็นสำหรับการรันแอพลิเคชันของเราไปด้วยกัน</p>
+
+<p><img src="/assets/images/posts/docker101/docker-structure.png" alt="Docker Structure" /></p>
+
+<p>โดย Container แต่ละตัวนั้นสามารถทำการแยก Library ที่ต้องการใช้ได้ และทำการรันบน Docker Engine อีกที ดังนั้นเราสามารถนำ Container นั้นไปรันบนเครื่องไหนก็ได้ที่ลง Docker ไว้ โดยการรันก็จะเป็น Environment เดียวกันหมดเพราะเป็น Config ชุดเดียวกัน อีกทั้งยังช่วยให้เราสามารถ Scale ได้ง่ายด้วย</p>
+
+<h2 id="get-stated">Get Stated</h2>
+
+<h3 id="install-docker-engine">Install Docker Engine</h3>
+
+<p>วิธีลงก็แสนง่ายดาย เดี๋ยวเราจะมาลองลงเล่นในเครื่องเราก่อนแล้วกันนะครับ
+ผมใช้ osx อยู่ วิธีการลงก็มีวิธีง่ายๆแค่ไปโหลดมา</p>
+
+<p><a href="Download Docker OSX Installer">https://www.docker.com/products/docker#/mac</a></p>
+
+<p>ลงเสร็จก็เข้า terminal เลยครับ อยู่ตรงแยกอโศก เอ้ย รัน cmd ง่ายๆ</p>
+
+<p><code class="highlighter-rouge">docker</code></p>
+
+<p>ลองดูกันก่อนว่าใช้เวอร์ชันอะไร</p>
+
+<p><code class="highlighter-rouge">docker --version</code></p>
+
+<p>เท่านี้ก็มี docker ในเครื่องแล้วครับ ต่อไปก็จะไปลองเล่นกัน</p>
+
+<h3 id="docker-images">Docker Images</h3>
+
+<p>เราเห็นกันไปในหัวข้อก่อนแล้วว่าเราจะทำการ pack ทุกอย่างที่จำเป็นในการรันแอพลิเคชันของเราด้วย docker ซึ่งพอเราแพคเสร็จ มันก็จะออกมาเป็น Docker Images เนี่ยละ แล้วก็สามารถเอา Images ตัวเนี่ย ไปรันที่ไหนก็ได้ที่มี docker อยู่</p>
+
+<p>ซึ่งตัว <code class="highlighter-rouge">Docker Images</code> เนี่ยก็มีตัวสำเร็จรูปที่คนอื่นทำไว้แล้วให้เราสามารถโหลดมาใช้และเล่นได้เลยเหมือน ซึ่งจะถูกเก็บไว้บน <a href="https://hub.docker.com">Docker Hub</a> ซึ่งเป็น Repository สำหรับการเก็บ Docker Images ส่วนกลางๆ คล้ายๆเราใช้ git แล้วเราเก็บโค้ดไว้บน github หรือ bitbucket เลย ซึ่งปัจจุบันกำลังอัพเดตเป็นตัวใหม่ที่ชื่อ <a href="https://store.docker.com">https://store.docker.com</a></p>
+
+<p>เราสามารถดึง public docker images ลงมาเล่นบนเครื่องเราได้ หรือจะสมัคร account แล้วใช้เก็บ docker images ที่เราสร้างขึ้นมาก็ได้เช่นกัน</p>
+
+<p><img src="/assets/images/posts/docker101/docker-hub.png" alt="Docker Hub - hub.docker.com" /></p>
+
+<h3 id="pull-images">Pull Images</h3>
+
+<p>เราจะมาลองดึง Docker Images ที่มีอยู่บน Docker Hub มาเล่นกันก่อนนะครับ
+ในตัวอย่างผมจะลองไปดึง <code class="highlighter-rouge">ubuntu</code> images มาแล้วรัน hello world บน bash</p>
+
+<p>ก่อนอื่นเริ่มจาก pull ลงมาก่อน ด้วยคำสั่ง <code class="highlighter-rouge">docker pull [ชื่อ image]</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>docker pull ubuntu
+</code></pre>
+</div>
+
+<p>มาดูกันว่ามันลงมาอยู่ที่เครื่องเราหรือยัง รันคำสั่ง</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>docker images
+</code></pre>
+</div>
+
+<p>ก็จะเห็นรายชื่อ images ทั้งหมดที่มีอยู่บนเครื่องเรานะครับ นั่นไง ubuntu มาแล้ว</p>
+
+<p><img src="/assets/images/posts/docker101/ubuntu-image.png" alt="Ubuntu Image" /></p>
+
+<p>หากเราต้องการลบอิมเมจตัวไหนทิ้ง ก็สามารถใช้คำสั่ง</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>docker rmi [image-name หรือ id]
+docker rmi ubuntu
+</code></pre>
+</div>
+
+<h3 id="run-images">Run Images</h3>
+
+<p>เมื่อทำการ pull images มาแล้ว ก็สั่งรันได้เลย ด้วยคำสั่ง <code class="highlighter-rouge">docker run [image] [cmd ....]</code></p>
+
+<p>เราจะลองรัน ubuntu จากนั้นรัน echo “hello world” ใน container ตัวนั้นนะครับ</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>docker run ubuntu echo "hello world"
+</code></pre>
+</div>
+
+<p>จะเห็นได้ว่ามันทำการรัน images ที่ชื่อ ubuntu จากนั้นรันคำสั่ง echo “hello world” ใน container จากนั้นก็ exit ออกมา เพราะจบการทำงานแล้ว</p>
+
+<p>ทีนี้มาดูกันว่าเรารัน images อะไรไปแล้วบ้าง ด้วยคำสั่ง</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>docker ps -a
+</code></pre>
+</div>
+
+<p>จะเห็นได้ว่า เรารัน image ubuntu ด้วย command “echo ‘hello world’”
+เราจะเห็น column STATUS ที่แสดงสถานะว่าแอพเรายังรันอยู่ดีหรือเปล่านะครับ</p>
+
+<h4 id="run-with-options">Run with Options</h4>
+
+<p>เรามาดู Options ที่เราต้องใช้บ่อยๆในการรัน Docker Images กันก่อน</p>
+
+<ol>
+  <li><code class="highlighter-rouge">-d</code> หรือ deamon mode นั่งเอง มันจะทำการรันแบบ background process ครับ</li>
+  <li><code class="highlighter-rouge">--name [name]</code> เป็นการตั่งชื่อให้กับ container ที่กำลังรันอยู่นั่นเอง ( แสดงผลในคอลัมสุดท้าย หากไม่ตั้ง ตัว docker จะทำการสุ่มชื่อมาให้เราอัตโนมัติ )</li>
+  <li><code class="highlighter-rouge">-p [HOST_PORT:CONTAINER_PORT]</code> หรือ port เป็นการ binding port ระหว่าง host และ container เดี๋ยวจะอธิบายในหัวข้อถัดไปนะครับ</li>
+  <li><code class="highlighter-rouge">-v [HOST_PATH:CONTAINER_PATH]</code> หรือ volume เป็นการ binding path ของไฟล์บน host และ container ก็เดี๋ยวจะอธิบายในหัวข้อถัดไปอีกทีครับ</li>
+</ol>
+
+<p>ที่ต้องใช้กันบ่อยๆในช่วงเริ่มต้นก็ประมานนี้ครับ
+<br /> </p>
+
+<h4 id="network-mode">Network Mode</h4>
+
+<p>บน Docker นั้น เราสามารถที่จะเปิด Port เพื่อให้เข้าถึงจากภายนอกได้ โดยจะมีอยู่ 3 แบบ</p>
+
+<ol>
+  <li><code class="highlighter-rouge">Bridge</code> เป็นรูปแบบ Default โดยเราจะต้องทำการ Mapping เองระหว่าง Port ของ Container และ Port ของ Host</li>
+  <li><code class="highlighter-rouge">Host</code> เป็นรูปแบบที่ Container จะใช้ Host Port ในการ Binding Network เลย</li>
+  <li><code class="highlighter-rouge">None</code> คือไม่มีการใช้ Network ของ Container</li>
+</ol>
+
+<p>ยังมี Network ในรูปแบบของ User-defined Network หรือการ Custom ได้ ซึ่งสามารถดูรายละเอียดเพิ่มเติมได้ที่นี่
+<br /> </p>
+
+<h4 id="example">Example</h4>
+
+<p>ทีนี้เราจะมาลอง Options ของ Network แบบ Bridge ซึ่งเป็นแบบ Default ดูนะครับ โดยจะให้ไป pull images ที่ชื่อว่า <code class="highlighter-rouge">tui2tone/helloworld-express</code> ซึ่งเป็น Express App โง่ๆตัวนึง โดยรันอยู่ที่ port <code class="highlighter-rouge">3000</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>docker pull tui2tone/helloworld-express
+</code></pre>
+</div>
+
+<p>พอเราได้ Images มาแล้วก็จะมารันด้วย Opts port ดู โดยเราต้องทำการ Mapping Port จาก <code class="highlighter-rouge">HOST:CONTAINER</code> ตามที่เราต้องการ ในทีนี้ก็จะใช้ port 3000 บน Host เป็น Port เดียวกับ Container และให้รันเป็น deamon นะครับ</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>docker run -d -p 3000:3000 tui2tone/helloworld-express
+</code></pre>
+</div>
+
+<p><img src="/assets/images/posts/docker101/docker-ps-helloworld.png" alt="Run HelloWorld Image" /></p>
+
+<p>เราก็จะเข้าเว็บได้ผ่าน <code class="highlighter-rouge">http://localhost:3000</code> ลองเอา -p ออกสิ เข้าไม่ได้นะ เพราะไม่ได้ Mapping Port ไว้</p>
+
+<p><img src="/assets/images/posts/docker101/docker-helloworld.png" alt="HelloWorld Url" /></p>
+
+<h4 id="volume">Volume</h4>
+
+<p>การใช้งานไฟล์ใน Container นั้นเราสามารถเรียกใช้ไฟล์หรือเขียนไฟล์บน Container ได้ แต่ไฟล์เหล่านั้นจะเป็น Temp ไฟล์ หากเราทำการปิด Container ที่รันอยู่นั้นทิ้งไป ไฟล์นั้น็จะหายไปด้วย หรือในกรณีที่เราไม่ต้องการให้ config ไฟล์เข้าไปอยู่ใน Container เราก็สามารถเรียกใช้ config ไฟล์จาก Host ได้ โดย Docker จะเรียกสิ้งนี้ว่า Volume</p>
+
+<p>เราสามารถทำการ <code class="highlighter-rouge">Mapping Folder</code> บน Host เราเข้ากับโฟลเดอร์ที่อยู่บน Container ได้ เมื่อมีการเรียกใช้ไฟล์ในโฟลเดอร์นั้นบน Container ก็จะมาเรียกใช้ไฟล์บน Host แทน</p>
+
+<p>เช่น</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-v /xxx/app:/app
+</code></pre>
+</div>
+
+<p>หมายถึงโฟลเดอร์ที่ <code class="highlighter-rouge">/xxx/app</code> บนเครื่อง Host แต่ในตัว Container จะสามารถเรียกใช้งานไฟล์ในโฟลเดอร์นั้นได้ผ่าน <code class="highlighter-rouge">/app</code></p>
+
+<h4 id="example-1">Example</h4>
+
+<p>มาลอง Mount Volume กันด้วย Docker Images <code class="highlighter-rouge">tui2tone/helloworld-express-vol</code> กันครับ ซึ่งจะเหมือนกับอิมเมจข้อที่แล้วทุกประการ ยกเว้น เราจะไม่มีชื่อ <code class="highlighter-rouge">app.js</code> พ่วงเข้าไปให้ในอิมเมจ ต้องสร้างกันเองบนโฮสและเรียกใช้ผ่าน Volume</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>docker pull tui2tone/helloworld-express-vol
+</code></pre>
+</div>
+
+<p>โดยให้ทำการสร้าง folder ขึ้นมาแล้วและสร้างไฟล์ <code class="highlighter-rouge">app.js</code> โดยมี Content ดังนี้</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>const express = require('express')
+const app = express()
+
+app.get('/', function (req, res) {
+  res.send('Hello World!')
+})
+
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!')
+})
+</code></pre>
+</div>
+
+<p>จากนั้นก็รันเพื่อลง Dependencies ในโฟลเดอร์เดียวกัน</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>npm i express
+</code></pre>
+</div>
+
+<p>แล้วทำการรัน Docker โดยใช้ Absolute Path ( ดูได้จากคำสั่ง <code class="highlighter-rouge">pwd</code> บน Linux และ OSX )</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>docker run -d -p 3000:3000 -v /Users/xxx/Documents/helloworld:/usr/app tui2tone/helloworld-express-vol
+</code></pre>
+</div>
+
+<p><img src="/assets/images/posts/docker101/docker-ps-helloworld-vol.png" alt="Run HelloWorld Image" /></p>
+
+<p>แล้วก็จะเข้าเว็บได้ผ่าน <code class="highlighter-rouge">http://localhost:3000</code> เช่นเดิม</p>
+
+<p><img src="/assets/images/posts/docker101/docker-helloworld.png" alt="HelloWorld Url" /></p>
+
+<h4 id="stop-container">Stop Container</h4>
+
+<p>หากเราจะทำการหยุด container ที่รันอยู่ก็ใช้คำสั่ง docker stop</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>docker stop [container_name หรือ id]
+docker stop tui2tone/helloworld-express
+</code></pre>
+</div>
+
+<h4 id="start-container">Start Container</h4>
+
+<p>เราสามารถใช้คำสั่ง docker start เพื่อรัน container ที่ stop อยู่ได้ โดยจะรันขึ้นมาใหม่ใน configuration เดิมที่เราใช้ตอน <code class="highlighter-rouge">docker run ไป</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>docker start [container_name หรือ id]
+docker start tui2tone/helloworld-express
+</code></pre>
+</div>
+
+<h4 id="remove-container">Remove Container</h4>
+
+<p>หาก Container ไหนที่เราไม่ใช้แล้ว ก็สามารถลบออกไปจากระบบได้ โดยต้องเป็น container ที่ stop อยู่เท่านั้น</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>docker rm [container_name หรือ id]
+docker rm tui2tone/helloworld-express
+</code></pre>
+</div>
+
+<h3 id="dockerfile">Dockerfile</h3>
+
+<p>Dockerfile เปรียบเสมือนการชุดคำสั่งในการสร้าง Docker Images ซึ่งเราจะใช้หลักการคล้ายๆการดีพลอยในวิธีปกติ มาเขียนเป็นชุดคำสั่ง เช่น</p>
+
+<ol>
+  <li>ใช้ images ubuntu</li>
+  <li>git clone repo มาลง</li>
+  <li>รันแอพ</li>
+</ol>
+
+<p>ซึ่งคอมมานคร่าวๆก็จะมีประมาน 5 คำสั่ง</p>
+
+<ul>
+  <li>FROM</li>
+  <li>RUN</li>
+  <li>ADD</li>
+  <li>WORKDIR</li>
+  <li>CMD</li>
+</ul>
+
+<p>มาดูรายละเอียดของแต่ละคำสั่งกัน</p>
+
+<ul>
+  <li><code class="highlighter-rouge">FROM [Image Name]</code> มาจากให้อิมเมจที่จะ build เนี่ย มีพื้นฐานมาจากอิมเมจตัวไหน เช่น ubuntu, alpine เป็นต้น</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>FROM ubuntu
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">RUN [cmd]</code> เป็นคำสั่งที่ใช้ในการรัน command ต่างๆเหมือนที่เรารันบนเครื่อง เช่น สั่ง install lib</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>RUN apt-get install nodejs
+RUN npm i express
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">ADD [from:to]</code> หรือ <code class="highlighter-rouge">COPY [from:to]</code> ใช้สำหรับเพิ่มไฟล์หรือโฟลเดอร์เข้าไปใน Docker Images</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ADD app.js app.js
+</code></pre>
+</div>
+
+<p>คือการนำไฟล์ app.js ไปไว้บน ~/app.js ของอิมเมจนั้น</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ADD app /user/app
+</code></pre>
+</div>
+
+<p>คือการนำโฟลเดอร์ app ไปไว้เป็นโฟลเดอร์ /user/app ของอิมเมจ</p>
+
+<ul>
+  <li><code class="highlighter-rouge">WORKDIR</code> สำหรับ set working directory</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>WORKDIR /user/app
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">CMD [command]</code> เป็นคำสั่งสุดท้ายที่เราจะใช้ในการรัน Docker Images เช่น รัน node</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>CMD node app.js
+</code></pre>
+</div>
+
+<blockquote>
+  <p>process ที่เราจะรันใน cmd คอมมานสุดท้ายนั้นจะต้องเป็น foreground process เนื่องจาก docker จำเป็นต้อง track การรันที่ foreground process หากรันเป็น background docker จะไม่สามารถ track ได้และจะหยุดทำงานในทันที</p>
+</blockquote>
+
+<p>เราจะมาลอง build Node.js(Express) app ง่ายๆด้วย Docker กันครับ</p>
+
+<h4 id="nodejs-app-example">Node.JS App Example</h4>
+
+<p>ก่อนอื่นลง <code class="highlighter-rouge">express</code> กันก่อน <code class="highlighter-rouge">npm i express</code> จากนั้นก็สร้างไฟล์ขึ้นมาไฟล์นึง ผมใช้ชื่อว่า <code class="highlighter-rouge">app.js</code> ก็แล้วกันนะครับ โดยมีโค้ดไว้รัน server helloworld โง่ๆตัวนึง</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var express = require('express')
+var app = express()
+
+app.get('/', function (req, res) {
+  res.send('Hello World!')
+});
+
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!')
+});
+</code></pre>
+</div>
+
+<p>จากนั้นทำการสร้าง <code class="highlighter-rouge">Dockerfile</code> ขึ้นมา โดยมีเนื้อหาดังนี้</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>FROM mhart/alpine-node
+WORKDIR /usr/app
+RUN npm i express
+COPY app.js /usr/app/app.js
+
+CMD node app.js
+</code></pre>
+</div>
+
+<p>อธิบายคร่าวๆคือ</p>
+
+<ul>
+  <li>เราจะใช้อิมเมจชื่อ mhart/alpine-node เป็นตัวตั้งต้น โดยมีพื้นฐานมาจาก alpine และทำการลง Node.js, npm และ Tools อื่นๆให้เราเรียบร้อยแล้ว</li>
+  <li>Set working directory เป็นโฟลเดอร์สำหรับเก็บไฟล์แอพลิเคชัน /usr/app</li>
+  <li>ลง lib express</li>
+  <li>ทำการ copy ไฟล์ app.js ของเราไปไว้ใน container</li>
+  <li>คำสั่งตอนที่ run docker จะเป็นรัน node app.js</li>
+</ul>
+
+<h3 id="build-images">Build Images</h3>
+
+<p>คำสั่งในการรัน build docker images จาก <code class="highlighter-rouge">Dockerfile</code> เราสามารถรันได้ด้วย</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>docker build -t [name] [path to dockerfile]
+</code></pre>
+</div>
+
+<p>เราก็จะรันคำสั่งสร้างอิมเมจของเราจาก Dockerfile จากหัวข้อที่แล้ว</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>docker build -t tui2tone/helloworld-express-build .
+</code></pre>
+</div>
+
+<p>เราก็จะได้อิมเมจมาแล้ว ลองรันดูสิทีนี้</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>docker run -d -p 3000:3000 tui2tone/helloworld-express-build
+</code></pre>
+</div>
+<p><img src="/assets/images/posts/docker101/docker-image-build.png" alt="Docker Image Build" /></p>
+
+<p>ก็สามารถเข้าเว็บแอพเราได้ผ่าน <code class="highlighter-rouge">http://localhost:3000</code> แล้ว</p>
+
+<p><img src="/assets/images/posts/docker101/docker-helloworld.png" alt="HelloWorld Url" /></p>
+
+<h3 id="push-to-docker-hub">Push to Docker Hub</h3>
+
+<p>หากเราต้องการอัพโหลดอิมเมจของเราขึ้นไปบน Docker Hub เราสามารถเข้าไปสมัครสมาชิค จากนั้นทำการ Login ด้วยคำสั่ง</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>docker login
+</code></pre>
+</div>
+
+<p>เมื่อ Login เสร็จแล้วเราหากเราจะทำการ push images ขึ้นไปบน account ของเรานั้น images ที่เราจะ build จะต้องมี prefix เป็นชื่อ account ของเราเช่น ผมใช้ชื่อ tui2tone ก็จะเป็น <code class="highlighter-rouge">tui2tone/image-name</code> เป็นต้น</p>
+
+<p>จากนั้นก็ใช้คำสั่ง <code class="highlighter-rouge">push</code> ขึ้นไป</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>docker push tui2tone/helloworld-express-build
+</code></pre>
+</div>
+
+<p><img src="/assets/images/posts/docker101/docker-hub-push.png" alt="Docker Hub Push" /></p>
+
+<p>มันก็จะขึ้นอยู่บน hub.docker.com เรียบร้อยแล้ว เราก็สามารถเข้าไปดูรายละเอียดอื่นๆได้ในเว็บ</p>
+
+<p><img src="/assets/images/posts/docker101/docker-hub-image.png" alt="Docker Hub Image" /></p>
+
+<h2 id="docker-compose">Docker Compose</h2>
+
+<p>docker compose ใช้สำหรับเก็บ command และ config ที่เราจะรันตัว docker images หากเราทำการรันแล้วครั้งครึ่ง เราจะไม่สามารถแก้คำสั่งรันได้ เช่น</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>docker run -d -p 3000:3000 --name helloworld tui2tone/helloworld-express
+</code></pre>
+</div>
+
+<p>เมื่อเราทำการรันไปครั้งนึงแล้ว จะมี container ตัวนึงรันอยู่ หากเราต้องการทำจะ mapping port เพิ่มละ ทำยังไงดี</p>
+
+<p>ตอนนี้มีวิธีเดียวเท่านั้น คือ หยุดและ <code class="highlighter-rouge">รันใหม่</code> และ พิมคำสั่งใหม่หมด ซึ่งก็จะเป็นความยากลำบากของเราในการดีพลอยแอพใหม่หากมีการเปลี่ยน config ต่างๆในการรัน</p>
+
+<p>แต่ docker ก็ไม่ใจร้ายขนาดนั้น สร้าง docker-compose มาให้เราเก็บไฟล์ config ในการรัน และช่วยในการรีรัน container ในการณีที่มีการเปลี่ยนแปลง config นั่นเอง</p>
+
+<h3 id="configuration">Configuration</h3>
+
+<p>ไฟล์ config นั้นจะใช้ในชื่อ <code class="highlighter-rouge">docker-compose.yml</code> โดยมีส่วนประกอบหลักคือ คำสั่งที่เราใช้ในการรันนั่นเอง</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>version: '2'
+services:
+	web:
+		image: tui2tone/helloworld-express-build
+		container_name: helloworld
+		ports:
+			- 3000:3000
+</code></pre>
+</div>
+
+<p>เราสามารถ config ได้ตามคำสั่ง option ของการ run ปกติ เช่น -v ใช้ volumes / -p ใช้ ports
+สามารถดู config อื่นๆได้ตามนี้</p>
+
+<h3 id="runup-docker-compose">Runup Docker Compose</h3>
+
+<p>จากนั้นก็รันด้วยคำสั่งของ <code class="highlighter-rouge">docker-compose up</code> เพื่อสั่งให้รัน container ตาม config นี้ และใส่ -d เพื่อรัน deamon</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>docker-compose up -d
+</code></pre>
+</div>
+
+<p><img src="/assets/images/posts/docker101/docker-compose-up.png" alt="Docker Hub Image" /></p>
+
+<p>สามารถ stop ได้ผ่านคำสั่ง</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>docker-compose down
+</code></pre>
+</div>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>Docker Overview <a href="https://docs.docker.com/engine/understanding-docker/">https://docs.docker.com/engine/understanding-docker/</a></li>
+</ul>
+
+	</div>
+	
+	<div class="container">
+		<div class="share-page">
+			<!-- Load Facebook SDK for JavaScript -->
+		  <div id="fb-root"></div>
+		  <!-- Your share button code -->
+		  <div class="fb-share-button" 
+		    data-href="/devops/docker/2017/01/16/docker101" 
+		    data-layout="button_count"
+		    data-size="large">
+		  </div>
+		</div>
+
+		<div class="author">
+			<h4>Author</h4>
+			<div class="profile">
+				<div class="img"></div>
+				<div class="info">
+					<h4>Anonymous</h4>
+					<p>Web Developer</p>
+					<p>Nextzy Technology Co,. LTD.</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="related">
+			<h2>Related</h2>
+			<div class="ralated-posts">
+			
+				<a href="/machine-learning/neural-network/2017/02/22/neural-network-basic">
+				<div class="post">
+					<img src="/assets/images/thumbnail/neural-network-thumb.png">
+					<h2 class="post-title">
+							สรุปแนวคิด Neural Network แบบไม่มี Math
+					</h2>
+
+					<span class="post-date">เข้าใจพื้นฐานของ Machine Learning แบบ Neural Network โดยไม่ต้องรู้ Math !!</span>
+				</div>
+			</a>
+			
+				<a href="/javascripts/basic/2017/02/19/js101-scope">
+				<div class="post">
+					<img src="/assets/images/thumbnail/js101-scope.png">
+					<h2 class="post-title">
+							JS Basic: EP2. Scope
+					</h2>
+
+					<span class="post-date">มารู้จักและทำความเข้าใจ Scope ใน Javascripts กัน</span>
+				</div>
+			</a>
+			
+				<a href="/javascripts/basic/2017/02/13/js101">
+				<div class="post">
+					<img src="/assets/images/thumbnail/js101.png">
+					<h2 class="post-title">
+							JS Basic: EP1. พื้นฐานแบบเน้นๆ
+					</h2>
+
+					<span class="post-date">ปูพื้นฐาน javascripts ใหม่กันเถอะ</span>
+				</div>
+			</a>
+			
+			</div>
+		</div>
+
+		<div class="comments">
+			<div id="disqus_thread"></div>
+		</div>
+	</div>
+</div>
+
+<script>
+	
+	var disqus_developer = 1;
+	var disqus_config = function () {
+		this.page.identifier = "/devops/docker/2017/01/16/docker101";
+	};
+	
+	(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		s.src = '//coladev.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
+	})();
+
+	(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8"
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+	</script>
+		<footer class="footer">
+	<div class="container">
+		<div class="footer-content">&copy; Coladev.com 2017. All rights reserved.</div>
+	</div>
+</footer>
+		
+		<script src="/assets/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/assets/js/highlight.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/assets/js/app.js" type="text/javascript" charset="utf-8"></script>
+
+		<script>
+		
+		</script>
+	</body>
+</html>
