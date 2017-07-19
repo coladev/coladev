@@ -30,7 +30,7 @@
 
   
     <meta property="og:title" content="Docker 101: Basic & Overview" />
-    <meta property="og:description" content="ลองใช้แบบง่ายๆ docker ทั้ง dockerfile / docker-compose / docker-swarm" />
+    <meta property="og:description" content="ทำความรู้จักและลองใช้ docker แบบง่ายๆ รวมไปถึง dockerfile และ docker-compose" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://coladev.com/assets/images/thumbnail/docker101.png" />
   
@@ -70,14 +70,14 @@
 	<div class="post-bg">
 		<div class="post-bg-img">
 			<img src="/assets/images/thumbnail/docker101.png">
-			<div class="post-bg-overlay" style="background-color: ;"></div>
+			<div class="post-bg-overlay" style="background-color: #0996BD;"></div>
 		</div>
 		<div class="post-heading">
 			<h1 class="post-title">Docker 101: Basic & Overview</h1>
 		</div>
 	</div>
 	<div class="container">
-		<span class="post-date">16 Jan 2017</span>
+		<span class="post-date">20 Jul 2017</span>
 		<p>เคยเจอปัญหาดีพลอยแอพลิเคชันขึ้นบนเซิฟเวอร์แล้วเจอปัญหาในการรันหรือเปล่า เช่น version node ไม่ตรงกับที่ต้องการ , ไม่สามารถอัพเดตได้ เพราะมีแอพอื่นรันอยู่ หรือเทสบนเครื่องเสร็จแล้วใช้งานได้ปกติ แต่พอดีพลอยจริงแล้วเกิดปัญหาสารพัด ปัญหานี้จะหมดไปเพียงแค่เราใช้ Doggy เอ้ย  <code class="highlighter-rouge">Docker</code></p>
 
 <p><img src="/assets/images/posts/docker101/environment.png" alt="It's Work" /></p>
@@ -479,7 +479,7 @@ CMD node app.js
 
 <p>ไฟล์ config นั้นจะใช้ในชื่อ <code class="highlighter-rouge">docker-compose.yml</code> โดยมีส่วนประกอบหลักคือ คำสั่งที่เราใช้ในการรันนั่นเอง</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>version: '2'
+<div class="highlighter-rouge"><pre class="highlight"><code>version: '3.1'
 services:
 	web:
 		image: tui2tone/helloworld-express-build
@@ -512,6 +512,9 @@ services:
 
 <ul>
   <li>Docker Overview <a href="https://docs.docker.com/engine/understanding-docker/">https://docs.docker.com/engine/understanding-docker/</a></li>
+  <li>Dockerfile Reference <a href="https://docs.docker.com/engine/reference/builder/">https://docs.docker.com/engine/reference/builder/</a></li>
+  <li>Docker run Reference <a href="https://docs.docker.com/engine/reference/run/">https://docs.docker.com/engine/reference/run/</a></li>
+  <li>Docker Compose Reference <a href="https://docs.docker.com/compose/compose-file/">https://docs.docker.com/compose/compose-file/</a></li>
 </ul>
 
 	</div>
@@ -522,7 +525,7 @@ services:
 		  <div id="fb-root"></div>
 		  <!-- Your share button code -->
 		  <div class="fb-share-button" 
-		    data-href="/devops/docker/2017/01/16/docker101" 
+		    data-href="/devops/docker/2017/07/20/docker101" 
 		    data-layout="button_count"
 		    data-size="large">
 		  </div>
@@ -590,7 +593,7 @@ services:
 	
 	var disqus_developer = 1;
 	var disqus_config = function () {
-		this.page.identifier = "/devops/docker/2017/01/16/docker101";
+		this.page.identifier = "/devops/docker/2017/07/20/docker101";
 	};
 	
 	(function() { // DON'T EDIT BELOW THIS LINE
