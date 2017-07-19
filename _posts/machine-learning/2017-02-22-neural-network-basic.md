@@ -6,7 +6,6 @@ description: "เข้าใจพื้นฐานของ Neural Network �
 date:   2017-02-22 06:00:00 +0700
 categories: machine-learning neural-network
 image: /assets/images/thumbnail/neural-network-thumb.png
-top_three: true
 highlight_color: "#01A4CC"
 ---
 
