@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "เขียน CSS ยังไงให้มีประสิทธิภาพดีที่สุด"
+title:  "เขียน CSS ยังไงให้ได้ประสิทธิภาพดีที่สุด"
 subtitle: "เข้าใจหลักการทำงานของบราวเซอร์และวิธีการเขียน CSS ให้ได้ประสิทธิภาพ"
 date:   2017-01-16 02:15:41 +0700
 categories: javascripts framework
@@ -11,7 +11,13 @@ image: /assets/images/thumbnail/js101.png
 
 ## How CSS Work in Browser
 
+ก่อนอื่นมาทำความเข้าใจวิธีการทำงานของ CSS บนบราวเซอร์กันก่อนนะครับ
+
 ### Query Selector
+
+เรื่องแรกเลยคือวิธีการทำ Query Selector โดย CSS ที่เราเขียนนั้น จะเข้าไป Apply เข้าที่ DOM Node ไหน โดยบราวเซอร์จะมีวิธีการค้นหา DOM Node แบบ `Bottom-Up` คือจากล่างขึ้นบน เมื่อเจอและ Match ก็จะ Apply ให้
+
+
 
 
 #### Performance Result

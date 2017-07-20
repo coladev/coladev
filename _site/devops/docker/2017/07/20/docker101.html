@@ -97,11 +97,11 @@
 <h3 id="install-docker-engine">Install Docker Engine</h3>
 
 <p>วิธีลงก็แสนง่ายดาย เดี๋ยวเราจะมาลองลงเล่นในเครื่องเราก่อนแล้วกันนะครับ
-ผมใช้ osx อยู่ วิธีการลงก็มีวิธีง่ายๆแค่ไปโหลดมา</p>
+ผมใช้ osx อยู่ วิธีการลงง่ายๆแค่ไปโหลดมา</p>
 
 <p><a href="Download Docker OSX Installer">https://www.docker.com/products/docker#/mac</a></p>
 
-<p>ลงเสร็จก็เข้า terminal เลยครับ อยู่ตรงแยกอโศก เอ้ย รัน cmd ง่ายๆ</p>
+<p>ลงเสร็จก็เข้าไปที่ terminal เลยครับ แล้วรัน command</p>
 
 <p><code class="highlighter-rouge">docker</code></p>
 
@@ -113,17 +113,17 @@
 
 <h3 id="docker-images">Docker Images</h3>
 
-<p>เราเห็นกันไปในหัวข้อก่อนแล้วว่าเราจะทำการ pack ทุกอย่างที่จำเป็นในการรันแอพลิเคชันของเราด้วย docker ซึ่งพอเราแพคเสร็จ มันก็จะออกมาเป็น Docker Images เนี่ยละ แล้วก็สามารถเอา Images ตัวเนี่ย ไปรันที่ไหนก็ได้ที่มี docker อยู่</p>
+<p>บน Docker นั้นเราจะทำการ bundle ทุกอย่างที่จำเป็นในการรันแอพลิเคชันของเราด้วย docker ซึ่งพอเราแพคเสร็จ มันก็จะออกมาเป็น Docker Images เนี่ยแหละครับ แล้วก็สามารถเอา Images ตัวนี้ ไปรันที่เครื่องไหนก็ได้ที่ลง docker ไว้แล้ว</p>
 
-<p>ซึ่งตัว <code class="highlighter-rouge">Docker Images</code> เนี่ยก็มีตัวสำเร็จรูปที่คนอื่นทำไว้แล้วให้เราสามารถโหลดมาใช้และเล่นได้เลยเหมือน ซึ่งจะถูกเก็บไว้บน <a href="https://hub.docker.com">Docker Hub</a> ซึ่งเป็น Repository สำหรับการเก็บ Docker Images ส่วนกลางๆ คล้ายๆเราใช้ git แล้วเราเก็บโค้ดไว้บน github หรือ bitbucket เลย ซึ่งปัจจุบันกำลังอัพเดตเป็นตัวใหม่ที่ชื่อ <a href="https://store.docker.com">https://store.docker.com</a></p>
+<p>ซึ่งตัว <code class="highlighter-rouge">Docker Images</code> ก็จะมีตัวสำเร็จรูปที่คนอื่นทำไว้แล้วให้เราสามารถโหลดมาใช้และรันได้เลย ซึ่งจะถูกเก็บไว้บน <a href="https://hub.docker.com">Docker Hub</a> ซึ่งเป็น Repository สำหรับการเก็บ Docker Images คล้ายๆเราใช้ git แล้วเราเก็บโค้ดไว้บน github หรือ bitbucket เลย ซึ่งปัจจุบันกำลังอัพเดตเป็นตัวใหม่ที่ชื่อ <a href="https://store.docker.com">https://store.docker.com</a></p>
 
-<p>เราสามารถดึง public docker images ลงมาเล่นบนเครื่องเราได้ หรือจะสมัคร account แล้วใช้เก็บ docker images ที่เราสร้างขึ้นมาก็ได้เช่นกัน</p>
+<p>เราสามารถดึง public docker images ลงมารันบนเครื่องเราได้ หรือจะสมัคร account แล้วใช้เก็บ docker images ที่เราสร้างขึ้นมาก็ได้เช่นกัน</p>
 
 <p><img src="/assets/images/posts/docker101/docker-hub.png" alt="Docker Hub - hub.docker.com" /></p>
 
 <h3 id="pull-images">Pull Images</h3>
 
-<p>เราจะมาลองดึง Docker Images ที่มีอยู่บน Docker Hub มาเล่นกันก่อนนะครับ
+<p>เราจะมาลองดึง Docker Images ที่มีอยู่บน Docker Hub มารันบนเครื่องกันก่อนนะครับ
 ในตัวอย่างผมจะลองไปดึง <code class="highlighter-rouge">ubuntu</code> images มาแล้วรัน hello world บน bash</p>
 
 <p>ก่อนอื่นเริ่มจาก pull ลงมาก่อน ด้วยคำสั่ง <code class="highlighter-rouge">docker pull [ชื่อ image]</code></p>
@@ -168,14 +168,14 @@ docker rmi ubuntu
 </div>
 
 <p>จะเห็นได้ว่า เรารัน image ubuntu ด้วย command “echo ‘hello world’”
-เราจะเห็น column STATUS ที่แสดงสถานะว่าแอพเรายังรันอยู่ดีหรือเปล่านะครับ</p>
+เราจะเห็น column <code class="highlighter-rouge">STATUS</code> ที่แสดงสถานะว่าแอพเรายังรันอยู่ดีหรือเปล่านะครับ</p>
 
 <h4 id="run-with-options">Run with Options</h4>
 
 <p>เรามาดู Options ที่เราต้องใช้บ่อยๆในการรัน Docker Images กันก่อน</p>
 
 <ol>
-  <li><code class="highlighter-rouge">-d</code> หรือ deamon mode นั่งเอง มันจะทำการรันแบบ background process ครับ</li>
+  <li><code class="highlighter-rouge">-d</code> หรือ deamon mode นั่งเอง จะทำการรันแบบ background process ครับ</li>
   <li><code class="highlighter-rouge">--name [name]</code> เป็นการตั่งชื่อให้กับ container ที่กำลังรันอยู่นั่นเอง ( แสดงผลในคอลัมสุดท้าย หากไม่ตั้ง ตัว docker จะทำการสุ่มชื่อมาให้เราอัตโนมัติ )</li>
   <li><code class="highlighter-rouge">-p [HOST_PORT:CONTAINER_PORT]</code> หรือ port เป็นการ binding port ระหว่าง host และ container เดี๋ยวจะอธิบายในหัวข้อถัดไปนะครับ</li>
   <li><code class="highlighter-rouge">-v [HOST_PATH:CONTAINER_PATH]</code> หรือ volume เป็นการ binding path ของไฟล์บน host และ container ก็เดี๋ยวจะอธิบายในหัวข้อถัดไปอีกทีครับ</li>
@@ -194,7 +194,7 @@ docker rmi ubuntu
   <li><code class="highlighter-rouge">None</code> คือไม่มีการใช้ Network ของ Container</li>
 </ol>
 
-<p>ยังมี Network ในรูปแบบของ User-defined Network หรือการ Custom ได้ ซึ่งสามารถดูรายละเอียดเพิ่มเติมได้ที่นี่
+<p>ยังมี Network ในรูปแบบของ User-defined Network หรือการ Custom ได้ ซึ่งสามารถดูรายละเอียดเพิ่มเติมได้<a href="https://docs.docker.com/engine/userguide/networking/">ที่นี่</a>
 <br /> </p>
 
 <h4 id="example">Example</h4>
@@ -213,7 +213,7 @@ docker rmi ubuntu
 
 <p><img src="/assets/images/posts/docker101/docker-ps-helloworld.png" alt="Run HelloWorld Image" /></p>
 
-<p>เราก็จะเข้าเว็บได้ผ่าน <code class="highlighter-rouge">http://localhost:3000</code> ลองเอา -p ออกสิ เข้าไม่ได้นะ เพราะไม่ได้ Mapping Port ไว้</p>
+<p>เราก็จะเข้าเว็บได้ผ่าน <code class="highlighter-rouge">http://localhost:3000</code> ลองเอา -p 3000:300 ออกดูนะครับ แล้วจะเข้าไม่ได้นะ เพราะไม่ได้ Mapping Port ไว้ของ Container เอาไว้</p>
 
 <p><img src="/assets/images/posts/docker101/docker-helloworld.png" alt="HelloWorld Url" /></p>
 
@@ -229,11 +229,11 @@ docker rmi ubuntu
 </code></pre>
 </div>
 
-<p>หมายถึงโฟลเดอร์ที่ <code class="highlighter-rouge">/xxx/app</code> บนเครื่อง Host แต่ในตัว Container จะสามารถเรียกใช้งานไฟล์ในโฟลเดอร์นั้นได้ผ่าน <code class="highlighter-rouge">/app</code></p>
+<p>หมายถึงในโฟลเดอร์ที่ <code class="highlighter-rouge">/xxx/app</code> บนเครื่อง Host แต่ในตัว Container จะสามารถเรียกใช้งานไฟล์ในโฟลเดอร์นั้นได้ผ่าน <code class="highlighter-rouge">/app</code></p>
 
 <h4 id="example-1">Example</h4>
 
-<p>มาลอง Mount Volume กันด้วย Docker Images <code class="highlighter-rouge">tui2tone/helloworld-express-vol</code> กันครับ ซึ่งจะเหมือนกับอิมเมจข้อที่แล้วทุกประการ ยกเว้น เราจะไม่มีชื่อ <code class="highlighter-rouge">app.js</code> พ่วงเข้าไปให้ในอิมเมจ ต้องสร้างกันเองบนโฮสและเรียกใช้ผ่าน Volume</p>
+<p>มาลอง Mount Volume กันด้วย Docker Images <code class="highlighter-rouge">tui2tone/helloworld-express-vol</code> กันครับ ซึ่งจะเหมือนกับอิมเมจข้อที่แล้วทุกประการ ยกเว้น เราจะไม่มีไฟล์ <code class="highlighter-rouge">app.js</code> พ่วงเข้าไปให้ในอิมเมจให้ด้วย ต้องสร้างกันเองบนโฮสและเรียกใช้ผ่าน Volume</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>docker pull tui2tone/helloworld-express-vol
 </code></pre>
@@ -309,7 +309,7 @@ docker rm tui2tone/helloworld-express
   <li>รันแอพ</li>
 </ol>
 
-<p>ซึ่งคอมมานคร่าวๆก็จะมีประมาน 5 คำสั่ง</p>
+<p>ซึ่ง command คร่าวๆก็จะมีประมาน 5 คำสั่ง</p>
 
 <ul>
   <li>FROM</li>
@@ -322,7 +322,7 @@ docker rm tui2tone/helloworld-express
 <p>มาดูรายละเอียดของแต่ละคำสั่งกัน</p>
 
 <ul>
-  <li><code class="highlighter-rouge">FROM [Image Name]</code> มาจากให้อิมเมจที่จะ build เนี่ย มีพื้นฐานมาจากอิมเมจตัวไหน เช่น ubuntu, alpine เป็นต้น</li>
+  <li><code class="highlighter-rouge">FROM [Image Name]</code> ระบุว่าจะให้อิมเมจที่จะ build เนี่ย มีพื้นฐานมาจากอิมเมจตัวไหน เช่น ubuntu, alpine เป็นต้น</li>
 </ul>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>FROM ubuntu
@@ -374,11 +374,11 @@ RUN npm i express
   <p>process ที่เราจะรันใน cmd คอมมานสุดท้ายนั้นจะต้องเป็น foreground process เนื่องจาก docker จำเป็นต้อง track การรันที่ foreground process หากรันเป็น background docker จะไม่สามารถ track ได้และจะหยุดทำงานในทันที</p>
 </blockquote>
 
-<p>เราจะมาลอง build Node.js(Express) app ง่ายๆด้วย Docker กันครับ</p>
+<p>เราจะมาลอง build <code class="highlighter-rouge">Node.js(Express)</code> app ง่ายๆด้วย Docker กันครับ</p>
 
 <h4 id="nodejs-app-example">Node.JS App Example</h4>
 
-<p>ก่อนอื่นลง <code class="highlighter-rouge">express</code> กันก่อน <code class="highlighter-rouge">npm i express</code> จากนั้นก็สร้างไฟล์ขึ้นมาไฟล์นึง ผมใช้ชื่อว่า <code class="highlighter-rouge">app.js</code> ก็แล้วกันนะครับ โดยมีโค้ดไว้รัน server helloworld โง่ๆตัวนึง</p>
+<p>ก่อนอื่นลง <code class="highlighter-rouge">express</code> กันก่อน <code class="highlighter-rouge">npm i express</code> จากนั้นก็สร้างไฟล์ขึ้นมาไฟล์นึง ผมใช้ชื่อว่า <code class="highlighter-rouge">app.js</code> ก็แล้วกันนะครับ โดยมีโค้ดไว้รัน server helloworld แบบง่ายๆเลย</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>var express = require('express')
 var app = express()
@@ -447,7 +447,7 @@ CMD node app.js
 </code></pre>
 </div>
 
-<p>เมื่อ Login เสร็จแล้วเราหากเราจะทำการ push images ขึ้นไปบน account ของเรานั้น images ที่เราจะ build จะต้องมี prefix เป็นชื่อ account ของเราเช่น ผมใช้ชื่อ tui2tone ก็จะเป็น <code class="highlighter-rouge">tui2tone/image-name</code> เป็นต้น</p>
+<p>เมื่อ Login เสร็จแล้วเราหากเราจะทำการ <code class="highlighter-rouge">push images</code> ขึ้นไปบน account ของเรานั้น images ที่เราจะ build จะต้องมี prefix เป็นชื่อ account ของเราเช่น ผมใช้ชื่อ tui2tone ก็จะเป็น <code class="highlighter-rouge">tui2tone/image-name</code> เป็นต้น</p>
 
 <p>จากนั้นก็ใช้คำสั่ง <code class="highlighter-rouge">push</code> ขึ้นไป</p>
 
@@ -457,23 +457,19 @@ CMD node app.js
 
 <p><img src="/assets/images/posts/docker101/docker-hub-push.png" alt="Docker Hub Push" /></p>
 
-<p>มันก็จะขึ้นอยู่บน hub.docker.com เรียบร้อยแล้ว เราก็สามารถเข้าไปดูรายละเอียดอื่นๆได้ในเว็บ</p>
+<p>มันก็จะขึ้นอยู่บน <code class="highlighter-rouge">hub.docker.com</code> เรียบร้อยแล้ว เราก็สามารถเข้าไปดูรายละเอียดอื่นๆได้ในเว็บนะครับ</p>
 
 <p><img src="/assets/images/posts/docker101/docker-hub-image.png" alt="Docker Hub Image" /></p>
 
 <h2 id="docker-compose">Docker Compose</h2>
 
-<p>docker compose ใช้สำหรับเก็บ command และ config ที่เราจะรันตัว docker images หากเราทำการรันแล้วครั้งครึ่ง เราจะไม่สามารถแก้คำสั่งรันได้ เช่น</p>
+<p>docker compose ใช้สำหรับเก็บ command และ config ที่เราจะรันตัว docker images ซึ่งหากเราทำการรันแล้วครั้งหนึ่ง เราจะไม่สามารถแก้คำสั่งรันได้ เช่น</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>docker run -d -p 3000:3000 --name helloworld tui2tone/helloworld-express
 </code></pre>
 </div>
 
-<p>เมื่อเราทำการรันไปครั้งนึงแล้ว จะมี container ตัวนึงรันอยู่ หากเราต้องการทำจะ mapping port เพิ่มละ ทำยังไงดี</p>
-
-<p>ตอนนี้มีวิธีเดียวเท่านั้น คือ หยุดและ <code class="highlighter-rouge">รันใหม่</code> และ พิมคำสั่งใหม่หมด ซึ่งก็จะเป็นความยากลำบากของเราในการดีพลอยแอพใหม่หากมีการเปลี่ยน config ต่างๆในการรัน</p>
-
-<p>แต่ docker ก็ไม่ใจร้ายขนาดนั้น สร้าง docker-compose มาให้เราเก็บไฟล์ config ในการรัน และช่วยในการรีรัน container ในการณีที่มีการเปลี่ยนแปลง config นั่นเอง</p>
+<p>เมื่อเราทำการรันไปครั้งนึงแล้ว จะมี container ตัวนึงรันอยู่ หากเราต้องการทำจะ mapping port เพิ่มละ ทำยังไงดี ตอนนี้มีวิธีเดียวเท่านั้น คือ หยุดและ <code class="highlighter-rouge">รันใหม่</code> และ พิมคำสั่งใหม่หมด ซึ่งก็จะเป็นความยากลำบากของเราในการดีพลอยแอพใหม่หากมีการเปลี่ยน config ต่างๆในการรัน แต่ docker ก็ไม่ใจร้ายขนาดนั้น สร้าง docker-compose มาให้เราเก็บไฟล์ config ในการรัน และช่วยในการรีรัน container ในการณีที่มีการเปลี่ยนแปลง config นั่นเอง</p>
 
 <h3 id="configuration">Configuration</h3>
 
@@ -490,7 +486,7 @@ services:
 </div>
 
 <p>เราสามารถ config ได้ตามคำสั่ง option ของการ run ปกติ เช่น -v ใช้ volumes / -p ใช้ ports
-สามารถดู config อื่นๆได้ตามนี้</p>
+สามารถดู config อื่นๆได้ตามนี้ <a href="https://docs.docker.com/compose/compose-file/">Docker Compose Reference</a></p>
 
 <h3 id="runup-docker-compose">Runup Docker Compose</h3>
 
@@ -515,6 +511,7 @@ services:
   <li>Dockerfile Reference <a href="https://docs.docker.com/engine/reference/builder/">https://docs.docker.com/engine/reference/builder/</a></li>
   <li>Docker run Reference <a href="https://docs.docker.com/engine/reference/run/">https://docs.docker.com/engine/reference/run/</a></li>
   <li>Docker Compose Reference <a href="https://docs.docker.com/compose/compose-file/">https://docs.docker.com/compose/compose-file/</a></li>
+  <li>Docker Networking <a href="https://docs.docker.com/engine/userguide/networking/">https://docs.docker.com/engine/userguide/networking/</a></li>
 </ul>
 
 	</div>
