@@ -167,7 +167,7 @@ fn( ( 1 * 0.75 ) + ( 0 * 0.45 ) + bias ) = output;
 
 ## Neuron Workshop with Synaptic.js
 
-มาลอง Implement Neural Network แบบง่ายๆบน Javascripts กันนะครับ โดย Library ที่ผมเลือกนำมาใช้คือ Synaptic.js โดยเราจะมาทำฟังก์ชัน `XOR` ด้วย Neuron เท่านั้นนะครับ
+มาลอง Implement Neural Network แบบง่ายๆบน Javascripts กันนะครับ โดย Library ที่ผมเลือกนำมาใช้คือ Synaptic.js โดยเราจะมาทำฟังก์ชัน `OR` ด้วย Neuron เท่านั้นนะครับ
 
 ```
 const { Neuron } = require('synaptic');
